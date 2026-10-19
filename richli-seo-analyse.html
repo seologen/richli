@@ -334,9 +334,15 @@ html.noscroll,html.noscroll body{overflow:hidden}
 .wf-lines i{display:block;height:8px;border-radius:4px;background:#dcd8d4;width:70%}
 .wf-lines i+i{width:48%}
 @media (max-width:760px){.wf-hero{grid-template-columns:minmax(0,1fr)}.wf-tiles{grid-template-columns:minmax(0,1fr)}.wf-steps{grid-template-columns:minmax(0,1fr)}.wf-step::after{display:none}.wf-cta{grid-template-columns:minmax(0,1fr);justify-items:start}.wf-nav{display:none}.wf{margin:12px 12px 40px}.wf-bar span{font-size:12.5px}}
-.ps-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin:4px 0 0;padding:16px 22px;border-radius:12px;background:var(--red);color:#fff}
-.ps-line b{font-size:28px;font-weight:700}
-.ps-line span{font-size:18px;opacity:.92}
+.ps-sheet{border:3px solid var(--red)}
+.ps-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;align-items:stretch}
+.ps-k{display:grid;gap:2px;align-content:start;padding:14px 18px;border-radius:10px;background:var(--ground)}
+.ps-k b{font-size:34px;font-weight:500;line-height:1.05}
+.ps-k span{font-size:14px;color:var(--muted)}
+.ps-k.main{background:var(--red);color:#fff}
+.ps-k.main b{font-size:64px;font-weight:700}
+.ps-k.main b small{font-size:28px;font-weight:500;margin-right:4px}
+.ps-k.main span{font-size:17px;color:#fff;opacity:.85}
 .fill.red{background:var(--red);opacity:1}
 .fill.oak{background:var(--oak);opacity:1} .fill.slate{background:var(--slate);opacity:1} .fill.sage{background:var(--sage);opacity:1} .fill.mut{background:var(--muted);opacity:1}
 
@@ -726,7 +732,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 
   <h2 id="megaTitle" style="font-size:clamp(22px,2.6vw,28px);margin-top:18px">Megamenüs zu Vorschlag A</h2>
   <div id="navWrap" style="display:grid;gap:22px"></div>
-  <p class="ps-line" id="pageSum"></p>
+  <div class="sheet ps-sheet" id="pageSum"></div>
 </div>
 
 <div class="wf-view" id="b2bView" role="dialog" aria-modal="true" aria-label="Entwurf Seite Für Geschäftskunden" hidden>
@@ -1287,7 +1293,11 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rows.push(["Startseite", 1, "muted"]);
     var total = rows.reduce(function(t, r){ return t + r[1]; }, 0);
     var max = Math.max.apply(null, rows.map(function(r){ return r[1]; }));
-    box.innerHTML = '<b>mind. ' + total + ' Seiten</b><span>+ ca. 20 Ratgeber-Artikel</span><span>+ Referenzen (heute 40 Projekte)</span>';
+    var vk = document.querySelector('#varSeg button[aria-pressed="true"]'); vk = vk ? vk.getAttribute("data-var") : "A";
+    box.innerHTML = '<h3>Seitenumfang Vorschlag ' + vk + '</h3><div class="ps-kpis">' +
+      '<div class="ps-k main"><b><small>mind.</small> ' + total + '</b><span>Seiten im Menü</span></div>' +
+      '<div class="ps-k"><b>+ ca. 20</b><span>Ratgeber-Artikel (Content-Ausblick)</span></div>' +
+      '<div class="ps-k"><b>+ 40</b><span>Referenzprojekte, heute auf richli.ch, laufend ergänzen</span></div></div>';
   }
   function selectVar(k){
     document.querySelectorAll("#varSeg button").forEach(function(o){ o.setAttribute("aria-pressed", o.getAttribute("data-var") === k ? "true" : "false"); });
