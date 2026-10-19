@@ -1177,7 +1177,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       main: [
         {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten",["eiche","nussbaum","ahorn","buche","esche","bambus","laerche","kirsch"]],["Oberflächen & Farbtöne",["ogeoelt","oweiss","orauch","orustikal","ohell","odunkel"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","fertig","schiff","kloetzli","stab","riemen","tafel"]],["Dienstleistungen",["pschleifen","pverlegen","poelen","prep","treppen"]],["Zubehör",["sockel","tritt","profile","filz","shop"]],["Regionen",["lpLu","lpZg"]],["Exklusiv",["woodlife"]]]},
         {label:"Bodenbeläge", c:"oak", hub:"boden", cols:[["Vinyl, Linoleum & Co.",["vinyl","laminat","lino","kork","kautschuk","bverlegen"]],["Teppich",["teppich","tfliesen","tmass","nadelfilz","otep"]],["Eingänge & Objekte",["schmutz","matten"]],["Regionen",["lbLu","lbZg","lbNw"]]]},
-        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik","wand"]],["Bad",["bad","badplatten","kd"]],["Aussenbereiche",["terrasse","stelz"]],["Sortiment",["sortiment"]],["Regionen",["lplLu","lplZg","lplOw"]]]},
+        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik","wand"]],["Bad",["bad","badplatten","kd"]],["Aussenbereiche",["terrasse","stelz"]],["Sortiment",["sortiment"]]]},
         {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Räume",["vwohn","vkind","vschlaf","vkueche","vbad","veingang","voutdoor"]],["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vakustik","vthermo"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]]]},
         {label:"Ausstellung", flat:1, c:"muted", hub:"ausst", cols:[["Besuch",["termin"]]]},
         {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[["Filter",["rbad","rparkett","rplatten","rboden","robjekt"]]]},
@@ -1295,7 +1295,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   var HUBLOC = {};
   function hubLoc(h){ return HUBLOC[h] ? '<span class="loc hubloc">Standorte: ' + esc(HUBLOC[h]) + '</span>' : ''; }
   /* Seitenumfang je Vorschlag */
-  var LOC = ["lpLu","lpZg","lbLu","lbZg","lbNw","lplLu","lplZg","lplOw"];
+  var LOC = ["lpLu","lpZg","lbLu","lbZg","lbNw"];
   function isPage(id){ var u = P[id] && P[id][1]; return !!u && u.charAt(0) === "/" && u.indexOf("?") < 0 && !/^\/(ratgeber|referenzen)\/./.test(u); }
   function pageUrls(ids){ var o = {}; ids.forEach(function(id){ if (isPage(id) && LOC.indexOf(id) < 0) o[P[id][1]] = 1; }); return Object.keys(o); }
   function renderSum(v){
