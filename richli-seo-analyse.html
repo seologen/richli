@@ -1156,10 +1156,10 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     A: {
       meta: ["karriere","ueber","kontakt"],
       main: [
-        {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten",["eiche","nussbaum","ahorn","buche","esche","bambus","laerche","kirsch"]],["Oberflächen & Farbtöne",["ogeoelt","oweiss","orauch","orustikal","ohell","odunkel"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","fertig","schiff","kloetzli","stab","riemen","tafel"]],["Dienstleistungen",["pschleifen","pverlegen","poelen","prep","treppen"]],["Zubehör",["sockel","tritt","profile","filz","shop"]],["Standorte",["pluzern","pzug","pnwow"]],["Exklusiv",["woodlife"]]]},
-        {label:"Bodenbeläge", c:"oak", hub:"boden", cols:[["Vinyl, Linoleum & Co.",["vinyl","laminat","lino","linverlegen","kork","kautschuk"]],["Teppich",["teppich","tfliesen","tmass","nadelfilz","otep"]],["Eingänge & Objekte",["schmutz","matten"]]]},
-        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik"]],["Bad & Aussen",["terrasse","stelz","bad","badplatten","kd"]],["Sortiment",["sortiment"]]]},
-        {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Räume",["vwohn","vkind","vschlaf","vkueche","voutdoor"]],["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vakustik","vthermo"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]]]},
+        {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten",["eiche","nussbaum","ahorn","buche","esche","bambus","laerche","kirsch"]],["Oberflächen & Farbtöne",["ogeoelt","oweiss","orauch","orustikal","ohell","odunkel"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","fertig","schiff","kloetzli","stab","riemen","tafel"]],["Dienstleistungen",["pschleifen","pverlegen","poelen","prep","treppen"]],["Zubehör",["sockel","tritt","profile","filz","shop"]],["Regionen",["pluzern","pzug","pnwow"]],["Exklusiv",["woodlife"]]]},
+        {label:"Bodenbeläge", c:"oak", hub:"boden", cols:[["Vinyl, Linoleum & Co.",["vinyl","laminat","lino","linverlegen","kork","kautschuk"]],["Teppich",["teppich","tfliesen","tmass","nadelfilz","otep"]],["Eingänge & Objekte",["schmutz","matten"]],["Regionen",["pluzern","pzug","pnwow"]]]},
+        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik"]],["Bad & Aussen",["terrasse","stelz","bad","badplatten","kd"]],["Sortiment",["sortiment"]],["Regionen",["pluzern","pzug","pnwow"]]]},
+        {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Räume",["vwohn","vkind","vschlaf","vkueche","voutdoor"]],["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vakustik","vthermo"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]],["Regionen",["pluzern"]]]},
         {label:"Ausstellung", flat:1, c:"muted", hub:"ausst", cols:[["Besuch",["termin"]]]},
         {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[["Filter",["rbad","rparkett","rplatten","rboden","robjekt"]]]},
         {label:"Für Geschäftskunden", c:"slate", hub:"b2b", cols:[["Kundengruppen",["verw","arch","objekt"]],["Angebot",["unterhalt","ausschreibung","muster"]]]}
@@ -1271,7 +1271,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   var bb2 = $("b2bBack"); if (bb2) bb2.addEventListener("click", function(){ openB2B(false); });
   document.addEventListener("keydown", function(e){ var vw = $("b2bView"); if (e.key === "Escape" && vw && !vw.hidden) openB2B(false); });
   /* Orte, mit denen das Thema gesucht wird (Sistrix ch, Okt. 2026) */
-  var HUBLOC = {parkett:"Luzern, Zug", boden:"Luzern, Zug, Nidwalden", platten:"Luzern, Obwalden", vorh:"Luzern"};
+  var HUBLOC = {};
   function hubLoc(h){ return HUBLOC[h] ? '<span class="loc hubloc">Standorte: ' + esc(HUBLOC[h]) + '</span>' : ''; }
   /* Seitenumfang je Vorschlag */
   var LOC = ["pluzern","pzug","pnwow"];
