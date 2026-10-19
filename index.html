@@ -282,6 +282,31 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--red)}
 .rg-img.stone{background:radial-gradient(circle at 30% 30%,#e9eef1 0 18%,transparent 19%),radial-gradient(circle at 70% 65%,#d5dee3 0 22%,transparent 23%),linear-gradient(135deg,#b9c7cf,#8ea2ae)}
 .rg-img.tile{background:linear-gradient(#fff 0 0) 0 0/100% 100%,#c7d3da;background:repeating-linear-gradient(0deg,#e8edf0 0 2px,transparent 2px 40px),repeating-linear-gradient(90deg,#e8edf0 0 2px,transparent 2px 40px),#a9bcc7}
 .rg-img.curtain{background:repeating-linear-gradient(90deg,#8fa58c 0 10px,#a7bba3 10px 22px,#7f967c 22px 28px)}
+.b2b-sec{display:grid;gap:14px}
+.b2b-tile{display:flex;align-items:center;gap:18px;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--sheet);border:2px solid var(--slate-soft);border-left:6px solid var(--slate);border-radius:12px;padding:18px 22px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.b2b-tile:hover{border-color:var(--slate);box-shadow:0 8px 22px -14px var(--slate)}
+.b2b-tile:focus-visible{outline:3px solid var(--slate);outline-offset:2px}
+.b2b-ic{display:grid;place-items:center;width:52px;height:52px;flex:none;border-radius:12px;background:var(--slate-soft);color:var(--slate)}
+.b2b-ic svg{width:28px;height:28px}
+.b2b-tx{display:grid;gap:2px;min-width:0}
+.b2b-tx small{font-size:12.5px;color:var(--muted)}
+.b2b-tx b{font-size:20px;font-weight:500}
+.b2b-tx span{font-size:14.5px;color:var(--muted)}
+.b2b-go{margin-left:auto;flex:none;font-weight:500;font-size:14.5px;padding:9px 16px;border-radius:99px;background:var(--slate);color:#fff}
+@media (max-width:620px){.b2b-tile{flex-wrap:wrap}.b2b-go{margin-left:0}}
+.b2b-hero{padding:34px 30px;background:linear-gradient(110deg,rgba(30,27,26,.78),rgba(30,27,26,.25)),repeating-linear-gradient(0deg,#9fb1bc 0 38px,#93a6b2 38px 40px);color:#fff}
+.b2b-hero div{display:grid;gap:6px;max-width:620px}
+.b2b-hero small{font-size:13px;opacity:.85}
+.b2b-hero b{font-size:24px;font-weight:500;line-height:1.25}
+.b2b-hero span{font-size:14.5px;opacity:.9}
+.b2b-ent{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:22px 24px}
+.b2b-ent article{display:grid;gap:10px;align-content:start;border:1px solid #e4e0dc;border-top:4px solid #3d6178;border-radius:10px;padding:16px 18px}
+.b2b-ent h4{font-size:17px;font-weight:500}
+.b2b-ent ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14px;color:#4a4542}
+.b2b-link{font-size:14px;font-weight:500;color:#921102}
+.b2b-svc{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 24px 24px}
+.b2b-svc span{font-size:13.5px;padding:6px 12px;border-radius:99px;background:#f2f0ed}
+.b2b-svc b{margin-left:auto;font-weight:500;font-size:14px;padding:9px 18px;border-radius:99px;background:#921102;color:#fff}
 .mm-small{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
 .mm-mini{background:var(--sheet);border-radius:12px;padding:18px 20px;display:grid;gap:10px;align-content:start;scroll-margin-top:110px}
 .mm-mini h3{font-size:18px}
@@ -843,6 +868,20 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   };
   /* Ratgeber-Kacheln: [id, Bildmotiv, Thema] */
   var RGT = [["rg4","wood","Parkett"],["rg2","wood2","Parkett"],["rg3","wood","Parkett"],["rg12","wood2","Parkett"],["rg11","herring","Parkett"],["rg15","wood","Parkett"],["rg1","wood2","Pflege"],["rg14","wood","Pflege"],["rg5","herring","Parkett"],["rg7","floor","Böden"],["rg13","floor","Böden"],["rg8","floor","Böden"],["rg16","textile","Teppich"],["rg6","stone","Platten"],["rg10","tile","Platten"],["rg9","stone","Naturstein"],["rg17","curtain","Vorhänge"]];
+  /* Zielseite Für Geschäftskunden (Vorschlag A): Kachel öffnet Entwurf */
+  var B2B = '<div class="b2b-sec"><button type="button" class="b2b-tile" id="b2bTile" aria-expanded="false" aria-controls="b2bPage">' +
+    '<span class="b2b-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01"/></svg></span>' +
+    '<span class="b2b-tx"><small>Obere Leiste</small><b>Für Geschäftskunden</b><span>Zielseite mit Einstiegen für Verwaltungen, Architekten und Gewerbe</span></span>' +
+    '<span class="b2b-go">Entwurf ansehen</span></button>' +
+    '<div class="b2b-page" id="b2bPage" hidden><div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch/geschaeftskunden/</span></div>' +
+    '<div class="b2b-hero"><div><small>Für Geschäftskunden</small><b>Boden, Platten und Vorhänge für Verwaltungen, Planer und Betriebe</b><span>Ein Ansprechpartner, eigene Fachteams, Lager in Emmenbrücke</span></div></div>' +
+    '<div class="b2b-ent">' +
+      '<article><h4>Für Verwaltungen</h4><ul><li>Rasche Reaktion bei Mieterwechsel</li><li>Lagerprodukte sofort verfügbar</li><li>Einfache Abwicklung, faire Preise</li></ul><span class="b2b-link">Zur Seite Verwaltungen</span></article>' +
+      '<article><h4>Für Architekten & Bauleitung</h4><ul><li>Termintreue und Normen</li><li>Mängelfreie Ausführung</li><li>Klare Mehrpreise, Unternehmervarianten</li></ul><span class="b2b-link">Zur Seite Architekten</span></article>' +
+      '<article><h4>Gewerbe & Objekte</h4><ul><li>Büro, Hotel, Schule</li><li>Robuste Beläge, Schmutzschleusen</li><li>Akustik- und Objektvorhänge</li></ul><span class="b2b-link">Zur Seite Gewerbe</span></article>' +
+    '</div>' +
+    '<div class="b2b-svc"><span>Unterhalt & Mieterwechsel</span><span>Ausschreibungen & Unternehmervarianten</span><span>Muster & Bemusterung</span><b>Offerte anfragen</b></div>' +
+    '</div></div></div>';
   var INT = {H:["Handwerker","ih"], S:["Shop","is"], I:["Info","ii"], G:["Gemischt","ig"]};
   function intChip(k){ var t = INT[k]; return t ? '<span class="int ' + t[1] + '">' + t[0] + '</span>' : ''; }
 
@@ -864,7 +903,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     V.A.main = [M["Parkett"], M["Bodenbeläge"], M["Platten & Naturstein"], M["Vorhänge"],
       {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[]},
       UEBER];
-    V.A.small = [["Für Geschäftskunden",["b2b","verw","arch","objekt","unterhalt","ausschreibung","muster"]]];
+    V.A.small = []; V.A.b2b = 1;
   })();
   var SOFT = {oak:"oak-soft", slate:"slate-soft", sage:"sage-soft", red:"red-soft", warn:"warn-soft", muted:"ground"};
   function volChip(v){ if (v == null) return ""; return '<span class="vol ' + (v >= 500 ? "v3" : v >= 100 ? "v2" : "v1") + '">' + fmt(v) + '</span>'; }
@@ -904,6 +943,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         '</div>' +
         '<div class="mm-cols">' + m.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4><ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div></div></div>';
     });
+    if (v.b2b){ h += B2B; allIds = allIds.concat(["b2b","verw","arch","objekt","unterhalt","ausschreibung","muster"]); }
     if (v.small.length) h += '<div class="mm-small">' + v.small.map(function(s){ allIds = allIds.concat(s[1]); return '<div class="mm-mini" id="mm-' + k + '-' + s[1][0] + '"><h3>' + esc(s[0]) + '</h3><ul>' + s[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
     allIds = allIds.concat(RGT.map(function(t){ return t[0]; }));
     h += '<div class="rg-sec"><h3>Ratgeber</h3><p class="rg-sub">Content-Ausblick</p><div class="rg-tiles">' + RGT.map(function(t){
@@ -922,7 +962,11 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   }
   var nw = $("navWrap");
   if (nw){
-    nw.addEventListener("click", function(e){ var b = e.target.closest(".ar-list button"); if (b) pickArea(b); });
+    nw.addEventListener("click", function(e){
+      var b = e.target.closest(".ar-list button"); if (b) pickArea(b);
+      var t = e.target.closest("#b2bTile"), pg = $("b2bPage");
+      if (t && pg){ pg.hidden = !pg.hidden; t.setAttribute("aria-expanded", pg.hidden ? "false" : "true"); t.querySelector(".b2b-go").textContent = pg.hidden ? "Entwurf ansehen" : "Entwurf schliessen"; }
+    });
     nw.addEventListener("mouseover", function(e){ var b = e.target.closest(".ar-list button"); if (b) pickArea(b); });
   }
   function selectVar(k){
