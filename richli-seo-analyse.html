@@ -289,19 +289,51 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--red)}
 .b2b-tx span{font-size:14.5px;color:var(--muted)}
 .b2b-go{margin-left:auto;flex:none;font-weight:500;font-size:14.5px;padding:9px 16px;border-radius:99px;background:var(--slate);color:#fff}
 @media (max-width:620px){.b2b-tile{flex-wrap:wrap}.b2b-go{margin-left:0}}
-.b2b-hero{padding:34px 30px;background:linear-gradient(110deg,rgba(30,27,26,.78),rgba(30,27,26,.25)),repeating-linear-gradient(0deg,#9fb1bc 0 38px,#93a6b2 38px 40px);color:#fff}
-.b2b-hero div{display:grid;gap:6px;max-width:620px}
-.b2b-hero small{font-size:13px;opacity:.85}
-.b2b-hero b{font-size:24px;font-weight:500;line-height:1.25}
-.b2b-hero span{font-size:14.5px;opacity:.9}
-.b2b-ent{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:22px 24px}
-.b2b-ent article{display:grid;gap:10px;align-content:start;border:1px solid #e4e0dc;border-top:4px solid #3d6178;border-radius:10px;padding:16px 18px}
-.b2b-ent h4{font-size:17px;font-weight:500}
-.b2b-ent ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14px;color:#4a4542}
-.b2b-link{font-size:14px;font-weight:500;color:#921102}
-.b2b-svc{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 24px 24px}
-.b2b-svc span{font-size:13.5px;padding:6px 12px;border-radius:99px;background:#f2f0ed}
-.b2b-svc b{margin-left:auto;font-weight:500;font-size:14px;padding:9px 18px;border-radius:99px;background:#921102;color:#fff}
+html.noscroll,html.noscroll body{overflow:hidden}
+.wf-view{position:fixed;inset:0;z-index:200;overflow-y:auto;background:#e9e7e4;color:#2a2a2a;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wf-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:#1e1b1a;color:#fff;font-size:14px}
+.wf-bar b{font-weight:500;margin-right:8px;padding:2px 8px;border-radius:99px;background:#921102}
+.wf-back{display:inline-flex;align-items:center;gap:8px;font:500 14.5px var(--font);color:#1e1b1a;background:#fff;border:0;border-radius:99px;padding:8px 16px;cursor:pointer;white-space:nowrap}
+.wf-back svg{width:16px;height:16px}
+.wf-back:focus-visible{outline:3px solid #e9c3bc;outline-offset:2px}
+.wf{max-width:1100px;margin:22px auto 60px;background:#fff;border:1px solid #cfcac5;border-radius:6px;overflow:hidden}
+.wf-hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid #ddd}
+.wf-logo{display:flex;align-items:center;gap:8px;font-weight:700;color:#921102}
+.wf-logo i{width:24px;height:24px;border-radius:50%;background:#921102}
+.wf-nav{display:flex;gap:14px}
+.wf-nav i{width:58px;height:9px;border-radius:5px;background:#d9d6d2}
+.wf-crumb{padding:10px 24px;font-size:12.5px;color:#888;border-bottom:1px dashed #ddd}
+.ph{position:absolute;inset:0;width:100%;height:100%;color:#c4c0bb}
+.wf-img,.wf-tile,.wf-person{position:relative;background:#eeece9;border:1px solid #d3cfca;overflow:hidden}
+.wf-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;padding:28px 24px;align-items:center}
+.wf-img{aspect-ratio:16/10;max-width:100%;border-radius:4px}
+.wf-img span{position:absolute;left:10px;bottom:10px;font-size:12px;color:#777;background:#fff;padding:2px 8px;border-radius:4px}
+.wf-copy{display:grid;gap:12px;justify-items:start}
+.wf-copy h2{font-size:30px}
+.wf-copy p{font-size:15.5px;color:#555;max-width:46ch}
+.wf-btn{display:inline-block;font-weight:500;font-size:14px;padding:10px 18px;border-radius:4px;background:#921102;color:#fff;white-space:nowrap}
+.wf-sec{display:grid;gap:14px;padding:26px 24px;border-top:1px solid #eee}
+.wf-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.wf-h h3,.wf-cta h3{font-size:20px}
+.wf-note{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-size:13px;color:#921102;background:#f8e9e6;border:1px dashed #e9c3bc;border-radius:99px;padding:4px 12px 4px 4px}
+.wf-note b{display:grid;place-items:center;flex:none;width:20px;height:20px;border-radius:50%;background:#921102;color:#fff;font-size:12px}
+.wf-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.wf-tile{aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;text-align:center}
+.wf-tile b{position:relative;font-size:22px;font-weight:500;color:#fff;background:rgba(30,27,26,.55);padding:6px 14px;border-radius:4px;margin:0 10px}
+.wf-tiles.sm .wf-tile{aspect-ratio:16/9}
+.wf-tiles.sm .wf-tile b{font-size:16px}
+.wf-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.wf-step{display:grid;gap:4px;align-content:start;padding:14px 16px;border:1px solid #d3cfca;border-radius:4px;background:#faf9f8;position:relative}
+.wf-step small{font-size:12px;color:#888}
+.wf-step b{font-size:16px;font-weight:500}
+.wf-step span{font-size:13.5px;color:#555}
+.wf-step:not(:last-child)::after{content:"";position:absolute;right:-11px;top:50%;width:8px;height:8px;border-top:2px solid #b9b4ae;border-right:2px solid #b9b4ae;transform:translateY(-50%) rotate(45deg)}
+.wf-cta{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:20px;align-items:center;padding:24px;border-top:1px solid #eee;background:#f6f5f3}
+.wf-person{width:96px;height:96px;border-radius:50%}
+.wf-lines{display:grid;gap:6px;margin:8px 0 0}
+.wf-lines i{display:block;height:8px;border-radius:4px;background:#dcd8d4;width:70%}
+.wf-lines i+i{width:48%}
+@media (max-width:760px){.wf-hero{grid-template-columns:minmax(0,1fr)}.wf-tiles{grid-template-columns:minmax(0,1fr)}.wf-steps{grid-template-columns:minmax(0,1fr)}.wf-step::after{display:none}.wf-cta{grid-template-columns:minmax(0,1fr);justify-items:start}.wf-nav{display:none}.wf{margin:12px 12px 40px}.wf-bar span{font-size:12.5px}}
 .mm-small{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
 .mm-mini{background:var(--sheet);border-radius:12px;padding:18px 20px;display:grid;gap:10px;align-content:start;scroll-margin-top:110px}
 .mm-mini h3{font-size:18px}
@@ -329,7 +361,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       <span class="brand">Richli AG, Boden.Wand.Vorhang</span>
       <h1>SEO-Erstanalyse richli.ch</h1>
     </div>
-    <p class="src">Stand 19. Oktober 2026. Daten: Sistrix, Google Schweiz, und Angebot auf richli.ch.</p>
   </div>
 </header>
 
@@ -472,7 +503,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         <div class="hdr"><div class="brand"><svg viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="#921102"/><g transform="translate(9.5 9.5) scale(.78)"><path fill="#fff" d="M10.743,5.999h37.521c16.862,0,27.19,7.66,27.19,24.222c0,9.523-6.111,17.183-15.492,19.874l17.18,29.605H56.17L41.414,53.2H29.505v26.499H10.743V5.999z M29.505,39.536h17.179c6.008-0.104,10.012-3.105,10.012-9.937c0-6.832-4.004-9.833-10.012-9.937H29.505V39.536z"/></g></svg><span><b>Richli</b><small>Boden.Wand.Vorhang</small></span></div><nav><span>Parkett</span><span>Bodenbeläge</span><span>Platten & Naturstein</span><span>Vorhänge</span><span>Referenzen</span><span>Über uns</span></nav></div>
         <div class="hero"><div><b>Böden, Platten und Vorhänge aus einer Hand</b><span>Ausstellung in Emmenbrücke · Zentralschweiz</span></div></div>
       </div>
-      <p class="navinfo"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ausstellung, Ratgeber und Karriere liegen unter «Über uns».</p>
+      <p class="navinfo"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ausstellung, Ratgeber, Karriere und Kontakt liegen unter «Über uns».</p>
     </figure>
     <figure class="mock" data-var="B" hidden>
       <div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch</span></div>
@@ -480,12 +511,64 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         <div class="hdr"><div class="brand"><svg viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="#921102"/><g transform="translate(9.5 9.5) scale(.78)"><path fill="#fff" d="M10.743,5.999h37.521c16.862,0,27.19,7.66,27.19,24.222c0,9.523-6.111,17.183-15.492,19.874l17.18,29.605H56.17L41.414,53.2H29.505v26.499H10.743V5.999z M29.505,39.536h17.179c6.008-0.104,10.012-3.105,10.012-9.937c0-6.832-4.004-9.833-10.012-9.937H29.505V39.536z"/></g></svg><span><b>Richli</b><small>Boden.Wand.Vorhang</small></span></div><nav><span>Produkte</span><span>Kunden</span><span>Referenzen</span><span>Über uns</span></nav><span class="cta">Beratung buchen</span></div>
         <div class="hero"><div><b>Böden, Platten und Vorhänge aus einer Hand</b><span>Ausstellung in Emmenbrücke · Zentralschweiz</span></div></div>
       </div>
-      <p class="navinfo"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ausstellung, Ratgeber und Karriere liegen unter «Über uns».</p>
+      <p class="navinfo"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ausstellung, Ratgeber, Karriere und Kontakt liegen unter «Über uns».</p>
     </figure>
   </div>
 
   <h2 id="megaTitle" style="font-size:clamp(22px,2.6vw,28px);margin-top:18px">Megamenüs zu Vorschlag A</h2>
   <div id="navWrap" style="display:grid;gap:22px"></div>
+</div>
+
+<div class="wf-view" id="b2bView" role="dialog" aria-modal="true" aria-label="Entwurf Seite Für Geschäftskunden" hidden>
+  <div class="wf-bar"><span><b>Entwurf</b> richli.ch/geschaeftskunden/</span><button type="button" class="wf-back" id="b2bBack"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>Zurück zum Board</button></div>
+  <div class="wf">
+    <div class="wf-hdr"><span class="wf-logo"><i></i>Richli</span><span class="wf-nav"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+    <div class="wf-crumb">Startseite › Für Geschäftskunden</div>
+
+    <section class="wf-hero">
+      <div class="wf-img"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><span>Bild: Team bei der Arbeit in einem Objekt</span></div>
+      <div class="wf-copy">
+        <h2>Für Geschäftskunden</h2>
+        <p>Boden, Platten und Vorhänge für Verwaltungen, Planer und Betriebe. Ein Ansprechpartner, eigene Fachteams, Lager in Emmenbrücke.</p>
+        <span class="wf-btn">Offerte anfragen</span>
+      </div>
+    </section>
+
+    <section class="wf-sec">
+      <div class="wf-h"><h3>Wählen Sie Ihren Bereich</h3><span class="wf-note"><b>1</b>Drei Einstiege als grosse Bildkacheln, wie heute die Produkte auf der Startseite</span></div>
+      <div class="wf-tiles">
+        <a class="wf-tile"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><b>Verwaltungen</b></a>
+        <a class="wf-tile"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><b>Architekten &amp; Bauleitung</b></a>
+        <a class="wf-tile"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><b>Gewerbe &amp; Objekte</b></a>
+      </div>
+      <span class="wf-note"><b>2</b>Klick auf eine Kachel öffnet die eigene Zielgruppenseite</span>
+    </section>
+
+    <section class="wf-sec">
+      <div class="wf-h"><h3>So ist eine Zielgruppenseite aufgebaut</h3><span class="wf-note"><b>3</b>Beispiel Verwaltungen</span></div>
+      <div class="wf-steps">
+        <div class="wf-step"><small>Oben</small><b>Versprechen</b><span>Rasche Reaktion bei Mieterwechsel, Lagerprodukte sofort verfügbar, einfache Abwicklung</span></div>
+        <div class="wf-step"><small>Mitte</small><b>Leistungen</b><span>Unterhalt &amp; Mieterwechsel, Parkett schleifen, Bodenersatz, Schmutzschleusen</span></div>
+        <div class="wf-step"><small>Beleg</small><b>Referenzen</b><span>Projekte für Verwaltungen mit Foto, Ort und Umfang</span></div>
+        <div class="wf-step"><small>Abschluss</small><b>Ansprechperson</b><span>Foto, Telefon, E-Mail und Formular «Auftrag erteilen»</span></div>
+      </div>
+    </section>
+
+    <section class="wf-sec">
+      <div class="wf-h"><h3>Leistungen für Geschäftskunden</h3><span class="wf-note"><b>4</b>Kleinere Kacheln, gelten für alle drei Gruppen</span></div>
+      <div class="wf-tiles sm">
+        <a class="wf-tile"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><b>Unterhalt &amp; Mieterwechsel</b></a>
+        <a class="wf-tile"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><b>Ausschreibungen &amp; Unternehmervarianten</b></a>
+        <a class="wf-tile"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg><b>Muster &amp; Bemusterung</b></a>
+      </div>
+    </section>
+
+    <section class="wf-cta">
+      <div class="wf-person"><svg class="ph" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".6" vector-effect="non-scaling-stroke"/></svg></div>
+      <div><h3>Ihr Ansprechpartner für Geschäftskunden</h3><p class="wf-lines"><i></i><i></i></p></div>
+      <span class="wf-btn">Offerte anfragen</span>
+    </section>
+  </div>
 </div>
 </section>
 
@@ -777,6 +860,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     karriere:["Karriere","/karriere/","Parkettleger · Plattenleger (Jobsuche)",null,null],
     lehr:["Lehrstellen","/karriere/lehrstellen/","Bodenleger Lehrstellen · Lehrstelle Parkettleger",null,null],
     ueber:["Über uns","/ueber-uns/","Team · Werte · Geschichte",null,null],
+    ueberteam:["Team & Geschichte","/ueber-uns/","",null,null],
     steinsorten:["Travertin, Marmor & Co.","/platten/natursteinsorten/","Travertin · Travertin Platten · Quarzit · Granitplatten · Schieferplatten · Marmorboden · Sandsteinplatten",2290,"S"],
     stelz:["Balkon & Terrasse auf Stelzlager","/platten/stelzlager/","Stelzlager · Balkon Platten · Feinsteinzeug Terrassenplatten · Sitzplatz Platten",790,"S"],
     rbad:["Badezimmer-Ideen","/referenzen/badezimmer/","Badezimmer Ideen",700,null],
@@ -861,19 +945,11 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   /* Ratgeber-Kacheln: [id, Bildmotiv, Thema] */
   var RGT = [["rg4","wood","Parkett"],["rg2","wood2","Parkett"],["rg3","wood","Parkett"],["rg12","wood2","Parkett"],["rg11","herring","Parkett"],["rg15","wood","Parkett"],["rg1","wood2","Pflege"],["rg14","wood","Pflege"],["rg5","herring","Parkett"],["rg7","floor","Böden"],["rg13","floor","Böden"],["rg8","floor","Böden"],["rg16","textile","Teppich"],["rg6","stone","Platten"],["rg10","tile","Platten"],["rg9","stone","Naturstein"],["rg17","curtain","Vorhänge"]];
   /* Zielseite Für Geschäftskunden (Vorschlag A): Kachel öffnet Entwurf */
-  var B2B = '<div class="b2b-sec"><button type="button" class="b2b-tile" id="b2bTile" aria-expanded="false" aria-controls="b2bPage">' +
+  var B2B = '<div class="b2b-sec"><button type="button" class="b2b-tile" id="b2bTile" aria-haspopup="dialog" aria-controls="b2bView">' +
     '<span class="b2b-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01"/></svg></span>' +
     '<span class="b2b-tx"><b>Für Geschäftskunden</b><span>Zielseite mit Einstiegen für Verwaltungen, Architekten und Gewerbe</span></span>' +
-    '<span class="b2b-go">Entwurf ansehen</span></button>' +
-    '<div class="b2b-page" id="b2bPage" hidden><div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch/geschaeftskunden/</span></div>' +
-    '<div class="b2b-hero"><div><small>Für Geschäftskunden</small><b>Boden, Platten und Vorhänge für Verwaltungen, Planer und Betriebe</b><span>Ein Ansprechpartner, eigene Fachteams, Lager in Emmenbrücke</span></div></div>' +
-    '<div class="b2b-ent">' +
-      '<article><h4>Für Verwaltungen</h4><ul><li>Rasche Reaktion bei Mieterwechsel</li><li>Lagerprodukte sofort verfügbar</li><li>Einfache Abwicklung, faire Preise</li></ul><span class="b2b-link">Zur Seite Verwaltungen</span></article>' +
-      '<article><h4>Für Architekten & Bauleitung</h4><ul><li>Termintreue und Normen</li><li>Mängelfreie Ausführung</li><li>Klare Mehrpreise, Unternehmervarianten</li></ul><span class="b2b-link">Zur Seite Architekten</span></article>' +
-      '<article><h4>Gewerbe & Objekte</h4><ul><li>Büro, Hotel, Schule</li><li>Robuste Beläge, Schmutzschleusen</li><li>Akustik- und Objektvorhänge</li></ul><span class="b2b-link">Zur Seite Gewerbe</span></article>' +
-    '</div>' +
-    '<div class="b2b-svc"><span>Unterhalt & Mieterwechsel</span><span>Ausschreibungen & Unternehmervarianten</span><span>Muster & Bemusterung</span><b>Offerte anfragen</b></div>' +
-    '</div></div></div>';
+    '<span class="b2b-go">Seite öffnen</span></button>' +
+    '</div>';
   var INT = {H:["Handwerker","ih"], S:["Shop","is"], I:["Info","ii"], G:["Gemischt","ig"]};
   function intChip(k){ var t = INT[k]; return t ? '<span class="int ' + t[1] + '">' + t[0] + '</span>' : ''; }
 
@@ -884,7 +960,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       return {label: label || m.label, c: m.c, hub: m.hub, flat: m.flat,
         cols: m.cols.filter(function(c){ return (drop || []).indexOf(c[0]) < 0; }).map(function(c){ return [c[0], c[1].filter(function(id){ return (dropIds || []).indexOf(id) < 0; })]; }).filter(function(c){ return c[1].length; })};
     }
-    var UEBER = {label:"Über uns", c:"muted", hub:"ueber", cols:[["Ausstellung",["ausst","termin"]],["Ratgeber",["ratgeber","rg4","rg3","rg2","rg1","rg7","rg6"]],["Karriere",["karriere","lehr"]]]};
+    var UEBER = {label:"Über uns", c:"muted", hub:"ueber", cols:[["Unternehmen",["ueberteam","karriere","lehr"]],["Besuch & Kontakt",["ausst","termin","kontakt"]],["Wissen",["ratgeber"]]]};
     var oldSmall = V.A.small;
     V.B = {meta: [], main: [
       {label:"Produkte", c:"oak", hub:"produkte", areas:[M["Parkett"], M["Bodenbeläge"], M["Platten & Naturstein"], M["Vorhänge"]]},
@@ -956,11 +1032,19 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   if (nw){
     nw.addEventListener("click", function(e){
       var b = e.target.closest(".ar-list button"); if (b) pickArea(b);
-      var t = e.target.closest("#b2bTile"), pg = $("b2bPage");
-      if (t && pg){ pg.hidden = !pg.hidden; t.setAttribute("aria-expanded", pg.hidden ? "false" : "true"); t.querySelector(".b2b-go").textContent = pg.hidden ? "Entwurf ansehen" : "Entwurf schliessen"; }
+      if (e.target.closest("#b2bTile")) openB2B(true);
     });
     nw.addEventListener("mouseover", function(e){ var b = e.target.closest(".ar-list button"); if (b) pickArea(b); });
   }
+  function openB2B(on){
+    var vw = $("b2bView"); if (!vw) return;
+    vw.hidden = !on;
+    document.documentElement.classList.toggle("noscroll", on);
+    if (on){ vw.scrollTop = 0; var b = $("b2bBack"); if (b) b.focus(); }
+    else { var t = $("b2bTile"); if (t) t.focus(); }
+  }
+  var bb2 = $("b2bBack"); if (bb2) bb2.addEventListener("click", function(){ openB2B(false); });
+  document.addEventListener("keydown", function(e){ var vw = $("b2bView"); if (e.key === "Escape" && vw && !vw.hidden) openB2B(false); });
   function selectVar(k){
     document.querySelectorAll("#varSeg button").forEach(function(o){ o.setAttribute("aria-pressed", o.getAttribute("data-var") === k ? "true" : "false"); });
     document.querySelectorAll("figure.mock[data-var]").forEach(function(f){ f.hidden = f.getAttribute("data-var") !== k; });
