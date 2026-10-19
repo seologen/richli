@@ -736,7 +736,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     </figure>
   </div>
 
-  <h2 id="megaTitle" style="font-size:clamp(22px,2.6vw,28px);margin-top:18px">Megamenüs zu Vorschlag A</h2>
+  <h2 id="megaTitle" style="font-size:clamp(22px,2.6vw,28px);margin-top:18px">Landingpages zu Vorschlag A</h2>
   <div id="navWrap" style="display:grid;gap:22px"></div>
   <div class="sheet ps-sheet" id="pageSum"></div>
 </div>
@@ -1323,7 +1323,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   function selectVar(k){
     document.querySelectorAll("#varSeg button").forEach(function(o){ o.setAttribute("aria-pressed", o.getAttribute("data-var") === k ? "true" : "false"); });
     document.querySelectorAll("figure.mock[data-var]").forEach(function(f){ f.hidden = f.getAttribute("data-var") !== k; });
-    var t = $("megaTitle"); if (t) t.textContent = "Megamenüs zu Vorschlag " + k;
+    var t = $("megaTitle"); if (t) t.textContent = "Landingpages zu Vorschlag " + k;
     renderNav(k);
   }
   selectVar("A");
