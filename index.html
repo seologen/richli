@@ -1164,6 +1164,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     lbZg:["Bodenleger Zug","/bodenbelaege/zug/","Bodenleger Zug 30 · Bodenbeläge Zug 10",40,"H"],
     lbNw:["Bodenbeläge Nidwalden","/bodenbelaege/nidwalden/","Bodenbeläge Nidwalden 30 · Bodenleger Nidwalden 10",40,"H"],
     lplLu:["Plattenleger Luzern","/platten/luzern/","Plattenleger Luzern 30 · Platten Luzern 10",40,"H"],
+    lplZg:["Plattenleger Zug","/platten/zug/","Plattenleger Zug · Platten Zug",null,"H"],
     lplOw:["Plattenleger Obwalden","/platten/obwalden/","Plattenleger Engelberg 30 · Plattenleger Obwalden 20",50,"H"],
     lvLu:["Vorhänge Luzern","/vorhaenge/luzern/","Vorhänge Luzern 20 · Vorhänge Emmen 20",40,"H"],
     wand:["Wandplatten & Wandgestaltung","/platten/wand/","Wandplatten · Wandgestaltung · Naturstein Wand",null,"S"],
@@ -1176,7 +1177,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       main: [
         {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten",["eiche","nussbaum","ahorn","buche","esche","bambus","laerche","kirsch"]],["Oberflächen & Farbtöne",["ogeoelt","oweiss","orauch","orustikal","ohell","odunkel"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","fertig","schiff","kloetzli","stab","riemen","tafel"]],["Dienstleistungen",["pschleifen","pverlegen","poelen","prep","treppen"]],["Zubehör",["sockel","tritt","profile","filz","shop"]],["Regionen",["lpLu","lpZg"]],["Exklusiv",["woodlife"]]]},
         {label:"Bodenbeläge", c:"oak", hub:"boden", cols:[["Vinyl, Linoleum & Co.",["vinyl","laminat","lino","kork","kautschuk","bverlegen"]],["Teppich",["teppich","tfliesen","tmass","nadelfilz","otep"]],["Eingänge & Objekte",["schmutz","matten"]],["Regionen",["lbLu","lbZg","lbNw"]]]},
-        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik","wand"]],["Bad",["bad","badplatten","kd"]],["Aussenbereiche",["terrasse","stelz"]],["Sortiment",["sortiment"]],["Regionen",["lplLu","lplOw"]]]},
+        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik","wand"]],["Bad",["bad","badplatten","kd"]],["Aussenbereiche",["terrasse","stelz"]],["Sortiment",["sortiment"]],["Regionen",["lplLu","lplZg","lplOw"]]]},
         {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Räume",["vwohn","vkind","vschlaf","vkueche","vbad","veingang","voutdoor"]],["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vakustik","vthermo"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]]]},
         {label:"Ausstellung", flat:1, c:"muted", hub:"ausst", cols:[["Besuch",["termin"]]]},
         {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[["Filter",["rbad","rparkett","rplatten","rboden","robjekt"]]]},
@@ -1294,7 +1295,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   var HUBLOC = {};
   function hubLoc(h){ return HUBLOC[h] ? '<span class="loc hubloc">Standorte: ' + esc(HUBLOC[h]) + '</span>' : ''; }
   /* Seitenumfang je Vorschlag */
-  var LOC = ["lpLu","lpZg","lbLu","lbZg","lbNw","lplLu","lplOw"];
+  var LOC = ["lpLu","lpZg","lbLu","lbZg","lbNw","lplLu","lplZg","lplOw"];
   function isPage(id){ var u = P[id] && P[id][1]; return !!u && u.charAt(0) === "/" && u.indexOf("?") < 0 && !/^\/(ratgeber|referenzen)\/./.test(u); }
   function pageUrls(ids){ var o = {}; ids.forEach(function(id){ if (isPage(id) && LOC.indexOf(id) < 0) o[P[id][1]] = 1; }); return Object.keys(o); }
   function renderSum(v){
