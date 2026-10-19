@@ -547,6 +547,8 @@ html.noscroll,html.noscroll body{overflow:hidden}
 .oq h3{font-size:18px;margin-bottom:6px}
 .oq p{font-size:18px;line-height:1.45;margin:0}
 @media (max-width:420px){.oq-list{grid-template-columns:minmax(0,1fr)}}
+.kwmap{display:grid;gap:2px;font-size:12.5px;line-height:1.35;padding:7px 10px;border-radius:8px;background:var(--warn-soft);color:var(--warn);border-left:3px solid var(--warn)}
+.kwmap b{font-weight:700;font-size:11.5px}
 .hubloc{display:block;justify-self:start;font-size:12.5px;margin-top:6px;width:max-content}
 .ar-list .hubloc{font-weight:500}
 .lv{display:inline-block;font-size:13px;padding:3px 10px;border-radius:99px;white-space:nowrap}
@@ -1249,7 +1251,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
             return '<button type="button" role="tab" data-ar="' + j + '" aria-selected="' + (j === 0) + '" style="--c:var(--' + a.c + ')"><span>' + esc(a.label) + hubLoc(a.hub) + '</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>';
           }).join("") + '</div>' +
           m.areas.map(function(a, j){
-            return '<div class="mm-cols ar-pane" data-ar="' + j + '" style="--c:var(--' + a.c + ');--c-soft:var(--' + SOFT[a.c] + ')"' + (j ? ' hidden' : '') + '>' + a.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4><ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
+            return '<div class="mm-cols ar-pane" data-ar="' + j + '" style="--c:var(--' + a.c + ');--c-soft:var(--' + SOFT[a.c] + ')"' + (j ? ' hidden' : '') + '>' + a.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4>' + kwMap(c[0], a.hub) + '<ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
           }).join("") + '</div></div>';
         return;
       }
@@ -1257,7 +1259,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       h += '<div class="mmw" id="mm-' + k + '-' + i + '">' + strip(v, k, i) + '<div class="mm" style="--c:var(--' + m.c + ');--c-soft:var(--' + SOFT[m.c] + ')">' +
         '<div class="mm-hub"><h3>' + esc(m.label) + '</h3>' + hubLoc(m.hub) +
         '</div>' +
-        '<div class="mm-cols">' + m.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4><ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div></div></div>';
+        '<div class="mm-cols">' + m.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4>' + kwMap(c[0], m.hub) + '<ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div></div></div>';
     });
     if (v.b2b){ h += B2B; allIds = allIds.concat(["b2b","verw","arch","objekt","unterhalt","ausschreibung","muster"]); }
     if (v.small.length) h += '<div class="mm-small">' + v.small.map(function(s){ allIds = allIds.concat(s[1]); return '<div class="mm-mini" id="mm-' + k + '-' + s[1][0] + '"><h3>' + esc(s[0]) + '</h3><ul>' + s[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
@@ -1294,6 +1296,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   document.addEventListener("keydown", function(e){ var vw = $("b2bView"); if (e.key === "Escape" && vw && !vw.hidden) openB2B(false); });
   /* Orte, mit denen das Thema gesucht wird (Sistrix ch, Okt. 2026) */
   var HUBLOC = {};
+  var KWMAP = {parkett:"Parkett, Parkettleger, Parkett schleifen", boden:"Bodenleger, Bodenbeläge"};
+  function kwMap(col, h){ return col === "Regionen" && KWMAP[h] ? '<span class="kwmap"><b>Keyword-Mapping</b>' + esc(KWMAP[h]) + ' + Ort</span>' : ''; }
   function hubLoc(h){ return HUBLOC[h] ? '<span class="loc hubloc">Standorte: ' + esc(HUBLOC[h]) + '</span>' : ''; }
   /* Seitenumfang je Vorschlag */
   var LOC = ["lpLu","lpZg","lpNw","lbLu","lbZg","lbNw"];
