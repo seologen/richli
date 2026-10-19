@@ -259,6 +259,22 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--red)}
 .v3{background:var(--red);color:#fff}
 .v2{background:var(--red-mid);color:var(--ink)}
 .v1{background:var(--ground);color:var(--muted)}
+.rg-sec{background:var(--sheet);border-radius:12px;padding:22px 24px 26px;display:grid;gap:4px}
+.rg-sec h3{font-size:24px}
+.rg-sub{font-size:15px;color:var(--muted);margin:0 0 14px}
+.rg-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.rg-tile{display:grid;gap:10px;align-content:start;min-width:0}
+.rg-tile h4{font-size:15.5px;font-weight:500;line-height:1.3}
+.rg-img{aspect-ratio:4/3;max-width:100%;border-radius:10px;position:relative;overflow:hidden}
+.rg-img span{position:absolute;left:10px;top:10px;font-size:12px;font-weight:500;padding:2px 9px;border-radius:99px;background:rgba(255,255,255,.92);color:#1e1b1a}
+.rg-img.wood{background:repeating-linear-gradient(90deg,#b07a45 0 34px,#a26c3a 34px 36px,#bb8550 36px 70px,#9c6533 70px 72px),#b07a45;background-blend-mode:normal}
+.rg-img.wood2{background:repeating-linear-gradient(0deg,#d2a676 0 22px,#c89a69 22px 23px,#dbb185 23px 46px,#c1915f 46px 47px)}
+.rg-img.herring{background:repeating-linear-gradient(45deg,#8a5523 0 14px,#9d6631 14px 28px),repeating-linear-gradient(-45deg,transparent 0 14px,rgba(255,255,255,.08) 14px 28px)}
+.rg-img.floor{background:linear-gradient(135deg,#e6d9c8,#c9b59b)}
+.rg-img.textile{background:repeating-linear-gradient(45deg,#8c8f86 0 3px,#9da095 3px 6px),repeating-linear-gradient(-45deg,rgba(0,0,0,.06) 0 3px,transparent 3px 6px)}
+.rg-img.stone{background:radial-gradient(circle at 30% 30%,#e9eef1 0 18%,transparent 19%),radial-gradient(circle at 70% 65%,#d5dee3 0 22%,transparent 23%),linear-gradient(135deg,#b9c7cf,#8ea2ae)}
+.rg-img.tile{background:linear-gradient(#fff 0 0) 0 0/100% 100%,#c7d3da;background:repeating-linear-gradient(0deg,#e8edf0 0 2px,transparent 2px 40px),repeating-linear-gradient(90deg,#e8edf0 0 2px,transparent 2px 40px),#a9bcc7}
+.rg-img.curtain{background:repeating-linear-gradient(90deg,#8fa58c 0 10px,#a7bba3 10px 22px,#7f967c 22px 28px)}
 .mm-small{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
 .mm-mini{background:var(--sheet);border-radius:12px;padding:18px 20px;display:grid;gap:10px;align-content:start;scroll-margin-top:110px}
 .mm-mini h3{font-size:18px}
@@ -816,10 +832,12 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[["Filter",["rbad","rparkett","rplatten","rboden","robjekt"]]]},
         {label:"Für Geschäftskunden", c:"slate", hub:"b2b", cols:[["Kundengruppen",["verw","arch","objekt"]],["Angebot",["unterhalt","ausschreibung","muster"]]]}
       ],
-      small: [["Obere Leiste: Ratgeber",["rg4","rg2","rg12","rg15","rg11","rg3","rg1","rg14","rg13","rg5","rg7","rg6","rg10","rg9","rg8","rg16","rg17"]]]
+      small: []
     }
 
   };
+  /* Ratgeber-Kacheln: [id, Bildmotiv, Thema] */
+  var RGT = [["rg4","wood","Parkett"],["rg2","wood2","Parkett"],["rg3","wood","Parkett"],["rg12","wood2","Parkett"],["rg11","herring","Parkett"],["rg15","wood","Parkett"],["rg1","wood2","Pflege"],["rg14","wood","Pflege"],["rg5","herring","Parkett"],["rg7","floor","Böden"],["rg13","floor","Böden"],["rg8","floor","Böden"],["rg16","textile","Teppich"],["rg6","stone","Platten"],["rg10","tile","Platten"],["rg9","stone","Naturstein"],["rg17","curtain","Vorhänge"]];
   var INT = {H:["Handwerker","ih"], S:["Shop","is"], I:["Info","ii"], G:["Gemischt","ig"]};
   function intChip(k){ var t = INT[k]; return t ? '<span class="int ' + t[1] + '">' + t[0] + '</span>' : ''; }
 
@@ -844,7 +862,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     ], small: oldSmall};
     V.A.main = [M["Parkett"], M["Bodenbeläge"], M["Platten & Naturstein"], M["Vorhänge"],
       {label:"Über uns", c:"muted", hub:"ueber", cols:[["Ausstellung",["ausst","termin"]],["Referenzen",["ref","rbad","rparkett","rplatten","rboden","robjekt"]],["Ratgeber",["ratgeber","rg4","rg3","rg2","rg1","rg7","rg6"]],["Karriere",["karriere","lehr"]]]}];
-    V.A.small = [["Obere Leiste: Für Geschäftskunden",["b2b","verw","arch","objekt","unterhalt","ausschreibung","muster"]],["Über uns › Ratgeber: alle Artikel",["rg4","rg2","rg12","rg15","rg11","rg3","rg1","rg14","rg13","rg5","rg7","rg6","rg10","rg9","rg8","rg16","rg17"]]];
+    V.A.small = [["Für Geschäftskunden",["b2b","verw","arch","objekt","unterhalt","ausschreibung","muster"]]];
   })();
   var SOFT = {oak:"oak-soft", slate:"slate-soft", sage:"sage-soft", red:"red-soft", warn:"warn-soft", muted:"ground"};
   function volChip(v){ if (v == null) return ""; return '<span class="vol ' + (v >= 500 ? "v3" : v >= 100 ? "v2" : "v1") + '">' + fmt(v) + '</span>'; }
@@ -884,7 +902,12 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         '</div>' +
         '<div class="mm-cols">' + m.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4><ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div></div></div>';
     });
-    h += '<div class="mm-small">' + v.small.map(function(s){ allIds = allIds.concat(s[1]); return '<div class="mm-mini" id="mm-' + k + '-' + s[1][0] + '"><h3>' + esc(s[0]) + '</h3><ul>' + s[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
+    if (v.small.length) h += '<div class="mm-small">' + v.small.map(function(s){ allIds = allIds.concat(s[1]); return '<div class="mm-mini" id="mm-' + k + '-' + s[1][0] + '"><h3>' + esc(s[0]) + '</h3><ul>' + s[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
+    allIds = allIds.concat(RGT.map(function(t){ return t[0]; }));
+    h += '<div class="rg-sec"><h3>Ratgeber</h3><p class="rg-sub">Content-Ausblick</p><div class="rg-tiles">' + RGT.map(function(t){
+      var p = P[t[0]]; if (!p) return "";
+      return '<article class="rg-tile"><div class="rg-img ' + t[1] + '"><span>' + esc(t[2]) + '</span></div><h4>' + esc(p[0]) + '</h4></article>';
+    }).join("") + '</div></div>';
     var pages = uniq(allIds).filter(function(id){ return P[id][1].charAt(0) === "/" && P[id][1].indexOf("?") < 0 && !/^\/(ratgeber|referenzen)\/./.test(P[id][1]); }).length + 1;
     h += '<p class="note">' + pages + ' Seiten inklusive Startseite, ohne Referenzprojekte und Ratgeber-Artikel.</p>';
     w.innerHTML = h;
