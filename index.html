@@ -344,6 +344,7 @@ html.noscroll,html.noscroll body{overflow:hidden}
 .ps-k b{font-size:34px;font-weight:500;line-height:1.05}
 .ps-k.main b{font-size:64px;font-weight:700}
 .ps-k.main span{font-size:17px}
+.ps-k.main b small{font-size:28px;font-weight:500;margin-right:4px}
 .ps-sheet{border:3px solid var(--red)}
 .ps-kpis{align-items:stretch}
 .ps-k span{font-size:14px;color:var(--muted)}
@@ -1140,7 +1141,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var vk = (document.querySelector('#varSeg button[aria-pressed="true"]') || {}).getAttribute ? document.querySelector('#varSeg button[aria-pressed="true"]').getAttribute("data-var") : "A";
     box.innerHTML = '<div class="sheet-top"><h3>Seitenumfang Vorschlag ' + vk + '</h3></div>' +
       '<div class="ps-kpis">' +
-        '<div class="ps-k main"><b>' + total + '</b><span>Seiten im Menü</span></div>' +
+        '<div class="ps-k main"><b><small>mind.</small> ' + total + '</b><span>Seiten im Menü</span></div>' +
         '<div class="ps-k"><b>+ ' + RGT.length + '</b><span>Ratgeber-Artikel (Content-Ausblick)</span></div>' +
         '<div class="ps-k"><b>+ 40</b><span>Referenzprojekte, heute auf richli.ch, laufend ergänzen</span></div>' +
       '</div>' +
