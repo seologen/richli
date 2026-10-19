@@ -342,6 +342,10 @@ html.noscroll,html.noscroll body{overflow:hidden}
 .ps-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
 .ps-k{display:grid;gap:2px;padding:14px 18px;border-radius:10px;background:var(--ground)}
 .ps-k b{font-size:34px;font-weight:500;line-height:1.05}
+.ps-k.main b{font-size:64px;font-weight:700}
+.ps-k.main span{font-size:17px}
+.ps-sheet{border:3px solid var(--red)}
+.ps-kpis{align-items:stretch}
 .ps-k span{font-size:14px;color:var(--muted)}
 .ps-k.main{background:var(--red);color:#fff}
 .ps-k.main span{color:#fff;opacity:.85}
@@ -350,27 +354,12 @@ html.noscroll,html.noscroll body{overflow:hidden}
 .ps-row:last-child{border-bottom:0}
 .ps-row b{text-align:right;font-weight:500}
 .fill.red{background:var(--red);opacity:1}
-.fk-wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:26px;align-items:start}
-.fk-nav{position:sticky;top:120px;display:grid;gap:2px;background:var(--sheet);border-radius:12px;padding:12px}
-.fk-nav a{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14.5px;line-height:1.25}
-.fk-nav a:hover{background:var(--red-soft)}
-.fk-nav a span{display:grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--red);color:var(--red-ink);font-size:12px;font-weight:700}
-.fk-list{display:grid;gap:20px;min-width:0}
-.fk{background:var(--sheet);border-radius:14px;overflow:hidden;scroll-margin-top:120px}
-.fk header{display:flex;align-items:center;gap:14px;padding:18px 24px;border-bottom:1px solid var(--line)}
-.fk h3{font-size:21px}
-.fk-n{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-size:16px;font-weight:700}
-.fk-c{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
-.fk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;padding:20px 24px}
-.fk-ans{display:grid;gap:6px;align-content:start;padding:14px 16px;border-radius:10px;background:var(--ground);border-left:4px solid var(--red)}
-.fk-ans h4{font-size:15px;font-weight:500;color:var(--red-ink)}
-.fk-ans p{font-size:14.5px;line-height:1.5;margin:0}
-.fk-q{margin:0 24px 20px;border:1px dashed var(--line);border-radius:10px;padding:10px 14px}
-.fk-q summary{cursor:pointer;font-size:14px;font-weight:500;color:var(--muted)}
-.fk-q summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-.fk-q ol{margin:10px 0 2px;padding-left:22px;display:grid;gap:5px;font-size:14.5px;color:var(--muted)}
-@media (max-width:900px){.fk-wrap{grid-template-columns:minmax(0,1fr)}.fk-nav{position:static;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
-@media (max-width:520px){.fk header,.fk-grid{padding-left:16px;padding-right:16px}.fk-q{margin:0 16px 16px}}
+.oq-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:900px}
+.oq{display:flex;gap:16px;align-items:center;background:var(--sheet);border-radius:14px;padding:18px 22px;border-left:5px solid var(--red)}
+.oq-n{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-size:17px;font-weight:700}
+.oq h3{font-size:18px;margin-bottom:6px}
+.oq p{font-size:18px;line-height:1.45;margin:0}
+@media (max-width:420px){.oq-list{grid-template-columns:minmax(0,1fr)}}
 .lv{display:inline-block;font-size:13px;padding:3px 10px;border-radius:99px;white-space:nowrap}
 .lv1{background:var(--red);color:#fff}
 .lv2{background:var(--slate-soft);color:var(--slate)}
@@ -413,7 +402,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     <button class="tab" role="tab" id="t-ist" aria-controls="ist" aria-selected="true"><span class="n">1</span><span class="tx"><b>SEO-Ist-Zustand</b><span class="s">Sichtbarkeit, Klicks, Rankings</span></span></button>
     <button class="tab" role="tab" id="t-backlinks" aria-controls="backlinks" aria-selected="false" tabindex="-1"><span class="n">2</span><span class="tx"><b>Backlinks</b><span class="s">Vergleich mit Mitbewerbern</span></span></button>
     <button class="tab" role="tab" id="t-struktur" aria-controls="struktur" aria-selected="false" tabindex="-1"><span class="n">3</span><span class="tx"><b>Website-Struktur</b><span class="s">Hauptnavigation, zwei Varianten</span></span></button>
-    <button class="tab" role="tab" id="t-fragen" aria-controls="fragen" aria-selected="false" tabindex="-1"><span class="n">4</span><span class="tx"><b>Fragenkatalog</b><span class="s">Fragen und Antworten Richli</span></span></button>
+    <button class="tab" role="tab" id="t-fragen" aria-controls="fragen" aria-selected="false" tabindex="-1"><span class="n">4</span><span class="tx"><b>Offene Fragen</b><span class="s">Für den Termin</span></span></button>
   </div>
 </nav>
 
@@ -560,6 +549,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     </figure>
   </div>
 
+  <div class="sheet ps-sheet" id="pageSum"></div>
+
   <div class="sheet">
     <div class="sheet-top"><h3>Standorte: wo sich eine eigene Seite lohnt</h3></div>
     <div class="tbl"><table class="loc-t">
@@ -568,8 +559,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     </table></div>
     <p class="note">Parkett = Parkett, Parkettleger, Parkett schleifen + Ort. Boden = Bodenleger, Bodenbeläge, Teppich + Ort. Platten = Plattenleger, Platten + Ort. Pro Leistung und Ort meist nur 10 bis 40 Suchen: Darum eine Standortseite pro Region mit Abschnitten zu Parkett, Boden und Platten, keine eigenen Seiten wie «Parkett schleifen Kriens». Quelle: SISTRIX, Oktober 2026</p>
   </div>
-
-  <div class="sheet" id="pageSum"></div>
   <h2 id="megaTitle" style="font-size:clamp(22px,2.6vw,28px);margin-top:18px">Megamenüs zu Vorschlag A</h2>
   <div id="navWrap" style="display:grid;gap:22px"></div>
 </div>
@@ -630,80 +619,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 <!-- 4 Fragenkatalog -->
 <section class="panel" id="fragen" role="tabpanel" aria-labelledby="t-fragen" hidden>
 <div class="in">
-  <div class="head">
-    <h2>Fragenkatalog</h2>
-    <p class="lede">Unsere Fragen zur Vorbereitung und die Antworten von Richli aus dem Gespräch vom 14. Oktober 2026.</p>
-  </div>
-  <div class="fk-wrap">
-    <nav class="fk-nav" aria-label="Themen"><a href="#fk-1"><span>1</span>Leistungen &amp; Prioritäten</a><a href="#fk-2"><span>2</span>Zielgruppen</a><a href="#fk-3"><span>3</span>Regionen</a><a href="#fk-4"><span>4</span>Wahrnehmung von Richli</a><a href="#fk-5"><span>5</span>Positionierung / Warum Richli?</a><a href="#fk-6"><span>6</span>Kundenfragen &amp; Beratung</a><a href="#fk-7"><span>7</span>Marken &amp; Hersteller</a><a href="#fk-8"><span>8</span>Kontakt, Offerten &amp; Terminbuchung</a><a href="#fk-9"><span>9</span>Visualisierung der Bodenbeläge</a><a href="#fk-10"><span>10</span>Bild- &amp; Videomaterial</a><a href="#fk-11"><span>11</span>Branding &amp; Gestaltung</a><a href="#fk-12"><span>12</span>Slogan &amp; Claims</a><a href="#fk-13"><span>13</span>Inspiration</a></nav>
-    <div class="fk-list">
-      <article class="fk" id="fk-1">
-        <header><span class="fk-n">1</span><h3>Leistungen &amp; Prioritäten</h3><span class="fk-c">5 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Gewichtung</h4><p>Boden und Parkett rund 65 % des Geschäfts, Platten und Naturstein rund 30 %, Vorhänge rund 5 %. Teppiche sind dem Bodenbereich zugeordnet und kein eigenständiger dritter Geschäftsbereich. Parkett ist das wichtigste Produkt im Bodenbereich; hinzu kommen Vinyl, textile und weitere Bodenbeläge, Schmutzschleusen sowie Oberflächenbehandlungen und Unterhalt.</p></div><div class="fk-ans"><h4>Ausbau</h4><p>Wachstum in allen Bereichen mit den richtigen Kunden, besonders Parkett. Bei Platten besteht Potenzial, vor allem in der privaten Bad- und Umbausanierung; zugleich begrenzen fehlende Plattenleger und der Preisdruck das Wachstum. Priorität haben passende, wirtschaftlich interessante Aufträge statt Umsatz um jeden Preis.</p></div><div class="fk-ans"><h4>Gesuchte Aufträge</h4><p>Mehr einfache, gut abwickelbare Arbeiten wie Parkett schleifen, ölen, versiegeln, reinigen und auffrischen. Dazu Privatkunden bei Wohnungs- und Hausumbauten, Bodenersatz und Badsanierungen. Dienstleistungen und saisonale Anlässe stärker sichtbar machen.</p></div><div class="fk-ans"><h4>Angebot</h4><p>WOODlife als exklusives Parkettsortiment ausbauen; besondere Produkt-/Leistungspakete, etwa für Familien, prüfen. Eigene oder exklusive Sortimente ermöglichen differenzierte Angebote und besseren Einkauf. Aktuell wurde keine Leistung genannt, die auf der Website grundsätzlich nicht beworben werden soll.</p></div><div class="fk-ans"><h4>Fachorganisation</h4><p>Boden-/Parkettleger und Plattenleger sind eigenständige Berufe und Teams mit eigenen Projektleitungen. Boden/Parkett umfasst auch textile und elastische Beläge; Platten/Naturstein wird auf Böden und an Wänden ausgeführt.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (5)</summary><ol><li>Stimmt diese Gewichtung?</li><li>Welche Bereiche möchtet ihr in den nächsten Jahren besonders ausbauen?</li><li>Welche konkreten Aufträge möchtet ihr gerne häufiger gewinnen?</li><li>Gibt es insbesondere innerhalb von Parkett und Platten Leistungen, die für euch besonders interessant sind?</li><li>Gibt es Leistungen, die ihr zwar anbietet, aber nicht aktiv bewerben möchtet?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-2">
-        <header><span class="fk-n">2</span><h3>Zielgruppen</h3><span class="fk-c">5 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Privatkunden</h4><p>Der derzeit am stärksten wachsende Bereich, für Richli strategisch interessant. Ausstellung, persönliche Beratung und breites Sortiment sind dafür nötig und verursachen Kosten. Die tatsächliche Wirtschaftlichkeit sollte genauer betrachtet werden.</p></div><div class="fk-ans"><h4>Verwaltungen</h4><p>Wichtige Wiederholungskunden mit oft kurzfristigen Aufträgen, zum Beispiel bei Mieterwechseln. Entscheidend sind schnelle Reaktion, sofort verfügbare Lagerprodukte, faire Preise und eine einfache, verlässliche Abwicklung. Persönliche Beziehungen bleiben wichtig; zugleich nehmen digitale Vergabeplattformen zu.</p></div><div class="fk-ans"><h4>Architekten, Bauleiter und Bauherren</h4><p>Grossaufträge sichern eine planbare Grundauslastung, sind aber teils unter starkem Margendruck. Wichtig sind passende, wiederkehrende Partner, Termintreue, Normerfüllung, saubere Ausführung und nachvollziehbare Mehrkosten.</p></div><div class="fk-ans"><h4>Übergreifende Logik</h4><p>Unterscheidung zwischen Direktkunden und Wiederholungskunden ist hilfreich. Neben Privatkunden gehören auch Gewerbekunden zu den Direktkunden. Fokus auf passende Kundschaft und wiederkehrende Aufträge; Verwaltungen und Architekten sollen die jeweiligen Vorteile auf der Website unmittelbar erkennen.</p></div><div class="fk-ans"><h4>Zusätzlicher Ansatz</h4><p>Schulungen für Immobilienbewirtschaftende stärken die Zusammenarbeit. Bei grossen Objektaufträgen ist nicht jedes Volumen erwünscht; Marge, Planbarkeit und passende Partner zählen.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (3)</summary><ol><li>Wie wichtig sind diese drei Zielgruppen wirtschaftlich im Verhältnis zueinander?</li><li>Welche davon möchtet ihr künftig stärker ausbauen?</li><li>Gibt es weitere wichtige Zielgruppen, die wir berücksichtigen sollten?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-3">
-        <header><span class="fk-n">3</span><h3>Regionen</h3><span class="fk-c">3 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Kerngebiet</h4><p>Grossraum Luzern ist am wichtigsten. Als reguläres Einzugsgebiet wurde die Zentralschweiz mit Luzern, Zug, Obwalden, Nidwalden und Uri bestätigt.</p></div><div class="fk-ans"><h4>Auftragsgrösse</h4><p>Bei geeigneten grösseren Projekten sind auch Einsätze ausserhalb der Region möglich; als Beispiel wurde eine Anfrage aus Davos erwähnt. Bei kleineren oder isolierten Reparaturaufträgen ausserhalb des Kerngebiets ist ein lokaler Anbieter teilweise sinnvoller.</p></div><div class="fk-ans"><h4>Offen</h4><p>Keine konkrete Prioritätenliste einzelner Orte oder Wachstumsregionen genannt. Regionale Reichweite auf der Website pragmatisch formulieren, nicht mit einem starren Ausschlussradius.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (4)</summary><ol><li>Stimmt das so?</li><li>Gibt es Regionen oder einzelne Orte, die besonders wichtig sind?</li><li>Gibt es Gebiete, in denen ihr künftig stärker wachsen möchtet?</li><li>Ist der Einsatzradius abhängig von der Grösse bzw. Art des Auftrags?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-4">
-        <header><span class="fk-n">4</span><h3>Wahrnehmung von Richli</h3><span class="fk-c">4 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Häufigste Vorurteile</h4><p>«Richli ist teuer», «Mein Auftrag ist zu klein» und «Wer Parkett macht, kann nicht gleichzeitig Platten fachgerecht verlegen». Diese Vorstellungen treffen aus Richlis Sicht nicht zu.</p></div><div class="fk-ans"><h4>Preis</h4><p>Richli will wettbewerbsfähig sein, nicht einfach ein teurer Premiumanbieter. Je nach Ausschreibung ist Richli auch preislich am günstigsten. Entscheidend sind Preis-Leistung, saubere Abwicklung, Tempo und zuverlässiges Handwerk.</p></div><div class="fk-ans"><h4>Kleinaufträge</h4><p>Auch sehr kleine Aufträge sind möglich. Der Kundendienst übernimmt beispielsweise den Ersatz von Silikonfugen auf kleinem Umfang. Die Website soll diese Einstiegshürde senken.</p></div><div class="fk-ans"><h4>Kompetenz</h4><p>Boden/Parkett und Platten sind eigenständige Fachbereiche mit ausgebildeten Spezialisten und eigenen Projektleitern. Gerade die Kombination unter einem Dach ist eine besondere Stärke, wird aber zu wenig wahrgenommen.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (4)</summary><ol><li>Welche solchen Aussagen oder Vorurteile hört ihr am häufigsten?</li><li>Was verstehen potenzielle oder bestehende Kunden heute über Richli falsch oder gar nicht?</li><li>Welche dieser Vorstellungen möchtet ihr mit der neuen Website unbedingt korrigieren?</li><li>Wie klein darf ein Auftrag bei euch tatsächlich sein?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-5">
-        <header><span class="fk-n">5</span><h3>Positionierung / Warum Richli?</h3><span class="fk-c">7 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Mission und Grundhaltung</h4><p>Richli will das Leben von Kundschaft und Mitarbeitenden «vereinfachen und verschönern». Für Kunden bedeutet das unkomplizierte Abläufe, schöne Räume und weniger Koordinationsaufwand. Wichtig: Versprechen tatsächlich einhalten.</p></div><div class="fk-ans"><h4>Für Verwaltungen</h4><p>Schnell, unkompliziert, flexibel, sofort verfügbare Lagerprodukte, sehr gutes Preis-Leistungs-Verhältnis und möglichst wenig Aufwand für die Bewirtschaftung. Auftrag erteilen und sich auf die Erledigung verlassen können.</p></div><div class="fk-ans"><h4>Für Privatkunden</h4><p>Persönliche Beratung und Ausstellung, transparente und faire Preise dank direktem Einkauf, Termintreue, sauberes Arbeiten, hohe Ausführungsqualität, respektvolle Mitarbeitende und Kostenkontrolle.</p></div><div class="fk-ans"><h4>Für Architekten/Bauleitungen</h4><p>Termintreue, Normen und fachgerechte Qualität, wenig Mängel, klare Nachtrags- und Mehrpreispolitik sowie attraktive Unternehmervarianten dank Beschaffungs- und Sortimentskompetenz.</p></div><div class="fk-ans"><h4>Belege</h4><p>Getrennte Teams mit Know-how für Boden/Parkett und Platten; langjährige Mitarbeitende und interne Entwicklung vom Lernenden zu Führung, Projektleitung oder Verkauf. Referenzprojekte, Team und positive Google-Bewertungen sichtbar zeigen. Im Gespräch genannt: rund 4,9 Sterne und etwa 150 Bewertungen, vor Publikation aktuell prüfen.</p></div><div class="fk-ans"><h4>Wettbewerb</h4><p>Je nach Geschäft und Kundengruppe sehr unterschiedlich. Genannt wurden Arteboden (besonders Verwaltung), Innevo (Objekte und zunehmend Verwaltung) sowie ein heterogenes Feld privater Anbieter. Handelsanbieter und Materiallieferanten prägen ebenfalls den Preisvergleich. Nicht mit pauschalen Überlegenheitsbehauptungen arbeiten.</p></div><div class="fk-ans"><h4>Spezifische Stärke bei Ausschreibungen</h4><p>Unternehmervarianten dank Direktbezug und Einkaufskompetenz können wirtschaftlich attraktive Alternativen anbieten. Keine pauschale Bestpreis-Garantie daraus ableiten.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (8)</summary><ol><li>Trifft diese Beschreibung Richli oder fehlt etwas Entscheidendes?</li><li>Was sind am Ende die Punkte, die wirklich den Unterschied machen, weshalb sich ein Kunde für Richli und nicht für einen vergleichbaren Mitbewerber entscheidet?</li><li>Gibt es konkrete Vorteile, die andere Anbieter nicht oder nicht in gleicher Form bieten können?</li><li>Was macht euch speziell bei Parkett zum Spezialisten?</li><li>Was macht euch speziell bei Platten zum Spezialisten?</li><li>Welche Kompetenzen, Erfahrungen, Fachpersonen oder Produkte können wir zeigen, um diese Qualität glaubwürdig zu belegen?</li><li>Wie wichtig ist der Vorteil, mehrere Bereiche aus einer Hand beziehen zu können?</li><li>Welche Mitbewerber begegnen euch am häufigsten – insbesondere bei Parkett und Platten?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-6">
-        <header><span class="fk-n">6</span><h3>Kundenfragen &amp; Beratung</h3><span class="fk-c">3 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Privatkunden</h4><p>Fragen zu Preis, Zeitpunkt und Dauer; Räumen der Zimmer und Umgang mit Möbeln; Aufwand und Ablauf der Arbeiten; Pflege und Unterhalt; Unterschiede Parkett/Vinyl, geölt/versiegelt, Parkett/Platten; geeignete Beläge für Küche, Bad, Waschraum oder Fussbodenheizung. Kunden benötigen oft Hilfe bei der Auswahl und Kombination mit vorhandenen Einrichtungen.</p></div><div class="fk-ans"><h4>Verwaltungen und Bauleitungen</h4><p>Im Vordergrund stehen Verfügbarkeit, Geschwindigkeit, Termine, konkurrenzfähige Preise und zuverlässige Umsetzung. Bei Architekten zusätzlich Ausführungsqualität, Normen und saubere Koordination.</p></div><div class="fk-ans"><h4>Website-Konsequenz</h4><p>Einfache, konkrete Antworten zu Ablauf, Vorbereitung, Pflege und Belagswahl anbieten. Insbesondere die Sorge vor dem Aufwand einer Sanierung aufnehmen und reduzieren. Aussagen zur langfristigen Nachlieferbarkeit einzelner Platten nicht pauschal versprechen.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (3)</summary><ol><li>Welche Fragen stellen euch Privatkunden vor einer Anfrage oder Auftragserteilung immer wieder?</li><li>Welche Fragen kommen häufig von Verwaltungen oder Architekten/Bauherren?</li><li>Bei welchen Themen benötigen Kunden besonders viel Beratung oder Erklärung?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-7">
-        <header><span class="fk-n">7</span><h3>Marken &amp; Hersteller</h3><span class="fk-c">5 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Grundsatz</h4><p>Richli will primär als Handwerksbetrieb auftreten, nicht als reiner Händler. Im Zentrum stehen Produkt und dazugehörige Dienstleistung. Eine lange Liste austauschbarer Hersteller hat für viele Kunden wenig Nutzen.</p></div><div class="fk-ans"><h4>WOODlife</h4><p>Wichtige Ausnahme: exklusiver Ansprechpartner beziehungsweise Vertriebspartner für WOODlife in der Schweiz. Das Sortiment gezielt ausbauen und als Differenzierung zeigen. Separate Markenseite bzw. Verlinkung auf Richli ist noch nicht entschieden.</p></div><div class="fk-ans"><h4>Weitere Sortimente</h4><p>Ein ausgewähltes, differenzierendes «Boutique-Sortiment» bei Parkett und allenfalls Platten, Teppichen und Vorhängen ist eine Entwicklungsrichtung, noch kein fertiger Plan. Auch besonders attraktive Familien- und Sanierungspakete sowie saisonale Oberflächenbehandlungen prüfen.</p></div><div class="fk-ans"><h4>Hersteller/Links</h4><p>Marken nur dort hervorheben, wo sie Kunden Orientierung geben oder qualifizierte Besucher bringen, zum Beispiel über Hersteller-Händlersuchen. Für Platten wurde die eigene Ausstellung und das kuratierte Sortiment betont; eine vollständige verbindliche Markenliste wurde nicht festgelegt.</p></div><div class="fk-ans"><h4>Markenpräsenz selektiv prüfen</h4><p>beispielsweise Hersteller-Händlersuchen und Rückverlinkungen. Allgemeine Markenlisten sind gegenüber Leistungsangebot, Sortimentsauswahl und Beratung nachrangig.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (5)</summary><ol><li>Möchtet ihr die Marken und Hersteller auf der neuen Website stärker zeigen?</li><li>Mit welchen Marken und Herstellern arbeitet ihr hauptsächlich – insbesondere bei Parkett, Platten und Teppich?</li><li>Welche davon sollten wir besonders hervorheben?</li><li>Gibt es besondere Partnerschaften, Händlerstatus oder Exklusivitäten?</li><li>Gibt es Marken oder Produktgruppen, die ihr künftig stärker verkaufen möchtet?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-8">
-        <header><span class="fk-n">8</span><h3>Kontakt, Offerten &amp; Terminbuchung</h3><span class="fk-c">5 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Direkt online buchbar</h4><p>Ausschliesslich Beratungstermine in der Ausstellung, jeweils mit rund 90 Minuten Zeitbedarf. Für Parkett und Platten kann dieselbe beratende Person beziehungsweise ein gemeinsamer Kalender eingesetzt werden. Kalender- und Pufferlogik noch technisch prüfen.</p></div><div class="fk-ans"><h4>Vor-Ort-Termine</h4><p>Häufig und wichtig, aber vorerst nur auf Anfrage. Es ist zwischen Beratung in der Ausstellung und Besichtigung/Ausmass am Objekt zu unterscheiden. Freie Kalenderzeiten allein reichen wegen Fahrtwegen und regionaler Einsatzplanung nicht für eine automatische Zusage.</p></div><div class="fk-ans"><h4>Kontakt</h4><p>Allgemeines Kontaktformular beibehalten, aber vereinfachen; bei spezifischen Leistungen gezielte Anfragen ermöglichen. WhatsApp nimmt zu, im Gespräch grob zwei Kontakte pro Woche, jedoch keine belastbare Statistik. Kontakt per Telefon bleibt wichtig. Umfangreiche Offertformulare nur dort einsetzen, wo sie helfen.</p></div><div class="fk-ans"><h4>Shop</h4><p>Bestehenden kleinen, lieferantengestützten Pflegemittelshop vorerst pragmatisch weiterführen oder kostengünstig integrieren. Nur etwa zwei Bestellungen pro Woche; keine Priorität für einen teuren Neuaufbau. Eine spätere einfache Online-Anfrage oder Buchung standardisierter Dienstleistungen (z. B. Fugenersatz, Zimmerboden) könnte getestet werden, nicht für Version 1.</p></div><div class="fk-ans"><h4>Buchungslogik</h4><p>Vor Freigabe des Kalenders Verantwortlichkeit, Bestätigung und notwendige Puffer festlegen. Für Vor-Ort-Termine sind Distanz und Routen entscheidend. Service-Angebotsrechner sind nur als späterer Pilot zu betrachten.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (5)</summary><ol><li>Welche Termine sollen direkt online buchbar sein?</li><li>Welche Terminarten gibt es und wie lange dauern diese?</li><li>Welche Mitarbeitenden bzw. Kalender müssen berücksichtigt werden?</li><li>Sollen Hausbesuche direkt buchbar sein oder weiterhin nur angefragt werden können?</li><li>Der bestehende Shop shop.proffwoodcare.ch bleibt separat bestehen. Ist das korrekt?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-9">
-        <header><span class="fk-n">9</span><h3>Visualisierung der Bodenbeläge</h3><span class="fk-c">5 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Interesse</h4><p>Eine Visualisierung wird grundsätzlich als attraktiv eingeschätzt, vor allem für Parkett und Platten. Denkbar ist die Nutzung auch in der Ausstellung, weil kleine Materialmuster die Wirkung im ganzen Raum kaum vermitteln.</p></div><div class="fk-ans"><h4>Hürden</h4><p>Entscheidend ist weniger der reine Abopreis als der Aufwand, genügend geeignete Produkt- und Texturbilder zu beschaffen und aktuell zu halten. Bildmaterial verschiedener Hersteller ist uneinheitlich verfügbar und kann kostenpflichtig sein.</p></div><div class="fk-ans"><h4>Nutzung/Leads</h4><p>Kunden sollen zunächst ohne Registrierung ausprobieren können. Kontaktdaten wären eher bei Download/Speichern einer Visualisierung oder einer konkreten Offertanfrage sinnvoll.</p></div><div class="fk-ans"><h4>Entscheid</h4><p>Keine Freigabe für ein Tool oder Budget. Vor Entscheid reale Produkte und Raumfotos testen, Nutzen gegenüber bestehenden Herstellerlösungen und KI-Bildtools prüfen sowie Aufwand, Folgekosten, Produktpflege und messbare Anfragen beurteilen. Preisangaben der Anbieter im Ausgangsdokument sind Arbeitsannahmen, keine beschlossene Ausgabe.</p></div><div class="fk-ans"><h4>Entscheidungskriterium</h4><p>Erst mit tatsächlichen Richli-Produkten und vorhandenen Einzelplanken-/Plattenbildern testen. Ohne tragfähige Bilddaten und klaren Mehrwert gegenüber Hersteller-Apps oder allgemeinen KI-Tools keine Einführung festlegen.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (6)</summary><ol><li>Wie seht ihr eine solche Visualisierung grundsätzlich?</li><li>Welche Produktbereiche wären dafür besonders relevant?</li><li>Wäre es interessant, die Nutzung an die Angabe von Kontaktdaten zu knüpfen?</li><li>Welches monatliche Budget wäre für eine solche Lösung für euch vertretbar?</li><li>Habt ihr für eure wichtigsten Produkte bereits Bilder von Einzelplanken bzw. -platten, oder müssten diese bei den Herstellern angefragt werden?</li><li>Möchtet ihr, dass Kunden eure eigenen Produkte verwenden können?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-10">
-        <header><span class="fk-n">10</span><h3>Bild- &amp; Videomaterial</h3><span class="fk-c">3 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Bestand</h4><p>Projekt- und Referenzbilder, Reels und weiteres Bild-/Videomaterial sind vorhanden und nach Aussage im Gespräch in Microsoft Teams abgelegt.</p></div><div class="fk-ans"><h4>Herausforderung</h4><p>Das Material ist nicht ausreichend strukturiert beziehungsweise schnell auffindbar. Für den Termin einen gemeinsamen Überblick und Zugriff organisieren, danach Material sichten und gezielt Lücken schliessen.</p></div><div class="fk-ans"><h4>Bedarf</h4><p>Neue, konsistente Bildwelt für Website, Social Media, Team, Ausstellung, Beratung und echtes Handwerk. Bilder sollen die Menschen und die Arbeit zeigen, nicht nur Produkte.</p></div></div>
-        
-      </article>
-      <article class="fk" id="fk-11">
-        <header><span class="fk-n">11</span><h3>Branding &amp; Gestaltung</h3><span class="fk-c">4 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Fixe Elemente</h4><p>Logo grundsätzlich beibehalten, ebenso die etablierten Hauptfarben und die Wiedererkennbarkeit des Kreises. «Boden.Wand.Vorhang» und der markante Punkt-/Ausrufzeichencharakter sind wichtige Elemente.</p></div><div class="fk-ans"><h4>Spielraum</h4><p>Gestaltung darf modernisiert werden, einschliesslich Schrift, ergänzender Elemente und einer Überarbeitung einzelner Details. Das bisherige Goldbeige soll wegfallen. Die bestehende Logosubstanz soll wegen ihrer starken Verwendung nicht grundlegend verändert werden.</p></div><div class="fk-ans"><h4>CI/CD</h4><p>Ein früheres Manual scheint vorhanden, ist aber nicht aktuell. Die Website soll als gestalterischer Referenzpunkt für spätere Kommunikation und Social Media dienen.</p></div><div class="fk-ans"><h4>Bildwelt</h4><p>Konsequente, authentische, emotionalere Bildsprache entwickeln und dabei Handwerk, Räume und Menschen verbinden.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (4)</summary><ol><li>Was muss aus eurer Sicht unbedingt so bleiben, wie es heute ist?</li><li>Was dürfen wir hinterfragen, weiterentwickeln oder ergänzen?</li><li>Gibt es ein bestehendes CI/CD-Manual oder weitere Gestaltungsrichtlinien?</li><li>Gibt es Elemente, die besonders typisch für Richli sind und auf keinen Fall verloren gehen dürfen?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-12">
-        <header><span class="fk-n">12</span><h3>Slogan &amp; Claims</h3><span class="fk-c">3 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Mission</h4><p>Das Leben von Kunden UND Mitarbeitenden vereinfachen und verschönern. Mitarbeitende und Employer Branding gehören ausdrücklich in die neue Website.</p></div><div class="fk-ans"><h4>Werte</h4><p>Vier intern verankerte Werte: «einfach machen», «einfach persönlich», «einfach zuverlässig» und «einfach langfristig». «Einfach» meint lösungsorientiertes Arbeiten und unkomplizierte Kundenprozesse; «langfristig» steht für Familienunternehmen, Entwicklung und Kundenzufriedenheit vor kurzfristigem Gewinn.</p></div><div class="fk-ans"><h4>Claims</h4><p>Aktuell werden drei verwandte leistungsbezogene Werbeclaims für Böden, Platten und Vorhänge entwickelt. Der Stand soll am Termin besprochen werden; der Website-Partner soll ausdrücklich auch eigene kreative Ideen einbringen. Noch keine endgültige sprachliche Festlegung aus diesem Gespräch ableiten.</p></div></div>
-        <details class="fk-q"><summary>Unsere Fragen (3)</summary><ol><li>Gibt es bereits erste Entwürfe oder eine Richtung?</li><li>Ist ein übergeordneter Slogan geplant oder arbeitet ihr mit mehreren Claims?</li><li>Könnt ihr uns den aktuellen Stand zeigen bzw. zusenden?</li></ol></details>
-      </article>
-      <article class="fk" id="fk-13">
-        <header><span class="fk-n">13</span><h3>Inspiration</h3><span class="fk-c">4 Antworten</span></header>
-        <div class="fk-grid"><div class="fk-ans"><h4>Inspiration</h4><p>Keine Website wurde als eindeutiges Vorbild genannt. Gewünscht sind einfache Navigation, emotionale Bildwelt und eine klare Darstellung der ungewöhnlichen Kombination Boden/Parkett UND Platten.</p></div><div class="fk-ans"><h4>Erwähnte Beispiele</h4><p>Anregungen aus Garten- und Handwerksauftritten, eine anschauliche Ausstellungsdarstellung eines überregionalen Anbieters sowie ein Anbieter, der Verwaltungen besonders direkt anspricht. Einzelne Namen/URLs sind im automatischen Transkript unsicher und müssen vor Weitergabe verifiziert werden.</p></div><div class="fk-ans"><h4>Zusätzliche Anforderung</h4><p>Karriere: Employer Branding ist zentral: Stellen, Lehrstellen, Benefits, Team und echte Einblicke zeigen. Bewerbung niederschwellig über Kontaktformular oder WhatsApp, freiwilliger Dokumentenupload statt CV-/Motivationsschreiben-Pflicht.</p></div><div class="fk-ans"><h4>Mitarbeiterbilder</h4><p>Moderne, professionelle Porträts aller Mitarbeitenden beibehalten, bisherige Posen mit verschränkten Armen überdenken. Zusätzlich authentische Reportagebilder aus dem Handwerk einsetzen. Beides stärkt Vertrauen und Arbeitgeberattraktivität.</p></div></div>
-        
-      </article>
-    </div>
-  </div>
+  <div class="head"><h2>Offene Fragen</h2></div>
+  <ol class="oq-list"><li class="oq"><span class="oq-n">1</span><p>Sollen Generalunternehmer oder öffentliche Auftraggeber stärker angesprochen werden?</p></li><li class="oq"><span class="oq-n">2</span><p>Welche Holzarten, Formate und Oberflächen führt ihr bei Parkett?</p></li><li class="oq"><span class="oq-n">3</span><p>Bietet ihr Outdoor-Teppiche und Vorhangschienen an?</p></li><li class="oq"><span class="oq-n">4</span><p>WOODlife: eigene Markenseite oder Abschnitt bei Parkett?</p></li><li class="oq"><span class="oq-n">5</span><p>Führt ihr Kährs oder Bauwerk, und gibt es Händlersuchen mit Link auf Richli?</p></li><li class="oq"><span class="oq-n">6</span><p>Dürfen Preise oder Preisspannen auf der Website stehen?</p></li><li class="oq"><span class="oq-n">7</span><p>Welche Anfragen zählen als Erfolg: Formular, Anruf, Termin oder WhatsApp?</p></li></ol>
 </div>
 </section>
 
@@ -1038,7 +955,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     vstange:["Vorhangstangen","/vorhaenge/vorhangstangen/","Vorhangstange · Gardinenstange",1900,"S"],
     vblick:["Blickdichte & transparente Vorhänge","/vorhaenge/blickdicht-transparent/","Blickdichte Vorhänge · transparente Vorhänge",410,"G"],
     vakustik:["Akustik- & Schallschutzvorhänge","/vorhaenge/akustik/","Akustikvorhang · Schallschutzvorhang",310,"H"],
-    vtagnacht:["Tag- & Nachtvorhänge","/vorhaenge/tag-nacht/","Nachtvorhang · Tagesvorhang",300,"G"],
+    vtagnacht:["Tag- & Nachtvorhänge","/vorhaenge/tag-nacht/","Nachtvorhang · Tagesvorhang · Blickdichte Vorhänge · transparente Vorhänge",710,"G"],
     vstoffe:["Leinen- & Samtvorhänge","/vorhaenge/stoffe/","Leinenvorhänge · Leinen Vorhang · Samtvorhang",350,"G"],
     vthermo:["Thermovorhänge","/vorhaenge/thermovorhang/","Thermovorhang",150,"G"],
     tfliesen:["Teppichfliesen","/bodenbelaege/teppichfliesen/","Teppichfliesen · Teppichfliesen verlegen",160,"S"],
@@ -1069,7 +986,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten",["eiche","nussbaum","ahorn","buche","esche","bambus","laerche","kirsch"]],["Oberflächen & Farbtöne",["ogeoelt","oweiss","orauch","orustikal","ohell","odunkel"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","fertig","schiff","kloetzli","stab","riemen","tafel"]],["Dienstleistungen",["pschleifen","pverlegen","poelen","prep","treppen"]],["Zubehör",["sockel","tritt","profile","filz","shop"]],["Standorte",["pluzern","pzug","pnwow"]],["Exklusiv",["woodlife"]]]},
         {label:"Bodenbeläge", c:"oak", hub:"boden", cols:[["Vinyl, Linoleum & Co.",["vinyl","laminat","lino","linverlegen","kork","kautschuk"]],["Teppich",["teppich","tfliesen","tmass","nadelfilz","otep"]],["Eingänge & Objekte",["schmutz","matten"]]]},
         {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik"]],["Bad & Aussen",["terrasse","stelz","bad","badplatten","kd"]],["Sortiment",["sortiment"]]]},
-        {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Räume",["vwohn","vkind","vschlaf","vkueche","voutdoor"]],["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vblick","vakustik","vthermo"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]]]},
+        {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Räume",["vwohn","vkind","vschlaf","vkueche","voutdoor"]],["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vakustik","vthermo"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]]]},
         {label:"Ausstellung", flat:1, c:"muted", hub:"ausst", cols:[["Besuch",["termin"]]]},
         {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[["Filter",["rbad","rparkett","rplatten","rboden","robjekt"]]]},
         {label:"Für Geschäftskunden", c:"slate", hub:"b2b", cols:[["Kundengruppen",["verw","arch","objekt"]],["Angebot",["unterhalt","ausschreibung","muster"]]]}
@@ -1220,7 +1137,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rows.push(["Startseite", 1, "muted"]);
     var total = rows.reduce(function(t, r){ return t + r[1]; }, 0);
     var max = Math.max.apply(null, rows.map(function(r){ return r[1]; }));
-    box.innerHTML = '<div class="sheet-top"><h3>Seitenumfang</h3></div>' +
+    var vk = (document.querySelector('#varSeg button[aria-pressed="true"]') || {}).getAttribute ? document.querySelector('#varSeg button[aria-pressed="true"]').getAttribute("data-var") : "A";
+    box.innerHTML = '<div class="sheet-top"><h3>Seitenumfang Vorschlag ' + vk + '</h3></div>' +
       '<div class="ps-kpis">' +
         '<div class="ps-k main"><b>' + total + '</b><span>Seiten im Menü</span></div>' +
         '<div class="ps-k"><b>+ ' + RGT.length + '</b><span>Ratgeber-Artikel (Content-Ausblick)</span></div>' +
