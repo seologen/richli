@@ -1296,7 +1296,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   document.addEventListener("keydown", function(e){ var vw = $("b2bView"); if (e.key === "Escape" && vw && !vw.hidden) openB2B(false); });
   /* Orte, mit denen das Thema gesucht wird (Sistrix ch, Okt. 2026) */
   var HUBLOC = {};
-  var KWMAP = {parkett:"Parkett, Parkettleger, Parkett schleifen", boden:"Bodenleger, Bodenbeläge"};
+  var KWMAP = {parkett:"Parkett, Parkettleger", boden:"Bodenleger, Bodenbeläge"};
   function kwMap(col, h){ return col === "Regionen" && KWMAP[h] ? '<span class="kwmap"><b>Keyword-Mapping</b>' + esc(KWMAP[h]) + ' + Ort</span>' : ''; }
   function hubLoc(h){ return HUBLOC[h] ? '<span class="loc hubloc">Standorte: ' + esc(HUBLOC[h]) + '</span>' : ''; }
   /* Seitenumfang je Vorschlag */
