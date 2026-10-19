@@ -197,7 +197,8 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--red)}
 .chrome i{width:10px;height:10px;border-radius:50%;background:#cfc9c4}
 .chrome span{margin-left:10px;flex:1;max-width:340px;background:#fff;border-radius:6px;padding:2px 10px;font-size:12.5px;color:#6b6461}
 .util{min-width:1060px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 18px;padding:6px 22px;font-size:12.5px;color:#6b6461;border-bottom:1px solid #eee9e5}
-.util span:first-child{margin-right:auto;font-weight:500;color:#1e1b1a}
+.util .tel{order:99;display:inline-flex;align-items:center;gap:6px;font-weight:500;color:#1e1b1a;padding-left:18px;border-left:1px solid #e4e0dc}
+.util .tel svg{width:13px;height:13px;color:#921102}
 .hdr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:20px;padding:12px 20px;border-bottom:1px solid #eee9e5;min-width:1060px}
 .hdr .brand{display:flex;align-items:center;gap:9px}
 .hdr .brand svg{width:34px;height:34px}
@@ -432,21 +433,21 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   <div class="mocks">
     <figure class="mock rec" data-var="A">
       <div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch</span></div>
-        <div class="util"><span>041 288 85 85</span><span>Ratgeber</span><span>Karriere</span><span>Über uns</span><span>Kontakt</span></div>
-        <div class="hdr"><div class="brand"><svg viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="#921102"/><g transform="translate(9.5 9.5) scale(.78)"><path fill="#fff" d="M10.743,5.999h37.521c16.862,0,27.19,7.66,27.19,24.222c0,9.523-6.111,17.183-15.492,19.874l17.18,29.605H56.17L41.414,53.2H29.505v26.499H10.743V5.999z M29.505,39.536h17.179c6.008-0.104,10.012-3.105,10.012-9.937c0-6.832-4.004-9.833-10.012-9.937H29.505V39.536z"/></g></svg><span><b>Richli</b><small>Boden.Wand.Vorhang</small></span></div><nav><span>Parkett</span><span>Bodenbeläge</span><span>Platten & Naturstein</span><span>Vorhänge</span><span>Ausstellung</span><span>Referenzen</span><span>Für Geschäftskunden</span></nav></div>
+        <div class="util"><span class="tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>041 288 85 85</span><span>Für Geschäftskunden</span><span>Kontakt</span></div>
+        <div class="hdr"><div class="brand"><svg viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="#921102"/><g transform="translate(9.5 9.5) scale(.78)"><path fill="#fff" d="M10.743,5.999h37.521c16.862,0,27.19,7.66,27.19,24.222c0,9.523-6.111,17.183-15.492,19.874l17.18,29.605H56.17L41.414,53.2H29.505v26.499H10.743V5.999z M29.505,39.536h17.179c6.008-0.104,10.012-3.105,10.012-9.937c0-6.832-4.004-9.833-10.012-9.937H29.505V39.536z"/></g></svg><span><b>Richli</b><small>Boden.Wand.Vorhang</small></span></div><nav><span>Parkett</span><span>Bodenbeläge</span><span>Platten & Naturstein</span><span>Vorhänge</span><span>Über uns</span></nav></div>
         <div class="hero"><span class="stoerer">Beratung<br>buchen</span><div><b>Böden, Platten und Vorhänge aus einer Hand</b><span>Ausstellung in Emmenbrücke · Zentralschweiz</span></div></div>
       </div>
     </figure>
     <figure class="mock" data-var="B" hidden>
       <div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch</span></div>
-        <div class="util"><span>041 288 85 85</span><span>Referenzen</span><span>Ratgeber</span><span>Karriere</span><span>Über uns</span><span>Kontakt</span></div>
+        <div class="util"><span class="tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>041 288 85 85</span><span>Referenzen</span><span>Ratgeber</span><span>Karriere</span><span>Über uns</span><span>Kontakt</span></div>
         <div class="hdr"><div class="brand"><svg viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="#921102"/><g transform="translate(9.5 9.5) scale(.78)"><path fill="#fff" d="M10.743,5.999h37.521c16.862,0,27.19,7.66,27.19,24.222c0,9.523-6.111,17.183-15.492,19.874l17.18,29.605H56.17L41.414,53.2H29.505v26.499H10.743V5.999z M29.505,39.536h17.179c6.008-0.104,10.012-3.105,10.012-9.937c0-6.832-4.004-9.833-10.012-9.937H29.505V39.536z"/></g></svg><span><b>Richli</b><small>Boden.Wand.Vorhang</small></span></div><nav><span>Parkett</span><span>Bodenbeläge</span><span>Platten & Naturstein</span><span>Vorhänge</span><span>Ausstellung</span><span>Für Geschäftskunden</span></nav><span class="cta">Beratung buchen</span></div>
         <div class="hero"><div><b>Böden, Platten und Vorhänge aus einer Hand</b><span>Ausstellung in Emmenbrücke · Zentralschweiz</span></div></div>
       </div>
     </figure>
     <figure class="mock" data-var="C" hidden>
       <div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch</span></div>
-        <div class="util"><span>041 288 85 85</span><span>Ratgeber</span><span>Karriere</span></div>
+        <div class="util"><span class="tel"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>041 288 85 85</span><span>Ratgeber</span><span>Karriere</span></div>
         <div class="hdr"><div class="brand"><svg viewBox="0 0 85 85" aria-hidden="true"><circle cx="42.5" cy="42.5" r="42.5" fill="#921102"/><g transform="translate(9.5 9.5) scale(.78)"><path fill="#fff" d="M10.743,5.999h37.521c16.862,0,27.19,7.66,27.19,24.222c0,9.523-6.111,17.183-15.492,19.874l17.18,29.605H56.17L41.414,53.2H29.505v26.499H10.743V5.999z M29.505,39.536h17.179c6.008-0.104,10.012-3.105,10.012-9.937c0-6.832-4.004-9.833-10.012-9.937H29.505V39.536z"/></g></svg><span><b>Richli</b><small>Boden.Wand.Vorhang</small></span></div><nav><span>Produkte</span><span>Kunden</span><span>Ausstellung</span><span>Referenzen</span><span>Über uns</span><span>Kontakt</span></nav><span class="cta">Beratung buchen</span></div>
         <div class="hero"><div><b>Böden, Platten und Vorhänge aus einer Hand</b><span>Ausstellung in Emmenbrücke · Zentralschweiz</span></div></div>
       </div>
@@ -840,6 +841,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     V.B = {meta: [], main: [
       M["Parkett"], M["Bodenbeläge"], M["Platten & Naturstein"], M["Vorhänge"], M["Ausstellung"], M["Für Geschäftskunden"]
     ], small: V.A.small};
+    var oldSmall = V.A.small;
     V.C = {meta: [], main: [
       {label:"Produkte", c:"oak", hub:"produkte", areas:[M["Parkett"], M["Bodenbeläge"], M["Platten & Naturstein"], M["Vorhänge"]]},
       {label:"Kunden", c:"slate", hub:"kunden", cols:[["Kundengruppen",["private","verw","arch","objekt"]],["Angebot für Geschäftskunden",["unterhalt","ausschreibung","muster"]]]},
@@ -847,7 +849,10 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[]},
       {label:"Über uns", flat:1, c:"muted", hub:"ueber", cols:[]},
       {label:"Kontakt", flat:1, c:"muted", hub:"kontakt", cols:[]}
-    ], small: V.A.small};
+    ], small: oldSmall};
+    V.A.main = [M["Parkett"], M["Bodenbeläge"], M["Platten & Naturstein"], M["Vorhänge"],
+      {label:"Über uns", c:"muted", hub:"ueber", cols:[["Ausstellung",["ausst","termin"]],["Referenzen",["ref","rbad","rparkett","rplatten","rboden","robjekt"]],["Ratgeber",["ratgeber","rg4","rg3","rg2","rg1","rg7","rg6"]],["Karriere",["karriere","lehr"]]]}];
+    V.A.small = [["Obere Leiste: Für Geschäftskunden",["b2b","verw","arch","objekt","unterhalt","ausschreibung","muster"]],["Über uns › Ratgeber: alle Artikel",["rg4","rg2","rg12","rg15","rg11","rg3","rg1","rg14","rg13","rg5","rg7","rg6","rg10","rg9","rg8","rg16","rg17"]]];
   })();
   var SOFT = {oak:"oak-soft", slate:"slate-soft", sage:"sage-soft", red:"red-soft", warn:"warn-soft", muted:"ground"};
   function volChip(v){ if (v == null) return ""; return '<span class="vol ' + (v >= 500 ? "v3" : v >= 100 ? "v2" : "v1") + '">' + fmt(v) + '</span>'; }
@@ -888,7 +893,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         '<div class="mm-cols">' + m.cols.map(function(c){ return '<div class="mm-col"><h4>' + esc(c[0]) + '</h4><ul>' + c[1].map(item).join("") + '</ul></div>'; }).join("") + '</div></div></div>';
     });
     h += '<div class="mm-small">' + v.small.map(function(s){ allIds = allIds.concat(s[1]); return '<div class="mm-mini" id="mm-' + k + '-' + s[1][0] + '"><h3>' + esc(s[0]) + '</h3><ul>' + s[1].map(item).join("") + '</ul></div>'; }).join("") + '</div>';
-    var pages = uniq(allIds).filter(function(id){ return P[id][1].charAt(0) === "/" && P[id][1].indexOf("?") < 0; }).length + 1;
+    var pages = uniq(allIds).filter(function(id){ return P[id][1].charAt(0) === "/" && P[id][1].indexOf("?") < 0 && !/^\/(ratgeber|referenzen)\/./.test(P[id][1]); }).length + 1;
     h += '<p class="note">' + pages + ' Seiten inklusive Startseite, ohne Referenzprojekte und Ratgeber-Artikel.</p>';
     w.innerHTML = h;
   }
