@@ -103,6 +103,16 @@ ul.clean li::marker{color:var(--red)}
 .seg button{font:500 14.5px var(--font);padding:7px 14px;border:0;border-radius:99px;background:none;color:var(--muted);cursor:pointer}
 .seg button[aria-pressed="true"],.seg button[aria-selected="true"]{background:var(--ink);color:var(--sheet)}
 .count{font-size:14px;color:var(--muted)}
+.varswitch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:720px}
+.varswitch button{display:flex;align-items:center;gap:14px;font:500 20px var(--font);padding:16px 20px;border:2px solid var(--red-mid);border-radius:12px;background:var(--sheet);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .15s,background .15s}
+.varswitch button:hover{border-color:var(--red)}
+.varswitch button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.varswitch .vk{display:grid;place-items:center;flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:2px solid var(--red);color:var(--red-ink);font-weight:700;font-size:18px}
+.varswitch em{font-style:normal;font-size:13px;font-weight:500;padding:3px 10px;border-radius:99px;background:var(--red-soft);color:var(--red-ink);margin-left:auto}
+.varswitch button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 6px 18px -8px var(--red)}
+.varswitch button[aria-pressed="true"] .vk{background:#fff;border-color:#fff;color:var(--red)}
+.varswitch button[aria-pressed="true"] em{background:#fff;color:var(--red)}
+@media (max-width:520px){.varswitch button{font-size:17px;padding:12px 14px}.varswitch em{display:none}}
 
 /* Diagramm */
 .chart-scroll{overflow-x:auto}
@@ -397,9 +407,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 <section class="panel" id="struktur" role="tabpanel" aria-labelledby="t-struktur" hidden>
 <div class="in">
   <div class="head">
-    <h2>Hauptnavigation: drei Vorschläge</h2>
+    <h2>Hauptnavigation: zwei Vorschläge</h2>
   </div>
-  <div class="seg" role="group" aria-label="Vorschlag wählen" id="varSeg"><button type="button" data-var="A" aria-pressed="true">Vorschlag A · Empfehlung</button><button type="button" data-var="B" aria-pressed="false">Vorschlag B</button></div>
+  <div class="varswitch" role="group" aria-label="Vorschlag wählen" id="varSeg"><button type="button" data-var="A" aria-pressed="true"><span class="vk">A</span>Vorschlag A<em>Empfehlung</em></button><button type="button" data-var="B" aria-pressed="false"><span class="vk">B</span>Vorschlag B</button></div>
   <div class="mocks">
     <figure class="mock rec" data-var="A">
       <div class="browser"><div class="chrome"><i></i><i></i><i></i><span>richli.ch</span></div>
