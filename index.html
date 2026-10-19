@@ -33,7 +33,7 @@
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;font-variant-numeric:tabular-nums}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
-.in{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3,h4{margin:0;line-height:1.2;text-wrap:balance;font-weight:500}
 p{margin:0;max-width:72ch}
 a{color:var(--red-ink)}
@@ -52,7 +52,7 @@ a{color:var(--red-ink)}
 
 /* Tabs: grosse Kacheln im Band */
 .tabbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--band);box-shadow:0 1px 0 var(--band-deep)}
-.tabbar .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding-block:6px 12px}
+.tabbar .in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-block:6px 12px}
 .tab{display:flex;gap:12px;align-items:center;text-align:left;font:inherit;color:var(--on-band);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 14px;cursor:pointer;min-width:0;transition:background .15s}
 .tab:hover{background:rgba(255,255,255,.16)}
 .tab .n{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-weight:700;font-size:16px}
@@ -77,12 +77,13 @@ a{color:var(--red-ink)}
 .head{display:grid;gap:8px;margin-bottom:6px}
 .head h2{font-size:clamp(26px,3vw,34px)}
 .lede{font-size:18px;color:var(--muted);max-width:68ch}
-.sheet{background:var(--sheet);border-radius:12px;padding:22px 24px;display:grid;gap:14px;min-width:0}
+.sheet{background:var(--sheet);border-radius:12px;padding:22px 24px;display:grid;gap:14px;min-width:0;align-content:start}
 .sheet>*{min-width:0}
 .sheet h3{font-size:20px}
 .sheet-top{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
 .note{font-size:14px;color:var(--muted)}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+@media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr)}}
 .grid2>*{min-width:0}
 .stack{display:grid;gap:22px}
 .stack>*{min-width:0}
@@ -148,7 +149,7 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--red)}
 .fill.oak{background:var(--oak);opacity:1} .fill.slate{background:var(--slate);opacity:1} .fill.sage{background:var(--sage);opacity:1} .fill.mut{background:var(--muted);opacity:1}
 
 .src-rows{display:grid;gap:4px}
-.src-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(70px,1fr) 34px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.src-row{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(90px,1fr) 34px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
 .src-row:last-child{border-bottom:0}
 .src-row b{display:block;font-weight:500}
 .src-row span{display:block;font-size:13.5px;color:var(--muted)}
@@ -308,6 +309,15 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     </div>
     <div class="chart-scroll"><svg id="trend" viewBox="0 0 1000 300" width="100%" style="min-width:620px" role="img" aria-label="Verlauf Sichtbarkeit richli.ch"></svg></div>
     <p class="note">Sichtbarkeit: wie präsent richli.ch bei Google ist, gemessen jede Woche über eine feste Liste von Suchbegriffen.</p>
+  </div>
+
+  <div class="sheet">
+    <h3>Sichtbarkeit im Vergleich mit Mitbewerbern</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Website</th><th colspan="2">Sichtbarkeitsindex</th><th class="r">Suchbegriffe in den Top 10</th></tr></thead>
+      <tbody id="visBody"></tbody>
+    </table></div>
+    <p class="note">SISTRIX Schweiz, Stand 19. Oktober 2026. Gleiche Mitbewerber wie im Tab Backlinks.</p>
   </div>
 
   <div class="stack">
@@ -577,6 +587,14 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   });
 
   /* ---------- 2 Backlinks: [Website, Art, Domains (mind.), Links, Seiten] ---------- */
+  /* Sichtbarkeit Mitbewerber (Sistrix ch, 19.10.2026): [Domain, Art, Sichtbarkeitsindex, Top-10-Suchbegriffe] */
+  var VC = [["holzpunkt-parkett.ch","Parkett, Ausstellung Zug, Shop",0.99,1116],["schnyder-parkett.ch","Parkett, gleiches Gebiet",0.46,647],["grafparkett.ch","Parkett",0.42,696],["richli.ch","",0.31,267],["spiller.ch","Parkett, Bodenbeläge",0.16,65],["faeh-parkett.ch","Parkett, Luzern",0.01,10]];
+  var vb = $("visBody");
+  if (vb) vb.innerHTML = VC.map(function(r){
+    var me = r[0] === "richli.ch";
+    return '<tr' + (me ? ' class="me"' : '') + '><td>' + esc(r[0]) + (r[1] ? '<span class="bl-kind">' + esc(r[1]) + '</span>' : '') + '</td><td style="width:40%"><div class="track"><div class="fill' + (me ? ' red' : '') + '" style="width:' + Math.max(r[2] / VC[0][2] * 100, 1).toFixed(1) + '%"></div></div></td><td class="n"><b>' + r[2].toFixed(2).replace(".", ",") + '</b></td><td class="n">' + fmt(r[3]) + '</td></tr>';
+  }).join("");
+
   var BL = [["schnyder-parkett.ch","Parkett, gleiches Gebiet",177,223,32],["holzpunkt-parkett.ch","Parkett, Ausstellung Zug, Shop",149,188,27],["grafparkett.ch","Parkett",87,140,20],["richli.ch","",33,36,3],["spiller.ch","Parkett, Bodenbeläge",27,28,2],["faeh-parkett.ch","Parkett, Luzern",17,17,2]];
   var blMax = BL[0][2], bb = $("blBody");
   if (bb) bb.innerHTML = BL.map(function(r){
@@ -595,8 +613,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     ["netto.ch","https://netto.ch/it/merchant/Richli-AG.html","Verzeichnis","/"],
     ["graph.swiss","https://graph.swiss/companies/swissli-ag/848595","Verzeichnis","/"],
     ["comparable-companies.com","https://comparable-companies.com/company/richli-ag-competitors-similar-companies","Verzeichnis","/"],
-    ["firmex.ch","https://www.firmex.ch/Richli_Transporte_AG_Ettingen_detail_39921.html","Verzeichnis, falsche Firma (Richli Transporte)","/"],
-    ["entreprisesensuisse.org","https://entreprisesensuisse.org/65151-neunkirch/21906017-richli-paul","Verzeichnis, falsche Firma (Neunkirch)","/"],
+    ["firmex.ch","https://www.firmex.ch/Richli_Transporte_AG_Ettingen_detail_39921.html","Verzeichnis","/"],
+    ["entreprisesensuisse.org","https://entreprisesensuisse.org/65151-neunkirch/21906017-richli-paul","Verzeichnis","/"],
     ["keravita.ch","https://www.keravita.ch/referenzobjekte.html","Partner","/"],
     ["terrarte.ch","https://www.terrarte.ch/fr/moquette-couture-partenaire-2/lu","Partner","/"],
     ["endag.ch","https://www.endag.ch/ueber-uns","Partner","/"],
