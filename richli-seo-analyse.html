@@ -713,6 +713,12 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .hg-hdr{gap:28px}
 .hg-drawer .hg-left{position:sticky;top:0;align-self:start}
 
+.kc-fit{display:inline-block;font-size:13px;font-weight:500;padding:1px 10px;border-radius:99px;white-space:nowrap}
+.kc-fit.f2{background:var(--sage-soft);color:var(--sage)} .kc-fit.f1{background:var(--oak-soft);color:var(--oak)} .kc-fit.f0{background:var(--red-soft);color:var(--red-ink)}
+.kc-fc{min-width:220px}
+.kc-fc small{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.kc-of{display:block;font-size:12.5px;color:var(--muted);margin-left:100px}
+.kc-diy td:first-child{font-weight:500}
 /* Keyword-Cluster */
 .kc-areas{display:grid;gap:14px}
 .kc-area{display:grid;grid-template-columns:minmax(170px,260px) minmax(0,1fr) auto;gap:6px 18px;align-items:center}
@@ -944,12 +950,31 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       <div class="seg" role="group" aria-label="Filter" id="kcFilter"></div>
     </div>
     <div class="tbl"><table class="kc-tbl">
-      <thead><tr><th>Thema</th><th>Suchen pro Monat</th><th>Google zeigt heute vor allem</th><th>Wichtigste Suchbegriffe</th><th>Relevanz</th></tr></thead>
+      <thead><tr><th>Thema</th><th>Suchen pro Monat</th><th>Google zeigt heute vor allem</th><th>Wichtigste Suchbegriffe</th><th>Begriffe passen zur Seite?</th><th>Relevanz</th></tr></thead>
       <tbody id="kcBody"></tbody>
     </table></div>
     <button type="button" class="kc-more" id="kcMore" hidden></button>
-    <p class="note">Relevanz in Punkten (max. 7): Suchvolumen 0–3 (ab 100, 300, 1000), Gewichtung Richli 0–2 (Parkett und Böden 2, Platten und Ratgeber 1, Vorhänge 0), Chance 0–2 (Handwerksbetriebe vorne 2, gemischt oder Ratgeber 1, Shops vorne 0). Hoch ab 5, mittel 3–4.</p>
+    <p class="note">Begriffe passen: Anbieterseiten brauchen Suchen mit Kauf- oder Auftragsabsicht, Ratgeber Suchen mit Info-Absicht. Gezählt wird nur das passende Volumen. Bei «kaum» ist die Relevanz immer tief.</p>
+    <p class="note">Relevanz in Punkten (max. 7): passendes Suchvolumen 0–3 (ab 100, 300, 1000), Gewichtung Richli 0–2 (Parkett und Böden 2, Platten und Ratgeber 1, Vorhänge 0), Chance 0–2 (Handwerksbetriebe vorne 2, gemischt oder Ratgeber 1, Shops vorne 0). Hoch ab 5, mittel 3–4.</p>
     <p class="note">Quelle: SISTRIX CH, Oktober 2026. Suchbegriffe gruppiert nach gemeinsamen Google-Treffern (Top 10).</p>
+  </div>
+
+  <div class="sheet">
+    <h3>Anleitungs-Suchen: besser im Ratgeber</h3>
+    <p>Diese Begriffe suchen eine Anleitung, keinen Handwerker. Auf den Anbieterseiten passen sie nicht, als Ratgeber-Artikel schon. Die Varianten mit «lassen» haben je nur rund 10 Suchen.</p>
+    <div class="tbl"><table class="kc-diy">
+      <thead><tr><th>Suchbegriff</th><th>Suchen pro Monat</th><th>Heute bei</th><th>Möglicher Ratgeber</th></tr></thead>
+      <tbody>
+        <tr><td>Vinylboden verlegen</td><td class="n">400</td><td>Vinyl</td><td>Vinylboden verlegen: selber oder vom Profi?</td></tr>
+        <tr><td>Laminat verlegen</td><td class="n">350</td><td>Laminat</td><td>Laminat verlegen: selber oder vom Profi?</td></tr>
+        <tr><td>Parkett verlegen</td><td class="n">300</td><td>Parkett verlegen</td><td>Parkett verlegen: Ablauf, Dauer, Kosten</td></tr>
+        <tr><td>Silikonfugen erneuern</td><td class="n">300</td><td>Fugen erneuern</td><td>Silikonfugen erneuern: wann und wie</td></tr>
+        <tr><td>Parkett ölen</td><td class="n">250</td><td>Parkett ölen</td><td>Geöltes Parkett pflegen und nachölen</td></tr>
+        <tr><td>Terrassenplatten verlegen</td><td class="n">100</td><td>Terrassenplatten</td><td>Terrassenplatten verlegen: Kies, Mörtel oder Stelzlager?</td></tr>
+        <tr><td>Korkboden verlegen</td><td class="n">50</td><td>Kork</td><td>In «Welcher Boden für welchen Raum?» aufnehmen</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Zusammen rund 1'750 Suchen pro Monat. Jeder Artikel verlinkt auf die passende Anbieterseite.</p>
   </div>
 </div>
 </section>
@@ -1389,7 +1414,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     formate:["Schiffsboden, Stab- & Tafelparkett","/parkett/formate/","Schiffsboden · Tafelparkett · Stabparkett · Riemenparkett · Hirnholzparkett",290,"S"],
     kloetzli:["Klötzli- & Mosaikparkett","/parkett/kloetzliparkett/","Klötzliparkett · Mosaikparkett",100,"S"],
     woodlife:["WOODlife","/parkett/woodlife/","Woodlife 10 · exklusiv in der Schweiz",10,null],
-    pverlegen:["Parkett verlegen","/parkett/verlegen/","Parkett verlegen · Klick-Parkett · schwimmend verlegen",450,"G"],
+    pverlegen:["Parkett verlegen","/parkett/verlegen/","Parkett verlegen 300 · Parkettleger 100 · Parkett verlegen lassen 10 · Klick-Parkett",450,"G"],
     pluzern:["Luzern","/standorte/luzern/","Bodenleger Luzern · Parkett Luzern · Plattenleger Luzern · Vorhänge Luzern · Bodenbeläge Luzern",170,"H"],
     pschleifen:["Parkett schleifen & renovieren","/parkett/schleifen-renovieren/","Parkett schleifen · abschleifen · versiegeln · sanieren · auffrischen · renovieren",570,"G"],
     poelen:["Parkett ölen & grundreinigen","/parkett/oelen/","Parkett ölen · geöltes Parkett Pflege · nachölen · Grundreinigung",360,"I"],
@@ -1439,7 +1464,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg1:["Parkett & Holzboden reinigen","/ratgeber/parkett-reinigen-pflegen/","Parkett reinigen · Holzboden reinigen · Parkett Pflege · versiegeltes Parkett",820,"I"],
     rg2:["Parkett geölt oder versiegelt?","/ratgeber/parkett-geoelt-oder-versiegelt/","Parkett versiegelt 200 · Parkett geölt 40 · geölt oder versiegelt 30",270,"I"],
     rg3:["Was kostet Parkett?","/ratgeber/parkett-kosten/","Parkett Preise 40 · Parkett verlegen Kosten 30",70,"I"],
-    rg4:["Parkettarten im Vergleich","/ratgeber/parkettarten/","Massivparkett 30 · Mehrschichtparkett 20",50,"I"],
+    rg4:["Parkettarten im Vergleich","/ratgeber/parkettarten/","Parkett Arten 60 · Parkettarten 50 · Massivparkett 30 · Mehrschichtparkett 20",160,"I"],
     rg5:["Parkett im Bad & auf Bodenheizung","/ratgeber/parkett-bad-bodenheizung/","Parkett Badezimmer 30 · Parkett Bodenheizung 10",40,"I"],
     rg6:["Feinsteinzeug oder Keramik?","/ratgeber/feinsteinzeug-keramik/","Feinsteinzeug 350",350,"I"],
     rg7:["Welcher Boden für welchen Raum?","/ratgeber/boden-fuer-jeden-raum/","Küchenboden · Bodenbelag Küche · Parkett Wohnzimmer, Schlafzimmer, Kinderzimmer · Bodenbelag Bad",220,"I"],
@@ -1511,7 +1536,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     ausschreibung:["Ausschreibungen & Unternehmervarianten","/geschaeftskunden/ausschreibungen/","",null,null],
     kontakt:["Kontakt","/kontakt/","",null,null],
     produkte:["Produkte","/produkte/","",null,null],
-    bverlegen:["Bodenleger","/bodenbelaege/bodenleger/","Bodenleger · Vinyl verlegen · Linoleum verlegen · Laminat verlegen · Teppich verlegen lassen",550,"H"],
+    bverlegen:["Bodenleger","/bodenbelaege/bodenleger/","Bodenleger 550 · Bodenleger Luzern 60 · Boden verlegen lassen",550,"H"],
     vbad:["Vorhänge Bad","/vorhaenge/bad/","Vorhang Badezimmer",null,"S"],
     veingang:["Vorhänge Eingang & Korridor","/vorhaenge/eingang-korridor/","Türvorhang · Durchgangsvorhang",null,"S"],
     lpLu:["Parkett Luzern","/parkett/luzern/","Parkett Luzern 30 · Parkettleger Luzern 10 · Parkett schleifen Luzern 10",50,"H"],
@@ -1728,7 +1753,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var max = Math.max.apply(null, rows.map(function(r){ return r[1]; }));
     box.innerHTML = '<h3>Seitenumfang</h3><div class="ps-kpis">' +
       '<div class="ps-k main"><b><small>mind.</small> ' + total + '</b><span>Seiten im Menü</span></div>' +
-      '<div class="ps-k"><b>+ 40</b><span>Referenzprojekte, heute auf richli.ch, laufend ergänzen</span></div></div>';
+      '<div class="ps-k"><b>+ 40</b><span>Referenzprojekte, heute auf richli.ch, laufend ergänzen</span></div>' +
+      '<div class="ps-k"><b>+ 5–10</b><span>Ratgeber-Artikel zum Start, danach laufend ergänzen</span></div></div>';
   }
   renderNav("C");
 
@@ -1740,17 +1766,52 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var INT = {H:["Handwerksbetriebe", 2], G:["Gemischt", 1], I:["Ratgeber-Seiten", 1], S:["Shops & Händler", 0]};
     var REL = ["tief", "tief", "tief", "mittel", "mittel", "hoch", "hoch", "hoch"];
     function nf(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); }
-    function vol(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
+    /* Passen die Begriffe zur Seite? [passendes Volumen oder null, Hinweis, "t" = teilweise]
+       Anbieterseiten brauchen Kauf- oder Auftragsabsicht, Ratgeber eine Info-Absicht. */
+    var FIT = {
+      pverlegen:[110, "„Parkett verlegen“ (300) sucht meist eine Anleitung, gehört in den Ratgeber. Passend: Parkettleger (100), verlegen lassen.", "t"],
+      pschleifen:[null, "„Parkett schleifen“ (300) ist gemischt. „Abschleifen“ und „auffrischen“ suchen oft Heimwerker.", "t"],
+      poelen:[10, "Google zeigt Ratgeber: „Parkett ölen“ (250) ist eine Pflege-Anleitung. Besser als Ratgeber, das Ölen als Dienstleistung bei „Schleifen & renovieren“."],
+      prep:[null, "„Parkett reparieren“ (250) suchen Heimwerker und Kunden etwa gleich oft.", "t"],
+      treppen:[40, "„Holztreppe“ (300) sucht eine neue Treppe oder Treppenbauer. Passend: Treppe renovieren (30)."],
+      sockel:[0, "Sockelleisten (900) kauft man im Baumarkt. Nur als Zubehör zum Boden zeigen."],
+      tritt:[0, "Trittschalldämmung (600) kauft man im Baumarkt. Nur als Zubehör zum Boden zeigen."],
+      profile:[0, "Kaufabsicht im Baumarkt. Nur als Zubehör zum Boden zeigen."],
+      filz:[0, "Filzgleiter (450) sind ein Shop-Artikel. Passt höchstens zum Pflegeshop."],
+      vinyl:[5760, "„Vinylboden verlegen“ (400) sucht eine Anleitung, gehört in den Ratgeber."],
+      lino:[1750, "„Linoleum“ allein meint oft Linolschnitt (Basteln). Passend: Linoleum Bodenbelag (1050), Linoleumboden (700)."],
+      laminat:[2570, "„Laminat verlegen“ (350) sucht eine Anleitung, gehört in den Ratgeber."],
+      kork:[640, "„Korkboden verlegen“ (50) sucht eine Anleitung."],
+      linverlegen:[10, "Anleitungs-Suche. Besser auf der Seite Linoleum erwähnen."],
+      otep:[0, "Outdoor-Teppiche (4650) kauft man im Shop. Nicht Richlis Angebot."],
+      matten:[500, "Schmutzfangmatte (950) und Gummimatte (350) sind Shop-Artikel. Passend: Eingangsteppich für Objekte."],
+      steinsorten:[840, "„Travertin“ (1150) und „Quarzit“ (300) allein suchen Materialinfos. Passend: Travertin Platten, Marmorboden."],
+      terrasse:[3250, "„Terrassenplatten verlegen“ (100) sucht eine Anleitung."],
+      stelz:[240, "„Stelzlager“ (550) ist Zubehör zum Kaufen."],
+      bad:[null, "„Badsanierung“ sucht oft einen Gesamtanbieter mit Sanitär. Richli macht die Platten, Partner nennen.", "t"],
+      kd:[null, "„Silikonfugen erneuern“ (300) sucht meist eine Anleitung, „erneuern lassen“ nur 10.", "t"],
+      vstange:[null, "Vorhangstangen (1350) kauft man meist im Shop. Nur zusammen mit Vorhängen nach Mass.", "t"],
+      schienen:[null, "Kauf im Shop überwiegt. Passt mit Montage durch Richli.", "t"]
+    };
+    var FITL = ["kaum", "teilweise", "passt"];
+    function raw(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
+    function fitLvl(id){
+      var f = FIT[id]; if (!f) return 2; if (f[2] === "t") return 1;
+      var q = raw(id) ? (f[0] == null ? raw(id) : f[0]) / raw(id) : 1;
+      return q >= 0.75 ? 2 : q >= 0.25 ? 1 : 0;
+    }
+    function vol(id){ var f = FIT[id]; return f && f[0] != null ? f[0] : raw(id); }
     function score(id, area){
       var v = vol(id), t = v >= 1000 ? 3 : v >= 300 ? 2 : v >= 100 ? 1 : 0;
-      var it = P[id][4]; return t + KW[area] + (INT[it] ? INT[it][1] : 1);
+      var it = P[id][4], sc = t + KW[area] + (INT[it] ? INT[it][1] : 1);
+      return fitLvl(id) ? sc : Math.min(sc, 2);
     }
     function relCls(s){ return s >= 5 ? 3 : s >= 3 ? 2 : 1; }
     var src = V.A.main.slice(0, 4).concat([RG]);
     var AREAS = src.map(function(m){
       var seen = {}, groups = [];
       m.cols.forEach(function(c){
-        var ids = c[1].filter(function(id){ if (seen[id] || !vol(id)) return false; seen[id] = 1; return true; });
+        var ids = c[1].filter(function(id){ if (seen[id] || !raw(id)) return false; seen[id] = 1; return true; });
         if (ids.length) groups.push([c[0], ids]);
       });
       var ids = [].concat.apply([], groups.map(function(g){ return g[1]; }));
@@ -1759,12 +1820,14 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     });
     var ROWS = [];
     AREAS.forEach(function(a){
-      (vol(a.hub) ? [a.hub] : []).concat(a.ids).forEach(function(id){ var s = score(id, a.label); ROWS.push({id: id, area: a.label, v: vol(id), s: s, r: relCls(s)}); });
+      (raw(a.hub) ? [a.hub] : []).concat(a.ids).forEach(function(id){ var s = score(id, a.label); ROWS.push({id: id, area: a.label, v: vol(id), s: s, r: relCls(s)}); });
     });
     ROWS.sort(function(x, y){ return y.s - x.s || y.v - x.v; });
     var RBYID = {}; ROWS.forEach(function(r){ RBYID[r.area + "|" + r.id] = r; });
 
     function relHtml(r){ var t = REL[r.s] || "hoch"; return '<span class="kc-rel" title="' + r.s + ' von 7 Punkten">' + [1,2,3].map(function(i){ return '<i' + (i <= r.r ? ' class="on"' : '') + '></i>'; }).join("") + ' ' + t + '</span>'; }
+    function fitHtml(id){ var l = fitLvl(id); return '<span class="kc-fit f' + l + '">' + FITL[l] + '</span>'; }
+    function fitNote(id){ return FIT[id] ? FIT[id][1] : (P[id][4] === "I" ? "Info-Absicht, passt zum Ratgeber." : ""); }
     function intTxt(id){ var it = P[id][4]; return INT[it] ? INT[it][0] : "nicht geprüft"; }
     function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
 
@@ -1773,7 +1836,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var sumA = AREAS.reduce(function(s, a){ return s + a.total; }, 0);
     var ab = $("kcAreas");
     if (ab) ab.innerHTML = AREAS.slice().sort(function(x, y){ return y.total - x.total; }).map(function(a){
-      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (vol(a.hub) ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
+      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (raw(a.hub) ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
         '<div class="track"><div class="fill ' + COL[a.label] + '" style="width:' + Math.max(1.5, a.total / maxA * 100).toFixed(1) + '%"></div></div>' +
         '<div class="v">' + nf(a.total) + '<small>' + Math.round(a.total / sumA * 100) + ' % der Suchen</small></div></div>';
     }).join("");
@@ -1788,7 +1851,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         return;
       }
       var r = RBYID[area + "|" + id];
-      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nf(vol(id)) + '</div><p class="note">Suchen pro Monat · Google zeigt heute vor allem: ' + esc(intTxt(id)) + '</p>' + (r ? '<div>' + relHtml(r) + '</div>' : '') + kwHtml(id) + (P[id][5] ? '<p class="note">Sortiment mit Richli prüfen</p>' : '');
+      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nf(vol(id)) + '</div><p class="note">Suchen pro Monat · Google zeigt heute vor allem: ' + esc(intTxt(id)) + '</p>' + (r ? '<div>' + relHtml(r) + '</div>' : '') + '<p>Begriffe passen: ' + fitHtml(id) + (raw(id) !== vol(id) ? ' <span class="note">' + nf(vol(id)) + ' von ' + nf(raw(id)) + ' Suchen passen</span>' : '') + '</p>' + (fitNote(id) ? '<p class="note">' + esc(fitNote(id)) + '</p>' : '') + kwHtml(id) + (P[id][5] ? '<p class="note">Sortiment mit Richli prüfen</p>' : '');
     }
     function mapSvg(){
       /* Radiales Cluster: Seiten auf dem Aussenring, nach Gruppen geordnet; Gruppen auf dem Innenring */
@@ -1860,8 +1923,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       if (more){ more.hidden = !cut; more.textContent = "Alle " + rows.length + " Themen anzeigen"; }
       var tb = $("kcBody"); if (tb) tb.innerHTML = (cut ? rows.slice(0, 20) : rows).map(function(r){
         return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b>' + (r.id === "ratgeber" ? '' : '<span class="kc-ar ' + COL[r.area] + '">' + esc(r.area) + '</span>') + (P[r.id][5] ? '<span class="tag">prüfen</span>' : '') + '</td>' +
-          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span></td>' +
-          '<td class="kc-it">' + esc(intTxt(r.id)) + '</td><td class="kc-k">' + esc(P[r.id][2]) + '</td><td>' + relHtml(r) + '</td></tr>';
+          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span>' + (raw(r.id) !== r.v ? '<small class="kc-of">von ' + nf(raw(r.id)) + '</small>' : '') + '</td>' +
+          '<td class="kc-it">' + esc(intTxt(r.id)) + '</td><td class="kc-k">' + esc(P[r.id][2]) + '</td><td class="kc-fc">' + fitHtml(r.id) + (FIT[r.id] ? '<small>' + esc(FIT[r.id][1]) + '</small>' : '') + '</td><td>' + relHtml(r) + '</td></tr>';
       }).join("");
       var c = $("kcCount"); if (c) c.textContent = rows.length + " Themen";
     }
@@ -1881,7 +1944,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var k = $("kcTop");
     if (k){
       var hi = ROWS.filter(function(r){ return r.r === 3; });
-      k.innerHTML = '<div class="kpi"><div class="v">' + nf(sumA) + '</div><div class="l">Suchen pro Monat über alle Menüthemen</div></div>' +
+      k.innerHTML = '<div class="kpi"><div class="v">' + nf(sumA) + '</div><div class="l">passende Suchen pro Monat über alle Menüthemen</div><div class="d">' + nf(ROWS.reduce(function(t, r){ return t + raw(r.id); }, 0)) + ' mit allen Begriffen</div></div>' +
         '<div class="kpi"><div class="v">' + ROWS.length + '</div><div class="l">Themen mit Suchvolumen</div></div>' +
         '<div class="kpi"><div class="v">' + hi.length + '</div><div class="l">Themen mit hoher Relevanz</div><div class="d">' + hi.slice(0, 4).map(function(r){ return esc(P[r.id][0]); }).join(", ") + '</div></div>';
     }
