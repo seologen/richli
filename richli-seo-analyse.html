@@ -753,6 +753,12 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .kc-ar{display:inline-block;font-size:12.5px;padding:0 8px;border-radius:99px;margin-left:6px;white-space:nowrap}
 .kc-ar.oak{background:var(--oak-soft);color:var(--oak)} .kc-ar.slate{background:var(--slate-soft);color:var(--slate)} .kc-ar.sage{background:var(--sage-soft);color:var(--sage)} .kc-ar.mut{background:var(--ground);color:var(--muted)}
 .kc-t{font-weight:500}
+.kc-pot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kc-pt{display:grid;gap:2px;padding:12px 16px;border-radius:10px;background:var(--ground)}
+.kc-pt b{font-size:28px;font-weight:500;line-height:1.1}
+.kc-pt span{font-size:14px;color:var(--muted)}
+.kc-pt.main{background:var(--red);color:#fff}
+.kc-pt.main span{color:#fff;opacity:.85}
 .kc-hint{margin:6px 0 0;max-width:72ch;padding:12px 16px;border-radius:10px;border-left:4px solid var(--warn);background:var(--warn-soft);color:var(--ink);font-size:15.5px}
 .kc-sub{font-size:19px;font-weight:500;margin:8px 0 0}
 .kc-more{justify-self:start;font:500 15px var(--font);padding:9px 18px;border-radius:99px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
@@ -923,6 +929,11 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     <h2>Welche Themen werden am meisten gesucht?</h2>
     <p class="lede">Für jedes Thema im Menü die Suchbegriffe, für die richli.ch als Fachbetrieb ranken kann, mit Suchen pro Monat in der Schweiz. Begriffe, bei denen Google nur Shops zeigt, sind nicht enthalten.</p>
     <p class="kc-hint">Die Infos dienen zur Orientierung und groben Priorisierung von Inhalten. Ein genaues Keyword-Mapping berücksichtigt auch den Wettbewerb (wo haben wir die grösste Chance zu ranken), nicht nur das reine Suchvolumen.</p>
+  </div>
+
+  <div class="sheet">
+    <h3>Potenzial</h3>
+    <div class="kc-pot" id="kcPot"></div>
   </div>
 
   <div class="sheet">
@@ -1853,6 +1864,11 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     }
     var mb = $("kcMore"); if (mb) mb.addEventListener("click", function(){ allRows = true; renderTbl(); });
     renderTbl();
+
+    /* Potenzial: Suchen pro Monat, für die richli.ch ranken kann */
+    var pot = $("kcPot");
+    if (pot) pot.innerHTML = '<div class="kc-pt main"><b>' + nf(sumA) + '</b><span>Suchen pro Monat insgesamt</span></div>' +
+      AREAS.map(function(a){ return '<div class="kc-pt"><b>' + nf(a.total) + '</b><span>' + esc(a.label) + '</span></div>'; }).join("");
 
     /* Kennzahlen */
     var k = $("kcTop");
