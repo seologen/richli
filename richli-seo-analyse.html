@@ -677,6 +677,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .hg-nav button.has-sub:hover .nv-ic{transform:rotate(90deg)}
 @media (prefers-reduced-motion:reduce){.hg-nav .nv-ic{transition:none}}
 .hg-drawer .hg-mid{padding-top:12px}
+.hg-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:9px;background:#f6ede4;color:#7a5a3a;font-size:11px;font-weight:400;vertical-align:1px}
 .hg-grp h5{padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid #e4e0dc}
 .hg-groups.one{columns:1;max-width:210px}
 .hg-drawer.narrow{width:min(640px,60%)}
@@ -925,7 +926,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   <p class="hg-hint" id="hgHint">Es gibt ein einziges Mega-Menü. «Menü» öffnet es vollständig, die Punkte mit Plus öffnen es direkt beim passenden Bereich. Es legt sich über die ganze Seite und schliesst mit dem X oder der Esc-Taste.</p>
   <div id="navWrap" style="display:grid;gap:22px"></div>
   <div class="sheet ps-sheet" id="pageSum"></div>
-  <p class="kc-hint">Kleine Orte wie Horw, Kriens, Emmen, Ebikon oder Sursee erhalten keine eigenen Seiten. Sie werden im Text der Regionen-Seiten und bei den Referenzen erwähnt.</p>
 </div>
 </section>
 
@@ -1450,9 +1450,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
      Cluster aus SERP-Überschneidung (Sistrix CH, Top 10, 19.10.2026). Intention: H = Handwerker, S = Shop/Händler, I = Info, G = gemischt ---------- */
   var P = {
     parkett:["Parkett","/parkett/","Parkett 1950 · Parkettboden 1500 · Holzboden 450 · Parkett kaufen 250 · Parkett kaufen Schweiz 100 · Parkett Schweiz 80 · Parkett Fachgeschäft 10 · Parkett Händler 10 · Parkett Anbieter 10 · Parkett Beratung 10 · Parkett Geschäft 10",4380,"S"],
-    eiche:["Eichenparkett","/parkett/eiche/","Eichenparkett 400 · Parkett Eiche 250 · Eiche Parkett 100 · Eichenboden 50 · Eiche geölt 40",840,"S"],
-    oberfl:["Oberflächen & Farbtöne","/parkett/oberflaechen/","Eiche geräuchert 110 · Parkett Eiche rustikal 40 · Eiche Parkett hell 20 · helle Eiche Parkett 10",180,"S"],
-    holzarten:["Weitere Holzarten","/parkett/holzarten/","Buche 110 · Esche 90 · Ahorn 80 · Lärche 40 · Nussbaum 30 · Kirschbaum 20",370,"S"],
+    eiche:["Eichenparkett","/parkett/eiche/","Eichenparkett 400 · Parkett Eiche 250 · Eiche Parkett 100 · Eichenboden 50",800,"S"],
     fisch:["Fischgrät & Chevron","/parkett/fischgraet/","Fischgrätparkett 550 · Fischgrat Parkett 60 · Chevron Parkett 30 · Fischgrät Parkett verlegen 10",650,"G"],
     landhaus:["Landhausdielen & Schiffsboden","/parkett/landhausdielen/","Landhausdielen 90 · Landhausdiele Eiche 60",150,"S"],
     massivdielen:["Massivholzdielen","/parkett/massivholzdielen/","Holzdielen 150 · Dielenboden 100 · Massivholzdielen 50",300,"G"],
@@ -1479,7 +1477,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     schmutz:["Schmutzschleusen & Sauberlaufzonen","/bodenbelaege/schmutzschleusen/","Schmutzschleuse 600 · Schmutzschleuse Teppich 600 · Schmutzschleusen 80 · Schmutzschleuse Eingangsbereich 70 · Schmutzschleusen Teppich 40 · Sauberlaufzone 40 · Schmutzschleuse Eingang 30 · Schmutzschleusenteppich 30 · Schmutzschleuse nach Mass 20 · Logomatte 20 · Logomatten 20 · Sauberlaufzonen 20 · Schmutzfangmatte nach Mass 10 · Schmutzfangmatte Gewerbe 10 · Eingangsmatte Gewerbe 10 · Mattenrahmen 10",1610,"G"],
     platten:["Platten & Naturstein","/platten/","Plättli 200 · Plattengeschäft 20 · Fliesengeschäft 10 · Fliesenhandel 10 · Plättli kaufen 10 · Plattenausstellung Luzern 10",260,"H"],
     keramik:["Keramikplatten","/platten/keramik/","Bodenplatten 650 · Keramikplatten 400 · Bodenplatten Keramik 100 · Keramik Platten 100 · Keramik Bodenplatten 70 · Keramische Platten 60 · Bodenplatten Keramik innen 40",1420,"S"],
-    plattenleger:["Plattenleger","/platten/plattenleger/","Plattenleger 550 · Plattenleger in der Nähe 100 · Plattenleger Kosten 10",660,"H"],
+    plattenleger:["Plattenleger","/platten/plattenleger/","Plattenleger 550 · Plattenleger in der Nähe 100 · Plattenleger Luzern 30 · Plattenleger Engelberg 30 · Plattenleger Obwalden 20 · Plattenleger Baar 10 · Plattenleger Cham 10 · Platten Luzern 10 · Plattenleger Kosten 10",770,"H"],
     natur:["Naturstein","/platten/naturstein/","Naturstein 700 · Natursteinplatten 600 · Naturstein Luzern 20 · Natursteine Luzern 10 · Granit Luzern 10",1340,"S"],
     holzoptik:["Platten in Holzoptik","/platten/holzoptik/","Bodenplatten Holzoptik 100 · Platten Holzoptik 50 · Plattenboden Holzoptik 40 · Platten in Holzoptik 30 · Holzimitat Platten 20",240,"S"],
     sortiment:["Platten-Sortiment","/platten/sortiment/","",null,null],
@@ -1492,7 +1490,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     service:["Service","/service/","",null,null],
     dienst:["Dienstleistungen","/dienstleistungen/","",null,null],
     kd:["Fugen erneuern","/platten/fugen-erneuern/","Fugensanierung 30 · Fugen erneuern lassen 10 · Silikonfugen erneuern lassen 10 · Fugen erneuern Kosten 10 · Silikonfugen ersetzen 10 · Fugen sanieren 10",80,"G"],
-    shop:["Pflegeprodukte & Gleiter","shop.proffwoodcare.ch/richli","",null,"S"],
+    shop:["Pflegeprodukte","shop.proffwoodcare.ch/richli","Parkettpflege 100 · Parkettöl 90 · Parkett Pflegemittel 40 · Parkett Reinigungsmittel 40",270,"S"],
     ausst:["Ausstellung","/ausstellung/","Parkett Ausstellung 90 · Bodenbeläge Ausstellung 20 · Plättli Ausstellung 20 · Plattenausstellung 10 · Platten Ausstellung 10 · Fliesen Ausstellung 10",160,null],
     termin:["Beratungstermin buchen","/ausstellung/termin/","90 Minuten, online buchbar",null,null],
     ref:["Referenzen","/referenzen/","",null,null],
@@ -1527,17 +1525,17 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg10:["Bodenebene Dusche mit Platten","/ratgeber/bodenebene-dusche/","Fugenlose Dusche · Walk-in-Dusche · bodenebene Dusche",260,"I"],
     rg11:["Parkett-Verlegemuster","/ratgeber/parkett-verlegemuster/","Parkett Verlegearten",50,"I"],
     nussbaum:["Nussbaumparkett","/parkett/nussbaum/","Nussbaumparkett 20 · Walnuss Parkett 10",30,"S"],
-    esche:["Eschenparkett","/parkett/esche/","Esche Parkett · Eschenparkett",90,"S"],
-    buche:["Buchenparkett","/parkett/buche/","Buche Parkett · Buchenparkett",110,"S"],
+    esche:["Eschenparkett","/parkett/esche/","Eschenparkett 90",90,"S"],
+    buche:["Buchenparkett","/parkett/buche/","Buchenparkett 110",110,"S"],
     schiff:["Schiffsboden","/parkett/schiffsboden/","",null,"S"],
     stab:["Stabparkett","/parkett/stabparkett/","",null,"S"],
     tafel:["Tafelparkett","/parkett/tafelparkett/","Tafelparkett",50,"S"],
-    ogeoelt:["Eiche geölt","/parkett/eiche-geoelt/","",null,"S"],
-    oweiss:["Eiche weiss geölt","/parkett/eiche-weiss-geoelt/","",null,"S"],
-    orauch:["Eiche geräuchert","/parkett/eiche-geraeuchert/","Geräucherte Eiche Parkett · Parkett Eiche geräuchert · Räuchereiche",110,"S"],
+    ogeoelt:["Eiche geölt","/parkett/eiche-geoelt/","Eiche geölt 40",40,"S"],
+    oweiss:["Eiche weiss geölt","/parkett/eiche-weiss-geoelt/","Eiche weiss geölt 40",40,"S"],
+    orauch:["Eiche geräuchert","/parkett/eiche-geraeuchert/","Eiche geräuchert 110",110,"S"],
     orustikal:["Eiche rustikal","/parkett/eiche-rustikal/","Parkett Eiche rustikal 40",40,"S"],
     ohell:["Helles Parkett","/parkett/hell/","Eiche Parkett hell 20 · helle Eiche Parkett 10",30,"S"],
-    odunkel:["Dunkles Parkett","/parkett/dunkel/","",null,"S"],
+    odunkel:["Dunkles Parkett","/parkett/dunkel/","Parkett dunkel 30",30,"S"],
     vwohn:["Vorhänge Wohnzimmer","/vorhaenge/wohnzimmer/","",null,"S"],
     vkind:["Vorhänge Kinderzimmer","/vorhaenge/kinderzimmer/","",null,"S"],
     vschlaf:["Vorhänge Schlafzimmer","/vorhaenge/schlafzimmer/","",null,"S"],
@@ -1546,7 +1544,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     vdunkel:["Verdunkelungsvorhänge","/vorhaenge/verdunkelung/","",null,"S"],
     vflaeche:["Flächenvorhänge & Sichtschutz","/vorhaenge/flaechenvorhaenge/","",null,"S"],
     vnaehen:["Nähen & Kürzen","/vorhaenge/naehen-kuerzen/","Vorhänge nähen lassen 100 · Vorhänge kürzen lassen 60 · Vorhänge Montage 10",170,"G"],
-    ahorn:["Ahornparkett","/parkett/ahorn/","Ahorn Parkett · Ahornparkett",80,"G"],
+    ahorn:["Ahornparkett","/parkett/ahorn/","Ahornparkett 80",80,"G"],
     riemen:["Stab-, Riemen- & Tafelparkett","/parkett/stab-riemen-tafelparkett/","Riemenparkett 50 · Tafelparkett 50 · Stabparkett 40",140,"G"],
     nadelfilz:["Nadelfilz","/bodenbelaege/nadelfilz/","",null,"G"],
     fertig:["Fertig- & Mehrschichtparkett","/parkett/fertigparkett/","",null,"S"],
@@ -1554,10 +1552,10 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg13:["Untergrund vorbereiten","/ratgeber/untergrund-vorbereiten/","Boden nivellieren · Boden ausgleichen · alten Bodenbelag entfernen",60,"I"],
     rg14:["Kratzer und Dellen im Parkett","/ratgeber/parkett-kratzer/","Parkett reparieren 250 · Parkett Kratzer entfernen 40 · Hohlstellen Parkett 10 · Parkett schüsselt 10",310,"I"],
     rg15:["Parkett-Dicke & Verlegerichtung","/ratgeber/parkett-dicke-verlegerichtung/","Parkett Dicke · Parkett Verlegerichtung",40,"I"],
-    sockel:["Sockelleisten & Profile","/parkett/sockelleisten/","Sockelleisten montieren 30 · Parkett Sockelleisten 10 · Sockelleisten montieren lassen 10",50,"S"],
+    sockel:["Sockelleisten & Profile","/parkett/sockelleisten/","Übergangsprofil 80 · Sockelleisten montieren 30 · Parkett Sockelleisten 10 · Sockelleisten montieren lassen 10",130,"S"],
     filz:["Filz- & Möbelgleiter","/parkett/moebelgleiter/","",null,"S"],
     profile:["Übergangsprofile","/parkett/profile/","",null,"S"],
-    tritt:["Trittschalldämmung","/parkett/trittschalldaemmung/","",null,"S"],
+    tritt:["Trittschalldämmung","/parkett/trittschalldaemmung/","Trittschalldämmung 600",600,"S"],
     vstange:["Vorhangstangen","/vorhaenge/vorhangstangen/","",null,"S"],
     vblick:["Blickdichte & transparente Vorhänge","/vorhaenge/blickdicht-transparent/","Blickdichte Vorhänge · transparente Vorhänge",410,"G"],
     vakustik:["Akustik- & Schallschutzvorhänge","/vorhaenge/akustik/","Schallschutzvorhang 60",60,"H"],
@@ -1568,9 +1566,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     tmass:["Teppich nach Mass","/bodenbelaege/teppich-nach-mass/","",null,"H"],
     linverlegen:["Linoleum verlegen","/bodenbelaege/linoleum-verlegen/","Linoleum verlegen lassen 10",10,null],
     otep:["Outdoor-Teppiche","/bodenbelaege/outdoor-teppich/","Outdoor Teppich · Balkonteppich · Aussenteppich",5300,"S",1],
-    bambus:["Bambusparkett","/parkett/bambus/","",null,"S",1],
+    bambus:["Bambusparkett","/parkett/bambus/","Bambusparkett 40",40,"S",1],
     laerche:["Lärchenparkett","/parkett/laerche/","Lärche Parkett 30 · Lärchenparkett 10",40,"S",1],
-    kirsch:["Kirschbaumparkett","/parkett/kirschbaum/","Kirschbaum Parkett",20,"S",1],
+    kirsch:["Kirschbaumparkett","/parkett/kirschbaum/","Kirschbaum Parkett 20",20,"S",1],
     holzterrasse:["Holzterrassen","/holz/terrassen/","Terrassendielen · Accoya · Holzterrasse",1650,"S",1],
     wandholz:["Wandverkleidung aus Holz","/holz/wandverkleidung/","Wandverkleidung Holz · Deckenverkleidung Holz",320,"S",1],
     rg18:["Parkett selber schleifen?","/ratgeber/parkett-schleifen/","Parkett versiegeln 100 · Parkett auffrischen 30 · Parkett versiegeln Wartezeit 10 · Parkett selber bürsten 10",150,"I"],
@@ -1597,9 +1595,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     lbZg:["Bodenbeläge Zug","/bodenbelaege/zug/","Bodenleger Zug 30 · Bodenbeläge Zug 10 · Bodenleger Cham 10 · Bodenbeläge Baar 10 · Bodenbeläge Cham 10",70,"H"],
     lpNw:["Parkett Nid- & Obwalden","/parkett/nid-obwalden/","Parkett Nidwalden 10 · Parkett Obwalden 10 · Parkett Stans 10",30,"H"],
     lbNw:["Bodenbeläge Nid- & Obwalden","/bodenbelaege/nid-obwalden/","Bodenbeläge Nidwalden 30 · Bodenleger Nidwalden 10",40,"H"],
-    lplLu:["Plattenleger Luzern","/platten/luzern/","Plattenleger Luzern 30 · Platten Luzern 10",40,"H"],
-    lplZg:["Plattenleger Zug","/platten/zug/","Plattenleger Baar 10 · Plattenleger Cham 10",20,"H"],
-    lplOw:["Plattenleger Nid- & Obwalden","/platten/nid-obwalden/","Plattenleger Engelberg 30 · Plattenleger Obwalden 20",50,"H"],
     lvLu:["Vorhänge Luzern","/vorhaenge/luzern/","Vorhänge Luzern 20 · Vorhänge Emmen 20",40,"H"],
     wand:["Wandplatten & Wandgestaltung","/platten/wand/","",null,"S"],
     kunden:["Kunden","/kunden/","",null,null]
@@ -1609,9 +1604,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     A: {
       meta: ["karriere","ueber","kontakt"],
       main: [
-        {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten & Oberflächen",["eiche","holzarten","oberfl"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","kloetzli","riemen"]],["Dienstleistungen",["pschleifen","pverlegen","prep","treppen"]],["Zubehör",["sockel","tritt","shop"]],["Exklusiv",["woodlife"]],["Regionen",["lpLu","lpZg","lpNw"]]]},
+        {label:"Parkett", c:"oak", hub:"parkett", cols:[["Holzarten",["eiche","nussbaum","ahorn","buche","esche","bambus","laerche","kirsch"]],["Oberflächen & Farbtöne",["ogeoelt","oweiss","orauch","orustikal","ohell","odunkel"]],["Verlegearten & Formate",["fisch","landhaus","massivdielen","kloetzli","riemen"]],["Dienstleistungen",["pschleifen","pverlegen","prep","treppen"]],["Zubehör",["sockel","tritt","shop"]],["Exklusiv",["woodlife"]],["Regionen",["lpLu","lpZg","lpNw"]]]},
         {label:"Bodenbeläge", c:"oak", hub:"boden", cols:[["Vinyl, Linoleum & Co.",["vinyl","laminat","lino","kork","kautschuk","bverlegen"]],["Teppich & Eingänge",["teppich","schmutz"]],["Regionen",["lbLu","lbZg","lbNw"]]]},
-        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik"]],["Dienstleistungen",["plattenleger","kd"]],["Bad & Aussenbereiche",["badplatten","terrasse"]],["Sortiment",["sortiment"]],["Regionen",["lplLu","lplZg","lplOw"]]]},
+        {label:"Platten & Naturstein", c:"slate", hub:"platten", cols:[["Materialien",["natur","steinsorten","keramik","holzoptik"]],["Dienstleistungen",["plattenleger","kd"]],["Bad & Aussenbereiche",["badplatten","terrasse"]],["Sortiment",["sortiment"]]]},
         {label:"Vorhänge", c:"sage", hub:"vorh", cols:[["Vorhangarten",["vflaeche","vtagnacht","vstoffe"]],["Funktionen",["vdunkel","vakustik","vthermo"]],["Räume",["vwohn","vkind","vschlaf","vkueche","vbad","veingang","voutdoor"]],["Systeme",["vstange","schienen"]],["Service & Objekt",["vnaehen","vbuero"]]]},
         {label:"Ausstellung", flat:1, c:"muted", hub:"ausst", cols:[["Besuch",["termin"]]]},
         {label:"Referenzen", flat:1, c:"muted", hub:"ref", cols:[["Filter",["rbad","rparkett","rplatten","rboden","robjekt"]]]},
@@ -1751,7 +1746,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     dr.innerHTML = '<div class="hg-panel">' +
       '<div class="hg-left"><ul class="hg-rows">' + V.C.hg.rows.map(function(r, j){ return rowHtml(r, j, 1); }).join("") + '</ul>' +
         '<ul class="hg-rows hg-more">' + V.C.hg.more.map(function(r, j){ return rowHtml(r, n + j, 0); }).join("") + '</ul></div>' +
-      '<div class="hg-mid"><div class="hg-ban"><div class="rg-img ' + row.tz.img + '"></div><b>' + (HGH[row.id] || esc(row.label)) + '</b><span class="btn">' + esc(row.tz.cta) + HG_ARR + '</span></div><div class="hg-groups' + (ri >= n ? ' one' : '') + '">' + row.groups.map(function(g){ return '<div class="hg-grp">' + (g[0] ? '<h5>' + esc(g[0]) + '</h5>' : '') + '<ul>' + g[1].map(hgItem).join("") + '</ul></div>'; }).join("") + '</div></div>' +
+      '<div class="hg-mid"><div class="hg-ban"><div class="rg-img ' + row.tz.img + '"></div><b>' + (HGH[row.id] || esc(row.label)) + '</b><span class="btn">' + esc(row.tz.cta) + HG_ARR + '</span></div><div class="hg-groups' + (ri >= n ? ' one' : '') + '">' + row.groups.map(function(g){ return '<div class="hg-grp">' + (g[0] ? '<h5>' + esc(g[0]) + (g[0] === "Regionen" ? ' <small class="hg-tag">Horw, Kriens, Sursee usw. nur im Text</small>' : '') + '</h5>' : '') + '<ul>' + g[1].map(hgItem).join("") + '</ul></div>'; }).join("") + '</div></div>' +
       '</div>' +
       '<button type="button" class="hg-close" aria-label="Menü schliessen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>';
   }
