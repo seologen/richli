@@ -752,6 +752,13 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .kc-rel i.on{background:var(--red)}
 .kc-ar{display:inline-block;font-size:12.5px;padding:0 8px;border-radius:99px;margin-left:6px;white-space:nowrap}
 .kc-ar.oak{background:var(--oak-soft);color:var(--oak)} .kc-ar.slate{background:var(--slate-soft);color:var(--slate)} .kc-ar.sage{background:var(--sage-soft);color:var(--sage)} .kc-ar.mut{background:var(--ground);color:var(--muted)}
+.kc-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kc-tabs button{font:500 17px var(--font);padding:14px 16px;border-radius:12px;border:2px solid var(--line);background:var(--sheet);color:var(--ink);cursor:pointer;text-align:left;display:grid;gap:2px}
+.kc-tabs button small{font-size:14px;font-weight:400;color:var(--muted)}
+.kc-tabs button:hover{border-color:var(--red)}
+.kc-tabs button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.kc-tabs button[aria-pressed="true"] small{color:#fff;opacity:.85}
+.kc-tabs button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .kc-t{font-weight:500}
 .kc-pot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .kc-pt{display:grid;gap:2px;padding:12px 16px;border-radius:10px;background:var(--ground)}
@@ -927,7 +934,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 <div class="in">
   <div class="head">
     <h2>Welche Themen werden am meisten gesucht?</h2>
-    <p class="lede">Für jedes Thema im Menü die Suchbegriffe, für die richli.ch als Fachbetrieb ranken kann, mit Suchen pro Monat in der Schweiz. Begriffe, bei denen Google nur Shops zeigt, sind nicht enthalten.</p>
+    <p class="lede">Für jedes Thema im Menü die Suchbegriffe, die zur Suchabsicht eines Fachbetriebs passen, mit Suchen pro Monat in der Schweiz. Begriffe, bei denen Google nur Shops zeigt, sind nicht enthalten.</p>
     <p class="kc-hint">Die Infos dienen zur Orientierung und groben Priorisierung von Inhalten. Ein genaues Keyword-Mapping berücksichtigt auch den Wettbewerb (wo haben wir die grösste Chance zu ranken), nicht nur das reine Suchvolumen.</p>
   </div>
 
@@ -937,10 +944,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   </div>
 
   <div class="sheet">
-    <div class="sheet-top">
-      <h3>Cluster-Karte</h3>
-      <div class="seg" role="group" aria-label="Bereich" id="kcSeg"></div>
-    </div>
+    <h3>Cluster-Karte</h3>
+    <div class="kc-tabs" role="group" aria-label="Bereich" id="kcSeg"></div>
     <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span></div>
     <div class="kc-map"><div id="kcMap"></div><div class="kc-info" id="kcInfo" aria-live="polite"></div></div>
     <h4 class="kc-sub">Themen nach Suchvolumen <span class="count" id="kcCount"></span></h4>
@@ -1827,7 +1832,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     }
     var seg = $("kcSeg");
     if (seg){
-      seg.innerHTML = AREAS.map(function(a, i){ return '<button type="button" data-i="' + i + '" aria-pressed="' + (i === cur) + '">' + esc(a.label) + '</button>'; }).join("");
+      seg.innerHTML = AREAS.map(function(a, i){ return '<button type="button" data-i="' + i + '" aria-pressed="' + (i === cur) + '">' + esc(a.label) + '<small>' + nf(a.total) + ' Suchen</small></button>'; }).join("");
       seg.addEventListener("click", function(e){
         var b = e.target.closest("button[data-i]"); if (!b) return;
         cur = +b.getAttribute("data-i"); sel = null;
