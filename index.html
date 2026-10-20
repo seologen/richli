@@ -758,6 +758,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .kc-ar{display:inline-block;font-size:12.5px;padding:0 8px;border-radius:99px;margin-left:6px;white-space:nowrap}
 .kc-ar.oak{background:var(--oak-soft);color:var(--oak)} .kc-ar.slate{background:var(--slate-soft);color:var(--slate)} .kc-ar.sage{background:var(--sage-soft);color:var(--sage)} .kc-ar.mut{background:var(--ground);color:var(--muted)}
 .kc-t{font-weight:500}
+.kc-sub{font-size:19px;font-weight:500;margin:8px 0 0}
 .kc-more{justify-self:start;font:500 15px var(--font);padding:9px 18px;border-radius:99px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
 .kc-more:hover{background:var(--ink);color:var(--sheet)}
 .kc-vol{min-width:170px}
@@ -936,13 +937,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     </div>
     <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span></div>
     <div class="kc-map"><div id="kcMap"></div><div class="kc-info" id="kcInfo" aria-live="polite"></div></div>
-  </div>
-
-  <div class="sheet">
-    <div class="sheet-top">
-      <h3>Alle Themen nach Suchvolumen <span class="count" id="kcCount"></span></h3>
-      <div class="seg" role="group" aria-label="Filter" id="kcFilter"></div>
-    </div>
+    <h4 class="kc-sub">Themen nach Suchvolumen <span class="count" id="kcCount"></span></h4>
     <div class="tbl"><table class="kc-tbl">
       <thead><tr><th>Thema</th><th>Suchen pro Monat</th><th>Suchbegriffe</th></tr></thead>
       <tbody id="kcBody"></tbody>
@@ -1404,7 +1399,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     kork:["Kork","/bodenbelaege/kork/","Korkboden 600 · Korkparkett 40",640,null],
     laminat:["Laminat","/bodenbelaege/laminat/","Laminat 1600 · Laminatboden 950 · Laminat Holzoptik 20",2570,null],
     kautschuk:["Kautschuk","/bodenbelaege/kautschuk/","Kautschuk Bodenbelag 80 · Kautschukboden 30",110,null],
-    schmutz:["Schmutzschleusen","/bodenbelaege/schmutzschleusen/","Schmutzschleuse 600 · Schmutzschleuse nach Mass 20",620,"G"],
+    schmutz:["Schmutzschleusen","/bodenbelaege/schmutzschleusen/","Schmutzschleuse 600 · Schmutzschleusen 80 · Schmutzschleuse Eingang 30 · Schmutzschleuse nach Mass 20",730,"G"],
     platten:["Platten & Naturstein","/platten/","Plattenleger 550 · Plättli 200 · Plattenleger in der Nähe 100 · Plattenleger Kosten 10",860,"H"],
     keramik:["Keramikplatten","/platten/keramik/","Feinsteinzeugplatten 700 · Bodenplatten 650 · Keramikplatten 400 · Bodenfliesen 350 · Zementfliesen 50",2150,"S"],
     natur:["Naturstein","/platten/naturstein/","Naturstein 700 · Natursteinplatten 600 · Naturstein Luzern 20",1320,"S"],
@@ -1508,7 +1503,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg23:["Terrassenplatten richtig verlegen","/ratgeber/terrassenplatten-verlegen/","Terrassenplatten verlegen 100",100,"I"],
     rg16:["Teppich selber verlegen oder verlegen lassen?","/ratgeber/teppich-verlegen/","Teppich verlegen",100,"I"],
     rg17:["Vorhänge richtig waschen","/ratgeber/vorhaenge-waschen/","Vorhänge waschen · Gardinen waschen",null,"I"],
-    matten:["Schmutzfangmatten","/bodenbelaege/matten/","Schmutzfangmatte 950 · Eingangsteppich 500 · Eingangsmatte 80 · Sauberlaufzone 40",1570,"S"],
+    matten:["Schmutzfangmatten","/bodenbelaege/matten/","Schmutzfangmatte 950 · Eingangsteppich 500 · Schmutzfangmatten 100 · Sauberlaufmatte 90 · Eingangsmatte 80 · Schmutzfangteppich 70 · Eingangsmatten 60 · Sauberlaufzone 40 · Logomatte 20 · Logomatten 20 · Sauberlaufzonen 20 · Schmutzfangmatte nach Mass 10 · Schmutzfangmatte Gewerbe 10 · Eingangsmatte Gewerbe 10 · Fussmatte nach Mass 10 · Kokosmatte nach Mass 10 · Mattenrahmen 10",2010,"S"],
     b2b:["Für Geschäftskunden","/geschaeftskunden/","",null,null],
     unterhalt:["Unterhalt & Mieterwechsel","/geschaeftskunden/unterhalt-mieterwechsel/","",null,null],
     muster:["Muster & Bemusterung","/geschaeftskunden/muster/","",null,null],
@@ -1831,7 +1826,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         var b = e.target.closest("button[data-i]"); if (!b) return;
         cur = +b.getAttribute("data-i"); sel = null;
         seg.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-        renderMap();
+        allRows = false; renderMap(); renderTbl();
       });
     }
     var mapBox = $("kcMap");
@@ -1848,27 +1843,18 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     renderMap();
 
     /* 3 Tabelle */
-    var flt = "Alle", tseg = $("kcFilter"), allRows = false;
+    var allRows = false;
     var maxR = Math.max.apply(null, ROWS.map(function(r){ return r.v; }));
     function renderTbl(){
-      var rows = ROWS.filter(function(r){ return flt === "Alle" || r.area === flt; });
+      var rows = ROWS.filter(function(r){ return r.area === AREAS[cur].label; });
       var more = $("kcMore"), cut = !allRows && rows.length > 20;
       if (more){ more.hidden = !cut; more.textContent = "Alle " + rows.length + " Themen anzeigen"; }
       var tb = $("kcBody"); if (tb) tb.innerHTML = (cut ? rows.slice(0, 20) : rows).map(function(r){
-        return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b>' + (r.id === "ratgeber" ? '' : '<span class="kc-ar ' + COL[r.area] + '">' + esc(r.area) + '</span>') + '</td>' +
+        return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b></td>' +
           '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span></td>' +
           '<td class="kc-k">' + esc(P[r.id][2]) + '</td></tr>';
       }).join("");
       var c = $("kcCount"); if (c) c.textContent = rows.length + " Themen";
-    }
-    if (tseg){
-      tseg.innerHTML = ["Alle"].concat(AREAS.map(function(a){ return a.label; })).map(function(l){ return '<button type="button" data-f="' + esc(l) + '" aria-pressed="' + (l === flt) + '">' + esc(l) + '</button>'; }).join("");
-      tseg.addEventListener("click", function(e){
-        var b = e.target.closest("button[data-f]"); if (!b) return;
-        flt = b.getAttribute("data-f"); allRows = false;
-        tseg.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-        renderTbl();
-      });
     }
     var mb = $("kcMore"); if (mb) mb.addEventListener("click", function(){ allRows = true; renderTbl(); });
     renderTbl();
