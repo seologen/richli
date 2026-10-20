@@ -713,11 +713,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .hg-hdr{gap:28px}
 .hg-drawer .hg-left{position:sticky;top:0;align-self:start}
 
-.kc-fit{display:inline-block;font-size:13px;font-weight:500;padding:1px 10px;border-radius:99px;white-space:nowrap}
-.kc-fit.f2{background:var(--sage-soft);color:var(--sage)} .kc-fit.f1{background:var(--oak-soft);color:var(--oak)} .kc-fit.f0{background:var(--red-soft);color:var(--red-ink)}
-.kc-fc{min-width:220px}
-.kc-fc small{display:block;font-size:13px;color:var(--muted);margin-top:4px}
-.kc-of{display:block;font-size:12.5px;color:var(--muted);margin-left:100px}
 .kc-diy td:first-child{font-weight:500}
 /* Keyword-Cluster */
 .kc-areas{display:grid;gap:14px}
@@ -730,15 +725,13 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 @media (max-width:620px){.kc-area{grid-template-columns:minmax(0,1fr) auto}.kc-area .track{grid-column:1/-1;order:3}}
 .kc-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
 .kc-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
-.kc-legend i.r3,.kc-svg .r3 circle{background:var(--red);fill:var(--red)}
-.kc-legend i.r2,.kc-svg .r2 circle{background:var(--red-mid);fill:var(--red-mid)}
-.kc-legend i.r1,.kc-svg .r1 circle{background:var(--line);fill:var(--line)}
-.kc-map{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.kc-svg .nd.oak circle{fill:var(--oak)} .kc-svg .nd.slate circle{fill:var(--slate)} .kc-svg .nd.sage circle{fill:var(--sage)} .kc-svg .nd.mut circle{fill:var(--muted)}
+.kc-map{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:900px){.kc-map{grid-template-columns:minmax(0,1fr)}}
 .kc-svg{display:block;width:100%;height:auto}
 .kc-svg .lk{stroke:var(--line);stroke-width:1.5;fill:none}
 .kc-svg .lk.g{stroke:var(--muted);stroke-width:2;opacity:.45}
-.kc-svg text{font:500 17px var(--font);fill:var(--ink);text-anchor:middle;paint-order:stroke;stroke:var(--sheet);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.kc-svg text{font:500 18px var(--font);fill:var(--ink);text-anchor:middle;paint-order:stroke;stroke:var(--sheet);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
 .kc-svg .gt{font-size:19px;font-weight:700}
 .kc-svg .grp circle{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
 .kc-svg .nd{cursor:pointer;outline:none}
@@ -747,6 +740,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .kc-svg .hub circle{fill:var(--ink);stroke:none}
 .kc-svg .hub text{fill:var(--sheet);stroke:none;font-size:20px;font-weight:700}
 .kc-svg .hub .hv{font-size:16px;font-weight:400}
+.kc-svg .vv{fill:var(--muted);font-weight:400}
 .kc-info{border-left:3px solid var(--red);padding:4px 0 4px 16px;display:grid;gap:8px;align-content:start}
 .kc-info h4{font-size:19px;font-weight:500;margin:0}
 .kc-info .big{font-size:30px;font-weight:700;line-height:1.1}
@@ -924,7 +918,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 <div class="in">
   <div class="head">
     <h2>Welche Themen am meisten gesucht werden</h2>
-    <p class="lede">Für jedes Thema im Menü die wichtigsten Suchbegriffe mit Suchen pro Monat in der Schweiz. Die Relevanz zeigt, wo sich SEO-Arbeit am ehesten lohnt.</p>
+    <p class="lede">Für jedes Thema im Menü die passenden Suchbegriffe mit Suchen pro Monat in der Schweiz.</p>
   </div>
 
   <div class="kpis" id="kcTop"></div>
@@ -932,7 +926,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   <div class="sheet">
     <h3>Suchvolumen nach Bereich</h3>
     <div class="kc-areas" id="kcAreas"></div>
-    <p class="note">Summe der Suchbegriffe aller Menüseiten pro Bereich. Vorhänge haben viel Volumen, die Suchenden landen aber meist bei Shops.</p>
   </div>
 
   <div class="sheet">
@@ -940,23 +933,20 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       <h3>Cluster-Karte</h3>
       <div class="seg" role="group" aria-label="Bereich" id="kcSeg"></div>
     </div>
-    <div class="kc-legend"><span><i class="r3"></i>Relevanz hoch</span><span><i class="r2"></i>mittel</span><span><i class="r1"></i>tief</span><span>Kreisgrösse = Suchen pro Monat</span></div>
+    <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span></div>
     <div class="kc-map"><div id="kcMap"></div><div class="kc-info" id="kcInfo" aria-live="polite"></div></div>
   </div>
 
   <div class="sheet">
     <div class="sheet-top">
-      <h3>Alle Themen nach Relevanz <span class="count" id="kcCount"></span></h3>
+      <h3>Alle Themen nach Suchvolumen <span class="count" id="kcCount"></span></h3>
       <div class="seg" role="group" aria-label="Filter" id="kcFilter"></div>
     </div>
     <div class="tbl"><table class="kc-tbl">
-      <thead><tr><th>Thema</th><th>Suchen pro Monat</th><th>Google zeigt heute vor allem</th><th>Wichtigste Suchbegriffe</th><th>Begriffe passen zur Seite?</th><th>Relevanz</th></tr></thead>
+      <thead><tr><th>Thema</th><th>Suchen pro Monat</th><th>Suchbegriffe</th></tr></thead>
       <tbody id="kcBody"></tbody>
     </table></div>
     <button type="button" class="kc-more" id="kcMore" hidden></button>
-    <p class="note">Begriffe passen: Anbieterseiten brauchen Suchen mit Kauf- oder Auftragsabsicht, Ratgeber Suchen mit Info-Absicht. Gezählt wird nur das passende Volumen. Bei «kaum» ist die Relevanz immer tief.</p>
-    <p class="note">Relevanz in Punkten (max. 7): passendes Suchvolumen 0–3 (ab 100, 300, 1000), Gewichtung Richli 0–2 (Parkett und Böden 2, Platten und Ratgeber 1, Vorhänge 0), Chance 0–2 (Handwerksbetriebe vorne 2, gemischt oder Ratgeber 1, Shops vorne 0). Hoch ab 5, mittel 3–4.</p>
-    <p class="note">Quelle: SISTRIX CH, Oktober 2026. Suchbegriffe gruppiert nach gemeinsamen Google-Treffern (Top 10).</p>
   </div>
 
   <div class="sheet">
@@ -969,12 +959,14 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         <tr><td>Laminat verlegen</td><td class="n">350</td><td>Laminat</td><td>Laminat verlegen: selber oder vom Profi?</td></tr>
         <tr><td>Parkett verlegen</td><td class="n">300</td><td>Parkett verlegen</td><td>Parkett verlegen: Ablauf, Dauer, Kosten</td></tr>
         <tr><td>Silikonfugen erneuern</td><td class="n">300</td><td>Fugen erneuern</td><td>Silikonfugen erneuern: wann und wie</td></tr>
+        <tr><td>Parkett schleifen, abschleifen, versiegeln</td><td class="n">500</td><td>Parkett schleifen</td><td>Parkett schleifen: selber oder vom Profi?</td></tr>
+        <tr><td>Parkett reparieren</td><td class="n">250</td><td>Parkett reparieren</td><td>In «Kratzer im Parkett entfernen» aufnehmen</td></tr>
         <tr><td>Parkett ölen</td><td class="n">250</td><td>Parkett ölen</td><td>Geöltes Parkett pflegen und nachölen</td></tr>
         <tr><td>Terrassenplatten verlegen</td><td class="n">100</td><td>Terrassenplatten</td><td>Terrassenplatten verlegen: Kies, Mörtel oder Stelzlager?</td></tr>
         <tr><td>Korkboden verlegen</td><td class="n">50</td><td>Kork</td><td>In «Welcher Boden für welchen Raum?» aufnehmen</td></tr>
       </tbody>
     </table></div>
-    <p class="note">Zusammen rund 1'750 Suchen pro Monat. Jeder Artikel verlinkt auf die passende Anbieterseite.</p>
+    <p class="note">Zusammen rund 2'500 Suchen pro Monat. Jeder Artikel verlinkt auf die passende Anbieterseite.</p>
   </div>
 </div>
 </section>
@@ -1405,47 +1397,47 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   /* ---------- 3 Website-Struktur: Seiten mit Keyword-Cluster [Name, URL, Cluster, Suchen/Monat, Suchintention]
      Cluster aus SERP-Überschneidung (Sistrix CH, Top 10, 19.10.2026). Intention: H = Handwerker, S = Shop/Händler, I = Info, G = gemischt ---------- */
   var P = {
-    parkett:["Parkett","/parkett/","Parkett · Parkettboden · Holzboden · Parkett kaufen",4150,"S"],
-    eiche:["Eichenparkett","/parkett/eiche/","Eichenparkett · Parkett Eiche · Eiche Parkett · Eichenboden",850,"S"],
+    parkett:["Parkett","/parkett/","Parkett 1950 · Parkettboden 1500 · Holzboden 450 · Parkett kaufen 250",4150,"S"],
+    eiche:["Eichenparkett","/parkett/eiche/","Eichenparkett 400 · Parkett Eiche 250 · Eiche Parkett 100 · Eichenboden 50",800,"S"],
     holzarten:["Weitere Holzarten","/parkett/holzarten/","Bambus 40 · Buche 30 · Lärche 30 · Nussbaum 20 · Esche 20 · Kirschbaum 20 · Ulme, Douglasie",160,"S"],
     fisch:["Fischgrät & Chevron","/parkett/fischgraet/","Fischgrätparkett 550 · Fischgrat Parkett 60 · Chevron 30",640,"G"],
     landhaus:["Landhausdielen","/parkett/landhausdielen/","Landhausdielen · Landhausdiele Eiche · XXL bis 5 m",240,"S"],
-    massivdielen:["Massivholzdielen","/parkett/massivholzdielen/","Holzdielen · Dielenboden · Massivholzdielen · Massivparkett",330,"G"],
+    massivdielen:["Massivholzdielen","/parkett/massivholzdielen/","Holzdielen 150 · Dielenboden 100 · Massivholzdielen 50 · Massivparkett 30",330,"G"],
     formate:["Schiffsboden, Stab- & Tafelparkett","/parkett/formate/","Schiffsboden · Tafelparkett · Stabparkett · Riemenparkett · Hirnholzparkett",290,"S"],
     kloetzli:["Klötzli- & Mosaikparkett","/parkett/kloetzliparkett/","Klötzliparkett · Mosaikparkett",100,"S"],
     woodlife:["WOODlife","/parkett/woodlife/","Woodlife 10 · exklusiv in der Schweiz",10,null],
-    pverlegen:["Parkett verlegen","/parkett/verlegen/","Parkett verlegen 300 · Parkettleger 100 · Parkett verlegen lassen 10 · Klick-Parkett",450,"G"],
+    pverlegen:["Parkett verlegen","/parkett/verlegen/","Parkettleger 100 · Parkett verlegen Kosten 30 · Parkettleger in der Nähe 10 · Parkett verlegen lassen 10 · Parkettleger Kosten 10 · Parkettleger Preise 10 · Parkett verlegen Preis 10",180,"G"],
     pluzern:["Luzern","/standorte/luzern/","Bodenleger Luzern · Parkett Luzern · Plattenleger Luzern · Vorhänge Luzern · Bodenbeläge Luzern",170,"H"],
-    pschleifen:["Parkett schleifen & renovieren","/parkett/schleifen-renovieren/","Parkett schleifen · abschleifen · versiegeln · sanieren · auffrischen · renovieren",570,"G"],
-    poelen:["Parkett ölen & grundreinigen","/parkett/oelen/","Parkett ölen · geöltes Parkett Pflege · nachölen · Grundreinigung",360,"I"],
-    prep:["Parkett reparieren","/parkett/reparieren/","Parkett reparieren · Parkett ausbessern",270,"G"],
-    treppen:["Treppen renovieren","/parkett/treppen/","Holztreppe · Holztreppe renovieren · Treppe mit Parkett verkleiden · Parkett Treppe",420,null],
+    pschleifen:["Parkett schleifen & renovieren","/parkett/schleifen-renovieren/","Parkettschleifen 50 · Parkett abschleifen Kosten 30 · Parkett schleifen Kosten 20 · Parkett schleifen lassen 10 · Parkett abschleifen lassen 10 · Parkett schleifen Preis 10 · Parkettsanierung 10 · Parkettrenovation 10 · Parkettrenovierung 10",160,"G"],
+    poelen:["Parkett ölen & grundreinigen","/parkett/oelen/","Parkett ölen lassen 10",10,"I"],
+    prep:["Parkett reparieren","/parkett/reparieren/","Parkett Reparatur 20 · Parkettreparatur 10 · Parkett reparieren lassen 10",40,"G"],
+    treppen:["Treppen renovieren","/parkett/treppen/","Treppe mit Parkett verkleiden 20 · Parkett Treppe 20 · Treppe renovieren lassen 10 · Treppenrenovation 10 · Treppensanierung 10",70,null],
     pzug:["Zug","/standorte/zug/","Parkett Zug · Parkettleger Zug · Bodenleger Zug · Plattenleger Zug · Vorhänge Zug",130,"H"],
     pnwow:["Nid- & Obwalden","/standorte/nidwalden-obwalden/","Plattenleger Obwalden · Parkett Stans · Parkett Obwalden · Bodenleger Nidwalden · Plattenleger Nidwalden",60,"H"],
     puri:["Uri","/standorte/uri/","Plattenleger Uri",10,"H",1],
     boden:["Bodenbeläge","/bodenbelaege/","Bodenbeläge · Bodenbelag · Bodenbeläge Luzern",1370,null],
     bodenparkett:["Boden & Parkett","/boden-parkett/","Bodenbeläge · Bodenbelag · Bodenleger · Bodenbeläge Luzern",1920,null],
-    vinyl:["Vinyl","/bodenbelaege/vinyl/","Vinylboden · PVC-Boden · Klick-Vinyl · Klebevinyl · Rigid-Vinyl · Holzoptik · Steinoptik",6160,null],
-    lino:["Linoleum","/bodenbelaege/linoleum/","Linoleum · Linoleum Bodenbelag · Linoleumboden · Marmoleum · Linoleum Platten",3770,null],
-    teppich:["Teppich & Spannteppich","/bodenbelaege/teppich/","Spannteppich · Teppichboden · Wollteppichboden · Hotelteppich",790,null],
-    kork:["Kork","/bodenbelaege/kork/","Korkboden · Korkparkett · Korkboden verlegen",690,null],
-    laminat:["Laminat","/bodenbelaege/laminat/","Laminat · Laminatboden · Laminat verlegen · Laminat Holzoptik",2920,null],
+    vinyl:["Vinyl","/bodenbelaege/vinyl/","Vinylboden 3400 · PVC-Boden 1000 · Vinylboden Holzoptik 400 · Klick-Vinyl 350 · Klebevinyl 60 · Rigid-Vinyl 50 · Vinylboden Steinoptik 50",5310,null],
+    lino:["Linoleum","/bodenbelaege/linoleum/","Linoleum Bodenbelag 1050 · Linoleumboden 700 · Marmoleum 100",1850,null],
+    teppich:["Teppich & Spannteppich","/bodenbelaege/teppich/","Spannteppich 350 · Teppichboden 350 · Wollteppichboden 70 · Hotelteppich 10",780,null],
+    kork:["Kork","/bodenbelaege/kork/","Korkboden 600 · Korkparkett 40",640,null],
+    laminat:["Laminat","/bodenbelaege/laminat/","Laminat 1600 · Laminatboden 950 · Laminat Holzoptik 20",2570,null],
     kautschuk:["Kautschuk","/bodenbelaege/kautschuk/","Kautschuk Bodenbelag 80 · Kautschukboden 30",110,null],
-    schmutz:["Schmutzschleusen","/bodenbelaege/schmutzschleusen/","Schmutzschleuse · Schmutzschleuse nach Mass · Schmutzschleuse aussen · Schmutzschleusen Teppich",600,"G"],
-    platten:["Platten & Naturstein","/platten/","Plattenleger Luzern 30 · Bodenplatten 650 · Plättli 200",880,"H"],
-    keramik:["Keramikplatten","/platten/keramik/","Keramikplatten · Bodenplatten · Bodenfliesen · Plättli · Wandplatten · Zementfliesen",1840,"S"],
-    natur:["Naturstein","/platten/naturstein/","Naturstein · Natursteinplatten · Naturstein Luzern",1310,"S"],
-    holzoptik:["Platten in Holzoptik","/platten/holzoptik/","Platten Holzoptik · Fliesen Holzoptik · Holzimitat Platten · Terrassenplatten Holzoptik",350,"S"],
+    schmutz:["Schmutzschleusen","/bodenbelaege/schmutzschleusen/","Schmutzschleuse 600 · Schmutzschleuse nach Mass 20",620,"G"],
+    platten:["Platten & Naturstein","/platten/","Plattenleger 550 · Plättli 200 · Plattenleger in der Nähe 100 · Plattenleger Kosten 10",860,"H"],
+    keramik:["Keramikplatten","/platten/keramik/","Feinsteinzeugplatten 700 · Bodenplatten 650 · Keramikplatten 400 · Bodenfliesen 350 · Zementfliesen 50",2150,"S"],
+    natur:["Naturstein","/platten/naturstein/","Naturstein 700 · Natursteinplatten 600 · Naturstein Luzern 20",1320,"S"],
+    holzoptik:["Platten in Holzoptik","/platten/holzoptik/","Fliesen Holzoptik 150 · Platten Holzoptik 50 · Terrassenplatten Holzoptik 50",250,"S"],
     sortiment:["Platten-Sortiment","/platten/sortiment/","56 Platten mit m²-Preis, z. B. Travertin",null,null],
-    terrasse:["Terrassen- & Gartenplatten","/platten/terrasse/","Gartenplatten · Terrassenplatten · Feinsteinzeugplatten · Natursteinplatten Garten · Terrassenplatten verlegen",3350,"S"],
-    bad:["Badsanierung","/platten/badsanierung/","Badsanierung · Bad renovieren · Badumbau · Badsanierung Kosten",870,"G"],
-    badplatten:["Badezimmer-Platten","/platten/badezimmer/","Badezimmer Platten · Fliesen Badezimmer · Badezimmer Boden · Dusche Platten",390,"S"],
-    vorh:["Vorhänge nach Mass","/vorhaenge/","Vorhänge · Vorhänge nach Mass · Massvorhänge · Gardinen · Vorhänge Luzern",8610,"S"],
-    schienen:["Vorhangschienen","/vorhaenge/vorhangschienen/","Vorhangschienen · Gardinenschiene · Vorhangsysteme · Deckenschiene",1670,"S"],
+    terrasse:["Terrassen- & Gartenplatten","/platten/terrasse/","Gartenplatten 1550 · Terrassenplatten 900 · Natursteinplatten Garten 100",2550,"S"],
+    bad:["Badsanierung","/platten/badsanierung/","Badsanierung 300 · Badumbau 300 · Bad renovieren 200 · Badrenovation 100 · Bad Renovation 90 · Badsanierung Kosten 70 · Badumbau Kosten 30",1090,"G"],
+    badplatten:["Badezimmer-Platten","/platten/badezimmer/","Fliesen Badezimmer 150 · Badezimmer Platten 150 · Badezimmer Boden 40 · Dusche Platten 30",370,"S"],
+    vorh:["Vorhänge nach Mass","/vorhaenge/","Vorhänge 6100 · Gardinen 1600 · Vorhänge nach Mass 850 · Massvorhänge 40 · Vorhänge Luzern 20",8610,"S"],
+    schienen:["Vorhangschienen","/vorhaenge/vorhangschienen/","Vorhangschienen 1350 · Gardinenschiene 200 · Vorhangsysteme 100 · Deckenschiene 20",1670,"S"],
     vbuero:["Vorhänge Büro & Objekt","/vorhaenge/buero-objekt/","Vorhänge Büro 30",30,null],
     service:["Service","/service/","",null,null],
     dienst:["Dienstleistungen","/dienstleistungen/","",null,null],
-    kd:["Fugen erneuern","/platten/fugen-erneuern/","Silikonfugen erneuern · Fugen erneuern",500,"G"],
+    kd:["Fugen erneuern","/platten/fugen-erneuern/","Fugensanierung 30 · Fugen erneuern lassen 10 · Silikonfugen erneuern lassen 10 · Fugen erneuern Kosten 10 · Silikonfugen ersetzen 10 · Fugen sanieren 10",80,"G"],
     shop:["Pflegeprodukte","shop.proffwoodcare.ch/richli","Parkettpflege · Holzbodenseife · Parkettöl · Parkett Pflegemittel",330,"S"],
     ausst:["Ausstellung","/ausstellung/","Parkett Ausstellung 90 · 400 m² in Emmenbrücke",90,null],
     termin:["Beratungstermin buchen","/ausstellung/termin/","90 Minuten, online buchbar",null,null],
@@ -1464,7 +1456,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg1:["Parkett & Holzboden reinigen","/ratgeber/parkett-reinigen-pflegen/","Parkett reinigen · Holzboden reinigen · Parkett Pflege · versiegeltes Parkett",820,"I"],
     rg2:["Parkett geölt oder versiegelt?","/ratgeber/parkett-geoelt-oder-versiegelt/","Parkett versiegelt 200 · Parkett geölt 40 · geölt oder versiegelt 30",270,"I"],
     rg3:["Was kostet Parkett?","/ratgeber/parkett-kosten/","Parkett Preise 40 · Parkett verlegen Kosten 30",70,"I"],
-    rg4:["Parkettarten im Vergleich","/ratgeber/parkettarten/","Parkett Arten 60 · Parkettarten 50 · Massivparkett 30 · Mehrschichtparkett 20",160,"I"],
+    rg4:["Parkettarten im Vergleich","/ratgeber/parkettarten/","Parkett Arten 60 · Parkettarten 50 · Massivparkett oder Mehrschichtparkett 10",120,"I"],
     rg5:["Parkett im Bad & auf Bodenheizung","/ratgeber/parkett-bad-bodenheizung/","Parkett Badezimmer 30 · Parkett Bodenheizung 10",40,"I"],
     rg6:["Feinsteinzeug oder Keramik?","/ratgeber/feinsteinzeug-keramik/","Feinsteinzeug 350",350,"I"],
     rg7:["Welcher Boden für welchen Raum?","/ratgeber/boden-fuer-jeden-raum/","Küchenboden · Bodenbelag Küche · Parkett Wohnzimmer, Schlafzimmer, Kinderzimmer · Bodenbelag Bad",220,"I"],
@@ -1474,8 +1466,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     ueber:["Über uns","/ueber-uns/","Team · Werte · Geschichte",null,null],
     ueberteam:["Team & Geschichte","/ueber-uns/","",null,null],
     handwerk:["Handwerk","/ueber-uns/handwerk/","",null,null],
-    steinsorten:["Travertin, Marmor & Co.","/platten/natursteinsorten/","Travertin · Travertin Platten · Quarzit · Granitplatten · Schieferplatten · Marmorboden · Sandsteinplatten",2290,"S"],
-    stelz:["Balkonplatten & Stelzlager","/platten/stelzlager/","Stelzlager · Balkon Platten · Feinsteinzeug Terrassenplatten · Sitzplatz Platten",790,"S"],
+    steinsorten:["Travertin, Marmor & Co.","/platten/natursteinsorten/","Travertin Platten 250 · Granitplatten 250 · Schieferplatten 150 · Marmorboden 80 · Sandsteinplatten 70 · Quarzit Platten 10",810,"S"],
+    stelz:["Balkonplatten & Stelzlager","/platten/stelzlager/","Balkon Platten 150 · Feinsteinzeug Terrassenplatten 70 · Sitzplatz Platten 30",250,"S"],
     rbad:["Badezimmer-Ideen","/referenzen/badezimmer/","Badezimmer Ideen",700,null],
     rg9:["Naturstein reinigen","/ratgeber/naturstein-reinigen/","Steinboden reinigen · Naturstein reinigen",200,"I"],
     rg10:["Bodenebene Dusche mit Platten","/ratgeber/bodenebene-dusche/","Fugenlose Dusche · Walk-in-Dusche · bodenebene Dusche",260,"I"],
@@ -1499,7 +1491,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     voutdoor:["Outdoor-Vorhänge","/vorhaenge/outdoor/","Outdoor Vorhänge",50,"S"],
     vdunkel:["Verdunkelungsvorhänge","/vorhaenge/verdunkelung/","Verdunkelungsvorhang · Blackout Vorhang",1450,"S"],
     vflaeche:["Flächenvorhänge & Sichtschutz","/vorhaenge/flaechenvorhaenge/","Flächenvorhang · Schiebegardinen · Sichtschutz Vorhang · Raumteiler Vorhang",1220,"S"],
-    vnaehen:["Nähservice & Montage","/vorhaenge/naehen-montage/","Vorhänge nähen lassen",100,"G"],
+    vnaehen:["Nähservice & Montage","/vorhaenge/naehen-montage/","Vorhänge nähen lassen 100 · Vorhänge kürzen lassen 60 · Vorhänge Montage 10",170,"G"],
     ahorn:["Ahornparkett","/parkett/ahorn/","Ahorn Parkett · Ahornparkett",80,"G"],
     riemen:["Riemenparkett","/parkett/riemenparkett/","Riemenparkett",50,"G"],
     nadelfilz:["Nadelfilz","/bodenbelaege/nadelfilz/","Nadelfilz · Nadelfilz Teppich · Kugelgarn Teppich",200,"G"],
@@ -1508,19 +1500,19 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg13:["Untergrund vorbereiten","/ratgeber/untergrund-vorbereiten/","Boden nivellieren · Boden ausgleichen · alten Bodenbelag entfernen",60,"I"],
     rg14:["Kratzer im Parkett entfernen","/ratgeber/parkett-kratzer/","Parkett Kratzer entfernen",40,"I"],
     rg15:["Parkett-Dicke & Verlegerichtung","/ratgeber/parkett-dicke-verlegerichtung/","Parkett Dicke · Parkett Verlegerichtung",40,"I"],
-    sockel:["Sockelleisten","/parkett/sockelleisten/","Sockelleisten · Sockelleisten montieren · Parkett Sockelleisten",940,"S"],
+    sockel:["Sockelleisten","/parkett/sockelleisten/","Parkett Sockelleisten 10 · Sockelleisten montieren lassen 10",20,"S"],
     filz:["Filz- & Möbelgleiter","/parkett/moebelgleiter/","Filzgleiter · Chairfixx",450,"S"],
-    profile:["Übergangsprofile","/parkett/profile/","Übergangsprofil",80,"S"],
-    tritt:["Trittschalldämmung","/parkett/trittschalldaemmung/","Trittschalldämmung · Trittschalldämmung Parkett",660,"S"],
-    vstange:["Vorhangstangen","/vorhaenge/vorhangstangen/","Vorhangstange · Gardinenstange",1900,"S"],
+    profile:["Übergangsprofile","/parkett/profile/","Übergangsprofil 80",80,"S"],
+    tritt:["Trittschalldämmung","/parkett/trittschalldaemmung/","Trittschalldämmung Parkett 60",60,"S"],
+    vstange:["Vorhangstangen","/vorhaenge/vorhangstangen/","Vorhangstange 1350 · Gardinenstange 550",1900,"S"],
     vblick:["Blickdichte & transparente Vorhänge","/vorhaenge/blickdicht-transparent/","Blickdichte Vorhänge · transparente Vorhänge",410,"G"],
     vakustik:["Akustik- & Schallschutzvorhänge","/vorhaenge/akustik/","Akustikvorhang · Schallschutzvorhang",310,"H"],
     vtagnacht:["Tag- & Nachtvorhänge","/vorhaenge/tag-nacht/","Nachtvorhang · Tagesvorhang · Blickdichte Vorhänge · transparente Vorhänge",710,"G"],
     vstoffe:["Leinen- & Samtvorhänge","/vorhaenge/stoffe/","Leinenvorhänge · Leinen Vorhang · Samtvorhang",350,"G"],
     vthermo:["Thermovorhänge","/vorhaenge/thermovorhang/","Thermovorhang",150,"G"],
-    tfliesen:["Teppichfliesen","/bodenbelaege/teppichfliesen/","Teppichfliesen · Teppichfliesen verlegen",160,"S"],
+    tfliesen:["Teppichfliesen","/bodenbelaege/teppichfliesen/","Teppichfliesen 150",150,"S"],
     tmass:["Teppich nach Mass","/bodenbelaege/teppich-nach-mass/","Teppich nach Mass · Teppichboden nach Mass",110,"H"],
-    linverlegen:["Linoleum verlegen","/bodenbelaege/linoleum-verlegen/","Linoleum verlegen",70,null],
+    linverlegen:["Linoleum verlegen","/bodenbelaege/linoleum-verlegen/","Linoleum verlegen lassen 10",10,null],
     otep:["Outdoor-Teppiche","/bodenbelaege/outdoor-teppich/","Outdoor Teppich · Balkonteppich · Aussenteppich",5300,"S",1],
     bambus:["Bambusparkett","/parkett/bambus/","Bambusparkett",40,"S",1],
     laerche:["Lärchenparkett","/parkett/laerche/","Lärche Parkett",30,"S",1],
@@ -1529,14 +1521,14 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     wandholz:["Wandverkleidung aus Holz","/holz/wandverkleidung/","Wandverkleidung Holz · Deckenverkleidung Holz",320,"S",1],
     rg16:["Teppich selber verlegen oder verlegen lassen?","/ratgeber/teppich-verlegen/","Teppich verlegen",100,"I"],
     rg17:["Vorhänge richtig waschen","/ratgeber/vorhaenge-waschen/","Vorhänge waschen · Gardinen waschen",null,"I"],
-    matten:["Gummi- & Schmutzfangmatten","/bodenbelaege/matten/","Schmutzfangmatte · Eingangsteppich · Gummimatte",1800,"S"],
+    matten:["Gummi- & Schmutzfangmatten","/bodenbelaege/matten/","Eingangsteppich 500 · Eingangsmatte 80 · Sauberlaufzone 40",620,"S"],
     b2b:["Für Geschäftskunden","/geschaeftskunden/","",null,null],
     unterhalt:["Unterhalt & Mieterwechsel","/geschaeftskunden/unterhalt-mieterwechsel/","",null,null],
     muster:["Muster & Bemusterung","/geschaeftskunden/muster/","",null,null],
     ausschreibung:["Ausschreibungen & Unternehmervarianten","/geschaeftskunden/ausschreibungen/","",null,null],
     kontakt:["Kontakt","/kontakt/","",null,null],
     produkte:["Produkte","/produkte/","",null,null],
-    bverlegen:["Bodenleger","/bodenbelaege/bodenleger/","Bodenleger 550 · Bodenleger Luzern 60 · Boden verlegen lassen",550,"H"],
+    bverlegen:["Bodenleger","/bodenbelaege/bodenleger/","Bodenleger 550 · Bodenleger in der Nähe 100 · Laminat verlegen Kosten 30 · Bodenleger Kosten 10 · Vinylboden verlegen Preis 10 · Teppich verlegen Kosten 10",710,"H"],
     vbad:["Vorhänge Bad","/vorhaenge/bad/","Vorhang Badezimmer",null,"S"],
     veingang:["Vorhänge Eingang & Korridor","/vorhaenge/eingang-korridor/","Türvorhang · Durchgangsvorhang",null,"S"],
     lpLu:["Parkett Luzern","/parkett/luzern/","Parkett Luzern 30 · Parkettleger Luzern 10 · Parkett schleifen Luzern 10",50,"H"],
@@ -1549,7 +1541,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     lplZg:["Plattenleger Zug","/platten/zug/","Plattenleger Zug · Platten Zug",null,"H"],
     lplOw:["Plattenleger Obwalden","/platten/obwalden/","Plattenleger Engelberg 30 · Plattenleger Obwalden 20",50,"H"],
     lvLu:["Vorhänge Luzern","/vorhaenge/luzern/","Vorhänge Luzern 20 · Vorhänge Emmen 20",40,"H"],
-    wand:["Wandplatten & Wandgestaltung","/platten/wand/","Wandplatten · Wandgestaltung · Naturstein Wand",null,"S"],
+    wand:["Wandplatten & Wandgestaltung","/platten/wand/","Wandplatten 100",100,"S"],
     kunden:["Kunden","/kunden/","",null,null]
   };
   var RG = {label:"Ratgeber", c:"warn", hub:"ratgeber", cols:[["Parkett wählen",["rg4","rg2","rg12","rg15","rg11","rg3"]],["Pflege & Renovieren",["rg1","rg14"]],["Verlegung & Räume",["rg13","rg5","rg7"]],["Böden & Platten",["rg6","rg10","rg9","rg8","rg16"]],["Vorhänge",["rg17"]]]};
@@ -1758,60 +1750,17 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   }
   renderNav("C");
 
-  /* ---------- Keyword-Cluster: Themen nach Suchvolumen und Relevanz (Daten aus P, Menü aus V.A) ---------- */
+  /* ---------- Keyword-Cluster: Themen nach Suchvolumen (Daten aus P, Menü aus V.A) ---------- */
   (function(){
-    var KW = {"Parkett":2, "Bodenbeläge":2, "Platten & Naturstein":1, "Vorhänge":0, "Ratgeber":1};
     var GEW = {"Parkett":"65 % mit Böden", "Bodenbeläge":"65 % mit Parkett", "Platten & Naturstein":"30 %", "Vorhänge":"5 %", "Ratgeber":"unterstützt alle Bereiche"};
     var COL = {"Parkett":"oak", "Bodenbeläge":"oak", "Platten & Naturstein":"slate", "Vorhänge":"sage", "Ratgeber":"mut"};
-    var INT = {H:["Handwerksbetriebe", 2], G:["Gemischt", 1], I:["Ratgeber-Seiten", 1], S:["Shops & Händler", 0]};
-    var REL = ["tief", "tief", "tief", "mittel", "mittel", "hoch", "hoch", "hoch"];
     function nf(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); }
-    /* Passen die Begriffe zur Seite? [passendes Volumen oder null, Hinweis, "t" = teilweise]
-       Anbieterseiten brauchen Kauf- oder Auftragsabsicht, Ratgeber eine Info-Absicht. */
-    var FIT = {
-      pverlegen:[110, "„Parkett verlegen“ (300) sucht meist eine Anleitung, gehört in den Ratgeber. Passend: Parkettleger (100), verlegen lassen.", "t"],
-      pschleifen:[null, "„Parkett schleifen“ (300) ist gemischt. „Abschleifen“ und „auffrischen“ suchen oft Heimwerker.", "t"],
-      poelen:[10, "Google zeigt Ratgeber: „Parkett ölen“ (250) ist eine Pflege-Anleitung. Besser als Ratgeber, das Ölen als Dienstleistung bei „Schleifen & renovieren“."],
-      prep:[null, "„Parkett reparieren“ (250) suchen Heimwerker und Kunden etwa gleich oft.", "t"],
-      treppen:[40, "„Holztreppe“ (300) sucht eine neue Treppe oder Treppenbauer. Passend: Treppe renovieren (30)."],
-      sockel:[0, "Sockelleisten (900) kauft man im Baumarkt. Nur als Zubehör zum Boden zeigen."],
-      tritt:[0, "Trittschalldämmung (600) kauft man im Baumarkt. Nur als Zubehör zum Boden zeigen."],
-      profile:[0, "Kaufabsicht im Baumarkt. Nur als Zubehör zum Boden zeigen."],
-      filz:[0, "Filzgleiter (450) sind ein Shop-Artikel. Passt höchstens zum Pflegeshop."],
-      vinyl:[5760, "„Vinylboden verlegen“ (400) sucht eine Anleitung, gehört in den Ratgeber."],
-      lino:[1750, "„Linoleum“ allein meint oft Linolschnitt (Basteln). Passend: Linoleum Bodenbelag (1050), Linoleumboden (700)."],
-      laminat:[2570, "„Laminat verlegen“ (350) sucht eine Anleitung, gehört in den Ratgeber."],
-      kork:[640, "„Korkboden verlegen“ (50) sucht eine Anleitung."],
-      linverlegen:[10, "Anleitungs-Suche. Besser auf der Seite Linoleum erwähnen."],
-      otep:[0, "Outdoor-Teppiche (4650) kauft man im Shop. Nicht Richlis Angebot."],
-      matten:[500, "Schmutzfangmatte (950) und Gummimatte (350) sind Shop-Artikel. Passend: Eingangsteppich für Objekte."],
-      steinsorten:[840, "„Travertin“ (1150) und „Quarzit“ (300) allein suchen Materialinfos. Passend: Travertin Platten, Marmorboden."],
-      terrasse:[3250, "„Terrassenplatten verlegen“ (100) sucht eine Anleitung."],
-      stelz:[240, "„Stelzlager“ (550) ist Zubehör zum Kaufen."],
-      bad:[null, "„Badsanierung“ sucht oft einen Gesamtanbieter mit Sanitär. Richli macht die Platten, Partner nennen.", "t"],
-      kd:[null, "„Silikonfugen erneuern“ (300) sucht meist eine Anleitung, „erneuern lassen“ nur 10.", "t"],
-      vstange:[null, "Vorhangstangen (1350) kauft man meist im Shop. Nur zusammen mit Vorhängen nach Mass.", "t"],
-      schienen:[null, "Kauf im Shop überwiegt. Passt mit Montage durch Richli.", "t"]
-    };
-    var FITL = ["kaum", "teilweise", "passt"];
-    function raw(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
-    function fitLvl(id){
-      var f = FIT[id]; if (!f) return 2; if (f[2] === "t") return 1;
-      var q = raw(id) ? (f[0] == null ? raw(id) : f[0]) / raw(id) : 1;
-      return q >= 0.75 ? 2 : q >= 0.25 ? 1 : 0;
-    }
-    function vol(id){ var f = FIT[id]; return f && f[0] != null ? f[0] : raw(id); }
-    function score(id, area){
-      var v = vol(id), t = v >= 1000 ? 3 : v >= 300 ? 2 : v >= 100 ? 1 : 0;
-      var it = P[id][4], sc = t + KW[area] + (INT[it] ? INT[it][1] : 1);
-      return fitLvl(id) ? sc : Math.min(sc, 2);
-    }
-    function relCls(s){ return s >= 5 ? 3 : s >= 3 ? 2 : 1; }
+    function vol(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
     var src = V.A.main.slice(0, 4).concat([RG]);
     var AREAS = src.map(function(m){
       var seen = {}, groups = [];
       m.cols.forEach(function(c){
-        var ids = c[1].filter(function(id){ if (seen[id] || !raw(id)) return false; seen[id] = 1; return true; });
+        var ids = c[1].filter(function(id){ if (seen[id] || !vol(id)) return false; seen[id] = 1; return true; });
         if (ids.length) groups.push([c[0], ids]);
       });
       var ids = [].concat.apply([], groups.map(function(g){ return g[1]; }));
@@ -1820,15 +1769,10 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     });
     var ROWS = [];
     AREAS.forEach(function(a){
-      (raw(a.hub) ? [a.hub] : []).concat(a.ids).forEach(function(id){ var s = score(id, a.label); ROWS.push({id: id, area: a.label, v: vol(id), s: s, r: relCls(s)}); });
+      (vol(a.hub) ? [a.hub] : []).concat(a.ids).forEach(function(id){ ROWS.push({id: id, area: a.label, v: vol(id)}); });
     });
-    ROWS.sort(function(x, y){ return y.s - x.s || y.v - x.v; });
-    var RBYID = {}; ROWS.forEach(function(r){ RBYID[r.area + "|" + r.id] = r; });
+    ROWS.sort(function(x, y){ return y.v - x.v; });
 
-    function relHtml(r){ var t = REL[r.s] || "hoch"; return '<span class="kc-rel" title="' + r.s + ' von 7 Punkten">' + [1,2,3].map(function(i){ return '<i' + (i <= r.r ? ' class="on"' : '') + '></i>'; }).join("") + ' ' + t + '</span>'; }
-    function fitHtml(id){ var l = fitLvl(id); return '<span class="kc-fit f' + l + '">' + FITL[l] + '</span>'; }
-    function fitNote(id){ return FIT[id] ? FIT[id][1] : (P[id][4] === "I" ? "Info-Absicht, passt zum Ratgeber." : ""); }
-    function intTxt(id){ var it = P[id][4]; return INT[it] ? INT[it][0] : "nicht geprüft"; }
     function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
 
     /* 1 Bereiche */
@@ -1836,60 +1780,62 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var sumA = AREAS.reduce(function(s, a){ return s + a.total; }, 0);
     var ab = $("kcAreas");
     if (ab) ab.innerHTML = AREAS.slice().sort(function(x, y){ return y.total - x.total; }).map(function(a){
-      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (raw(a.hub) ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
+      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (vol(a.hub) ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
         '<div class="track"><div class="fill ' + COL[a.label] + '" style="width:' + Math.max(1.5, a.total / maxA * 100).toFixed(1) + '%"></div></div>' +
         '<div class="v">' + nf(a.total) + '<small>' + Math.round(a.total / sumA * 100) + ' % der Suchen</small></div></div>';
     }).join("");
 
     /* 2 Cluster-Karte */
     var cur = 0, sel = null;
-    function info(id, area){
+    function info(id){
       var box = $("kcInfo"); if (!box) return;
       var a = AREAS[cur];
       if (!id){
-        box.innerHTML = '<h4>' + esc(a.label) + '</h4><div class="big">' + nf(a.total) + '</div><p class="note">Suchen pro Monat, ' + a.groups.length + ' Themengruppen, ' + a.ids.length + ' Unterseiten. Kreisgrösse = Suchvolumen, Farbe = Relevanz. Auf einen Kreis klicken für die Suchbegriffe.</p>';
+        box.innerHTML = '<h4>' + esc(a.label) + '</h4><div class="big">' + nf(a.total) + '</div><p class="note">Suchen pro Monat, ' + a.groups.length + ' Themengruppen, ' + a.ids.length + ' Unterseiten</p>';
         return;
       }
-      var r = RBYID[area + "|" + id];
-      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nf(vol(id)) + '</div><p class="note">Suchen pro Monat · Google zeigt heute vor allem: ' + esc(intTxt(id)) + '</p>' + (r ? '<div>' + relHtml(r) + '</div>' : '') + '<p>Begriffe passen: ' + fitHtml(id) + (raw(id) !== vol(id) ? ' <span class="note">' + nf(vol(id)) + ' von ' + nf(raw(id)) + ' Suchen passen</span>' : '') + '</p>' + (fitNote(id) ? '<p class="note">' + esc(fitNote(id)) + '</p>' : '') + kwHtml(id) + (P[id][5] ? '<p class="note">Sortiment mit Richli prüfen</p>' : '');
+      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nf(vol(id)) + '</div><p class="note">Suchen pro Monat</p>' + kwHtml(id);
     }
     function mapSvg(){
-      /* Radiales Cluster: Seiten auf dem Aussenring, nach Gruppen geordnet; Gruppen auf dem Innenring */
-      var a = AREAS[cur], W = 1400, H = 860, cx = 700, cy = 430, n = a.groups.length;
-      var total = a.ids.length, two = total > 20, slot = 2 * Math.PI / (total + n);
+      /* Mindmap: Bereich in der Mitte, Themengruppen links und rechts, Seiten als lesbare Liste aussen */
+      var a = AREAS[cur], W = 1380, cx = 690, ROW = 34, GAP = 22;
       var maxV = Math.max.apply(null, a.ids.map(vol).concat([1]));
-      function rad(v){ return 6 + 24 * Math.sqrt(v / maxV); }
+      function rad(v){ return 4 + 13 * Math.sqrt(v / maxV); }
       function f(x){ return x.toFixed(1); }
-      var lines = "", nodes = "", labels = "", off = 0;
-      a.groups.forEach(function(g){
-        var m = g[1].length, mid = -Math.PI / 2 + (off + m / 2) * slot;
-        var gx = cx + Math.cos(mid) * 230, gy = cy + Math.sin(mid) * 150;
-        lines += '<line class="lk g" x1="' + cx + '" y1="' + cy + '" x2="' + f(gx) + '" y2="' + f(gy) + '"/>';
-        g[1].forEach(function(id, k){
-          var th = -Math.PI / 2 + (off + k + 0.5) * slot, outer = !two || k % 2 === 0, s = outer ? 1 : 0.8;
-          var c = Math.cos(th), sn = Math.sin(th), v = vol(id), r = RBYID[a.label + "|" + id], rd = rad(v);
-          var px = cx + c * 400 * s, py = cy + sn * 300 * s;
-          lines += '<path class="lk" d="M' + f(gx) + ' ' + f(gy) + 'Q' + f(cx + c * 310 * s) + ' ' + f(cy + sn * 232 * s) + ' ' + f(px) + ' ' + f(py) + '"/>';
-          var lab = '';
-          if (v >= maxV * 0.15 || (r && r.r === 3)){
-            var dc = outer ? c : -c, ds = outer ? sn : -sn;
-            var anc = dc > 0.25 ? "start" : dc < -0.25 ? "end" : "middle";
-            var lx = px + dc * (rd + 7), ly = py + ds * (rd + 7) + (anc === "middle" ? (ds > 0 ? 15 : -3) : 6);
-            var t = P[id][0].length > 26 ? P[id][0].slice(0, 25) + "…" : P[id][0];
-            lab = '<text style="text-anchor:' + anc + '" x="' + f(lx) + '" y="' + f(ly) + '">' + esc(t) + '</text>';
-          }
-          nodes += '<g class="nd r' + (r ? r.r : 1) + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen"><circle cx="' + f(px) + '" cy="' + f(py) + '" r="' + f(rd) + '"/>' + lab + '<title>' + esc(P[id][0]) + ': ' + nf(v) + '</title></g>';
+      /* Gruppen ausgewogen auf zwei Seiten verteilen, Reihenfolge bleibt */
+      var half = a.ids.length / 2, side = [[], []], cnt = 0;
+      a.groups.forEach(function(g){ if (!side[1].length && (cnt + g[1].length / 2 <= half || !side[0].length)){ side[0].push(g); cnt += g[1].length; } else side[1].push(g); });
+      function h(gs){ return gs.reduce(function(t, g){ return t + g[1].length * ROW; }, 0) + Math.max(0, gs.length - 1) * GAP; }
+      var H = Math.max(h(side[0]), h(side[1]), 200) + 60, cy = H / 2;
+      var lines = "", nodes = "", labels = "";
+      side.forEach(function(gs, si){
+        var dir = si ? 1 : -1, y = (H - h(gs)) / 2 + ROW / 2, gx = cx + dir * 190, px = cx + dir * 290;
+        gs.forEach(function(g){
+          var y0 = y;
+          g[1].forEach(function(id){
+            var v = vol(id), rd = rad(v);
+            var t = P[id][0].length > 30 ? P[id][0].slice(0, 29) + "…" : P[id][0];
+            nodes += '<g class="nd ' + COL[a.label] + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen"><circle cx="' + px + '" cy="' + f(y) + '" r="' + f(rd) + '"/>' +
+              '<text style="text-anchor:' + (si ? "start" : "end") + '" x="' + (px + dir * 22) + '" y="' + f(y + 6) + '">' + esc(t) + ' <tspan class="vv">' + nf(v) + '</tspan></text><title>' + esc(P[id][0]) + ': ' + nf(v) + '</title></g>';
+            y += ROW;
+          });
+          var gy = (y0 + y - ROW) / 2;
+          lines += '<path class="lk g" d="M' + cx + ' ' + f(cy) + 'C' + (cx + dir * 140) + ' ' + f(cy) + ' ' + (gx - dir * 110) + ' ' + f(gy) + ' ' + gx + ' ' + f(gy) + '"/>';
+          g[1].forEach(function(id, k){
+            var yy = y0 + k * ROW;
+            lines += '<path class="lk" d="M' + gx + ' ' + f(gy) + 'C' + (gx + dir * 70) + ' ' + f(gy) + ' ' + (px - dir * 70) + ' ' + f(yy) + ' ' + px + ' ' + f(yy) + '"/>';
+          });
+          labels += '<g class="grp"><circle cx="' + gx + '" cy="' + f(gy) + '" r="7"/><text class="gt" x="' + gx + '" y="' + f(gy - 14) + '">' + esc(g[0]) + '</text></g>';
+          y += GAP;
         });
-        labels += '<g class="grp"><circle cx="' + f(gx) + '" cy="' + f(gy) + '" r="7"/><text class="gt" x="' + f(gx) + '" y="' + f(gy - 14) + '">' + esc(g[0]) + '</text></g>';
-        off += m + 1;
       });
-      var hub = '<g class="hub nd" tabindex="0" role="button" data-id="" aria-label="' + esc(a.label) + ' Übersicht"><circle cx="' + cx + '" cy="' + cy + '" r="74"/><text x="' + cx + '" y="' + (cy - 4) + '">' + esc(a.label.length > 14 ? a.label.split(" ")[0] : a.label) + '</text><text class="hv" x="' + cx + '" y="' + (cy + 20) + '">' + nf(a.total) + '</text></g>';
-      return '<svg class="kc-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Cluster-Karte ' + esc(a.label) + '">' + lines + labels + nodes + hub + '</svg>';
+      var hub = '<g class="hub nd" tabindex="0" role="button" data-id="" aria-label="' + esc(a.label) + ' Übersicht"><circle cx="' + cx + '" cy="' + f(cy) + '" r="74"/><text x="' + cx + '" y="' + f(cy - 4) + '">' + esc(a.label.length > 14 ? a.label.split(" ")[0] : a.label) + '</text><text class="hv" x="' + cx + '" y="' + f(cy + 20) + '">' + nf(a.total) + '</text></g>';
+      return '<svg class="kc-svg" viewBox="0 0 ' + W + ' ' + f(H) + '" role="img" aria-label="Cluster-Karte ' + esc(a.label) + '">' + lines + labels + nodes + hub + '</svg>';
     }
     function renderMap(){
       var m = $("kcMap"); if (!m) return;
       m.innerHTML = mapSvg();
-      info(sel, AREAS[cur].label);
+      info(sel);
     }
     var seg = $("kcSeg");
     if (seg){
@@ -1906,7 +1852,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       var g = e.target.closest && e.target.closest(".nd"); if (!g) return;
       sel = g.getAttribute("data-id") || null;
       mapBox.querySelectorAll(".nd").forEach(function(o){ if (o.hasAttribute("aria-pressed")) o.setAttribute("aria-pressed", o === g ? "true" : "false"); });
-      info(sel, AREAS[cur].label);
+      info(sel);
     }
     if (mapBox){
       mapBox.addEventListener("click", pick);
@@ -1922,9 +1868,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       var more = $("kcMore"), cut = !allRows && rows.length > 20;
       if (more){ more.hidden = !cut; more.textContent = "Alle " + rows.length + " Themen anzeigen"; }
       var tb = $("kcBody"); if (tb) tb.innerHTML = (cut ? rows.slice(0, 20) : rows).map(function(r){
-        return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b>' + (r.id === "ratgeber" ? '' : '<span class="kc-ar ' + COL[r.area] + '">' + esc(r.area) + '</span>') + (P[r.id][5] ? '<span class="tag">prüfen</span>' : '') + '</td>' +
-          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span>' + (raw(r.id) !== r.v ? '<small class="kc-of">von ' + nf(raw(r.id)) + '</small>' : '') + '</td>' +
-          '<td class="kc-it">' + esc(intTxt(r.id)) + '</td><td class="kc-k">' + esc(P[r.id][2]) + '</td><td class="kc-fc">' + fitHtml(r.id) + (FIT[r.id] ? '<small>' + esc(FIT[r.id][1]) + '</small>' : '') + '</td><td>' + relHtml(r) + '</td></tr>';
+        return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b>' + (r.id === "ratgeber" ? '' : '<span class="kc-ar ' + COL[r.area] + '">' + esc(r.area) + '</span>') + '</td>' +
+          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span></td>' +
+          '<td class="kc-k">' + esc(P[r.id][2]) + '</td></tr>';
       }).join("");
       var c = $("kcCount"); if (c) c.textContent = rows.length + " Themen";
     }
@@ -1943,10 +1889,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     /* Kennzahlen */
     var k = $("kcTop");
     if (k){
-      var hi = ROWS.filter(function(r){ return r.r === 3; });
-      k.innerHTML = '<div class="kpi"><div class="v">' + nf(sumA) + '</div><div class="l">passende Suchen pro Monat über alle Menüthemen</div><div class="d">' + nf(ROWS.reduce(function(t, r){ return t + raw(r.id); }, 0)) + ' mit allen Begriffen</div></div>' +
+      k.innerHTML = '<div class="kpi"><div class="v">' + nf(sumA) + '</div><div class="l">Suchen pro Monat über alle Menüthemen</div></div>' +
         '<div class="kpi"><div class="v">' + ROWS.length + '</div><div class="l">Themen mit Suchvolumen</div></div>' +
-        '<div class="kpi"><div class="v">' + hi.length + '</div><div class="l">Themen mit hoher Relevanz</div><div class="d">' + hi.slice(0, 4).map(function(r){ return esc(P[r.id][0]); }).join(", ") + '</div></div>';
+        '<div class="kpi"><div class="v">' + nf(ROWS[0] ? ROWS[0].v : 0) + '</div><div class="l">grösstes Thema</div><div class="d">' + ROWS.slice(0, 4).map(function(r){ return esc(P[r.id][0]); }).join(", ") + '</div></div>';
     }
   })();
 
