@@ -47,7 +47,7 @@ a{color:var(--red-ink)}
 
 /* Tabs: grosse Kacheln im Band */
 .tabbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--band);box-shadow:0 1px 0 var(--band-deep)}
-.tabbar .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding-block:6px 12px}
+.tabbar .in{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding-block:6px 12px}
 .tab{display:flex;gap:12px;align-items:center;text-align:left;font:inherit;color:var(--on-band);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 14px;cursor:pointer;min-width:0;transition:background .15s}
 .tab:hover{background:rgba(255,255,255,.16)}
 .tab .n{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-weight:700;font-size:16px}
@@ -712,6 +712,55 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .hg-nav button{white-space:nowrap;padding-left:10px;padding-right:10px}
 .hg-hdr{gap:28px}
 .hg-drawer .hg-left{position:sticky;top:0;align-self:start}
+
+/* Keyword-Cluster */
+.kc-areas{display:grid;gap:14px}
+.kc-area{display:grid;grid-template-columns:minmax(170px,260px) minmax(0,1fr) auto;gap:6px 18px;align-items:center}
+.kc-area b{font-weight:500;font-size:17px}
+.kc-area small{display:block;color:var(--muted);font-size:13.5px}
+.kc-area .track{height:16px}
+.kc-area .v{font-weight:700;font-size:18px;text-align:right;min-width:9ch}
+.kc-area .v small{font-weight:400}
+@media (max-width:620px){.kc-area{grid-template-columns:minmax(0,1fr) auto}.kc-area .track{grid-column:1/-1;order:3}}
+.kc-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
+.kc-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.kc-legend i.r3,.kc-svg .r3 circle{background:var(--red);fill:var(--red)}
+.kc-legend i.r2,.kc-svg .r2 circle{background:var(--red-mid);fill:var(--red-mid)}
+.kc-legend i.r1,.kc-svg .r1 circle{background:var(--line);fill:var(--line)}
+.kc-map{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+@media (max-width:900px){.kc-map{grid-template-columns:minmax(0,1fr)}}
+.kc-svg{display:block;width:100%;height:auto}
+.kc-svg .lk{stroke:var(--line);stroke-width:1.5;fill:none}
+.kc-svg .lk.g{stroke:var(--muted);stroke-width:2;opacity:.45}
+.kc-svg text{font:500 17px var(--font);fill:var(--ink);text-anchor:middle;paint-order:stroke;stroke:var(--sheet);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.kc-svg .gt{font-size:19px;font-weight:700}
+.kc-svg .grp circle{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
+.kc-svg .nd{cursor:pointer;outline:none}
+.kc-svg .nd circle{stroke:var(--sheet);stroke-width:2}
+.kc-svg .nd[aria-pressed="true"] circle,.kc-svg .nd:focus-visible circle{stroke:var(--ink);stroke-width:4}
+.kc-svg .hub circle{fill:var(--ink);stroke:none}
+.kc-svg .hub text{fill:var(--sheet);stroke:none;font-size:20px;font-weight:700}
+.kc-svg .hub .hv{font-size:16px;font-weight:400}
+.kc-info{border-left:3px solid var(--red);padding:4px 0 4px 16px;display:grid;gap:8px;align-content:start}
+.kc-info h4{font-size:19px;font-weight:500;margin:0}
+.kc-info .big{font-size:30px;font-weight:700;line-height:1.1}
+.kc-info p{margin:0}
+.kc-kw{display:flex;flex-wrap:wrap;gap:6px}
+.kc-kw span{font-size:13.5px;background:var(--ground);border-radius:99px;padding:2px 10px}
+.kc-rel{display:inline-flex;gap:3px;align-items:center;font-size:13.5px;white-space:nowrap}
+.kc-rel i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.kc-rel i.on{background:var(--red)}
+.kc-ar{display:inline-block;font-size:12.5px;padding:0 8px;border-radius:99px;margin-left:6px;white-space:nowrap}
+.kc-ar.oak{background:var(--oak-soft);color:var(--oak)} .kc-ar.slate{background:var(--slate-soft);color:var(--slate)} .kc-ar.sage{background:var(--sage-soft);color:var(--sage)} .kc-ar.mut{background:var(--ground);color:var(--muted)}
+.kc-t{font-weight:500}
+.kc-more{justify-self:start;font:500 15px var(--font);padding:9px 18px;border-radius:99px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.kc-more:hover{background:var(--ink);color:var(--sheet)}
+.kc-vol{min-width:170px}
+.kc-vol{white-space:nowrap}
+.kc-vol .track{display:inline-block;width:90px;vertical-align:middle;margin-right:10px;min-width:0}
+.kc-vol span{font-weight:500}
+.kc-it{font-size:14px;color:var(--muted);white-space:nowrap}
+.kc-k{font-size:14px;color:var(--muted);min-width:240px}
 </style>
 
 <header class="band">
@@ -729,7 +778,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     <button class="tab" role="tab" id="t-ist" aria-controls="ist" aria-selected="true"><span class="n">1</span><span class="tx"><b>SEO-Ist-Zustand</b><span class="s">Sichtbarkeit, Klicks, Rankings</span></span></button>
     <button class="tab" role="tab" id="t-backlinks" aria-controls="backlinks" aria-selected="false" tabindex="-1"><span class="n">2</span><span class="tx"><b>Backlinks</b><span class="s">Vergleich mit Mitbewerbern</span></span></button>
     <button class="tab" role="tab" id="t-struktur" aria-controls="struktur" aria-selected="false" tabindex="-1"><span class="n">3</span><span class="tx"><b>Website-Struktur</b><span class="s">Hauptnavigation und Mega-Menü</span></span></button>
-    <button class="tab" role="tab" id="t-fragen" aria-controls="fragen" aria-selected="false" tabindex="-1"><span class="n">4</span><span class="tx"><b>Offene Fragen</b><span class="s">Zur Abstimmung</span></span></button>
+    <button class="tab" role="tab" id="t-cluster" aria-controls="cluster" aria-selected="false" tabindex="-1"><span class="n">4</span><span class="tx"><b>Keyword-Cluster</b><span class="s">Themen nach Suchvolumen</span></span></button>
+    <button class="tab" role="tab" id="t-fragen" aria-controls="fragen" aria-selected="false" tabindex="-1"><span class="n">5</span><span class="tx"><b>Offene Fragen</b><span class="s">Zur Abstimmung</span></span></button>
   </div>
 </nav>
 
@@ -789,6 +839,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         <div class="seg" role="group" aria-label="Filter" id="rankToolbar">
           <button type="button" data-r="3" aria-pressed="true">Top 3</button>
           <button type="button" data-r="10" aria-pressed="false">Top 10</button>
+          <button type="button" data-r="lu" aria-pressed="false">Luzern</button>
         </div>
       </div>
       <div class="tbl"><table>
@@ -862,7 +913,48 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 </div>
 </section>
 
-<!-- 4 Fragenkatalog -->
+<!-- 4 Keyword-Cluster -->
+<section class="panel" id="cluster" role="tabpanel" aria-labelledby="t-cluster" hidden>
+<div class="in">
+  <div class="head">
+    <h2>Welche Themen am meisten gesucht werden</h2>
+    <p class="lede">Für jedes Thema im Menü die wichtigsten Suchbegriffe mit Suchen pro Monat in der Schweiz. Die Relevanz zeigt, wo sich SEO-Arbeit am ehesten lohnt.</p>
+  </div>
+
+  <div class="kpis" id="kcTop"></div>
+
+  <div class="sheet">
+    <h3>Suchvolumen nach Bereich</h3>
+    <div class="kc-areas" id="kcAreas"></div>
+    <p class="note">Summe der Suchbegriffe aller Menüseiten pro Bereich. Vorhänge haben viel Volumen, die Suchenden landen aber meist bei Shops.</p>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-top">
+      <h3>Cluster-Karte</h3>
+      <div class="seg" role="group" aria-label="Bereich" id="kcSeg"></div>
+    </div>
+    <div class="kc-legend"><span><i class="r3"></i>Relevanz hoch</span><span><i class="r2"></i>mittel</span><span><i class="r1"></i>tief</span><span>Kreisgrösse = Suchen pro Monat</span></div>
+    <div class="kc-map"><div id="kcMap"></div><div class="kc-info" id="kcInfo" aria-live="polite"></div></div>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-top">
+      <h3>Alle Themen nach Relevanz <span class="count" id="kcCount"></span></h3>
+      <div class="seg" role="group" aria-label="Filter" id="kcFilter"></div>
+    </div>
+    <div class="tbl"><table class="kc-tbl">
+      <thead><tr><th>Thema</th><th>Suchen pro Monat</th><th>Google zeigt heute vor allem</th><th>Wichtigste Suchbegriffe</th><th>Relevanz</th></tr></thead>
+      <tbody id="kcBody"></tbody>
+    </table></div>
+    <button type="button" class="kc-more" id="kcMore" hidden></button>
+    <p class="note">Relevanz in Punkten (max. 7): Suchvolumen 0–3 (ab 100, 300, 1000), Gewichtung Richli 0–2 (Parkett und Böden 2, Platten und Ratgeber 1, Vorhänge 0), Chance 0–2 (Handwerksbetriebe vorne 2, gemischt oder Ratgeber 1, Shops vorne 0). Hoch ab 5, mittel 3–4.</p>
+    <p class="note">Quelle: SISTRIX CH, Oktober 2026. Suchbegriffe gruppiert nach gemeinsamen Google-Treffern (Top 10).</p>
+  </div>
+</div>
+</section>
+
+<!-- 5 Fragenkatalog -->
 <section class="panel" id="fragen" role="tabpanel" aria-labelledby="t-fragen" hidden>
 <div class="in">
   <div class="head"><h2>Offene Fragen</h2></div>
@@ -1167,16 +1259,18 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var path = u.replace(/^https:\/\/richli\.ch/, "") || "/";
     return '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(path) + '</a>';
   }
+  /* Alle Rankings mit «Luzern», Suchen 0 = unter 10 */
+  var LU = [["vorhang luzern",10,1,"https://richli.ch/vorhaenge-kaufen-wohnzimmer-kinderzimmer-schlafzimmer/"],["parkett schleifen luzern",10,1,"https://richli.ch/boden-und-wandbelaege-verlegen/parkett-holzboden-verlegen-luzern-umgebung/bodenpflege-parkett/"],["platten luzern",10,1,"https://richli.ch/boden-und-wandbelaege-verlegen/plattenbelaege/"],["korkboden luzern",0,1,"https://richli.ch/boden-und-wandbelaege-verlegen/korkboden-korkbelaege-verlegen-luzern/"],["spannteppich luzern",0,1,"https://richli.ch/boden-und-wandbelaege-verlegen/teppichboden-verlegen-lassen-luzern/"],["bodenleger luzern",60,2,"https://richli.ch/"],["parkett luzern",30,2,"https://richli.ch/boden-und-wandbelaege-verlegen/parkett-holzboden-verlegen-luzern-umgebung/"],["bodenbeläge luzern",20,2,"https://richli.ch/"],["teppichgeschäft luzern",10,2,"https://richli.ch/boden-und-wandbelaege-verlegen/teppichboden-verlegen-lassen-luzern/"],["hotelteppich luzern",0,2,"https://richli.ch/boden-und-wandbelaege-verlegen/teppichboden-verlegen-lassen-luzern/"],["parkett ausstellung luzern",0,3,"https://richli.ch/boden-und-wandbelaege-verlegen/parkett-holzboden-verlegen-luzern-umgebung/"],["eventteppich luzern",0,3,"https://richli.ch/boden-und-wandbelaege-verlegen/teppichboden-verlegen-lassen-luzern/"],["vorhänge luzern",20,4,"https://richli.ch/vorhaenge-kaufen-wohnzimmer-kinderzimmer-schlafzimmer/"],["naturstein luzern",20,4,"https://richli.ch/boden-und-wandbelaege-verlegen/natursteine-luzern/"],["natursteine luzern",10,4,"https://richli.ch/boden-und-wandbelaege-verlegen/natursteine-luzern/"],["teppich luzern",10,4,"https://richli.ch/boden-und-wandbelaege-verlegen/teppichboden-verlegen-lassen-luzern/"],["zargenmontage luzern",0,4,"https://richli.ch/"],["luzern naturstein",0,4,"https://richli.ch/boden-und-wandbelaege-verlegen/natursteine-luzern/"],["teppiche luzern",30,5,"https://richli.ch/boden-und-wandbelaege-verlegen/teppichboden-verlegen-lassen-luzern/"],["parkettleger luzern",10,5,"https://richli.ch/boden-und-wandbelaege-verlegen/parkett-holzboden-verlegen-luzern-umgebung/"],["plattenleger luzern",30,6,"https://richli.ch/"],["parkett firmen luzern",10,6,"https://richli.ch/boden-und-wandbelaege-verlegen/parkett-holzboden-verlegen-luzern-umgebung/"],["granit luzern",10,6,"https://richli.ch/boden-und-wandbelaege-verlegen/natursteine-luzern/"],["unterlagsböden luzern",10,10,"https://richli.ch/"]];
   function renderRank(max){
-    var rows = RANK.filter(function(r){ return r[2] <= max; });
-    var rb = $("rankBody"); if (rb) rb.innerHTML = rows.map(function(r){ return '<tr><td>' + esc(r[0]) + '</td><td class="n">' + fmt(r[1]) + '</td><td class="r">' + posPill(r[2]) + '</td><td class="url">' + urlLink(r[3]) + '</td></tr>'; }).join("");
+    var rows = max === "lu" ? LU : RANK.filter(function(r){ return r[2] <= max; });
+    var rb = $("rankBody"); if (rb) rb.innerHTML = rows.map(function(r){ return '<tr><td>' + esc(r[0]) + '</td><td class="n">' + (r[1] ? fmt(r[1]) : '< 10') + '</td><td class="r">' + posPill(r[2]) + '</td><td class="url">' + urlLink(r[3]) + '</td></tr>'; }).join("");
     var rc = $("rankCount"); if (rc) rc.textContent = rows.length + " Suchbegriffe";
   }
   renderRank(3);
   document.querySelectorAll("#rankToolbar button").forEach(function(b){
     b.addEventListener("click", function(){
       document.querySelectorAll("#rankToolbar button").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-      renderRank(+b.getAttribute("data-r"));
+      var dr = b.getAttribute("data-r"); renderRank(dr === "lu" ? "lu" : +dr);
     });
   });
   document.querySelectorAll("button[data-sub]").forEach(function(b){
@@ -1637,6 +1731,161 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       '<div class="ps-k"><b>+ 40</b><span>Referenzprojekte, heute auf richli.ch, laufend ergänzen</span></div></div>';
   }
   renderNav("C");
+
+  /* ---------- Keyword-Cluster: Themen nach Suchvolumen und Relevanz (Daten aus P, Menü aus V.A) ---------- */
+  (function(){
+    var KW = {"Parkett":2, "Bodenbeläge":2, "Platten & Naturstein":1, "Vorhänge":0, "Ratgeber":1};
+    var GEW = {"Parkett":"65 % mit Böden", "Bodenbeläge":"65 % mit Parkett", "Platten & Naturstein":"30 %", "Vorhänge":"5 %", "Ratgeber":"unterstützt alle Bereiche"};
+    var COL = {"Parkett":"oak", "Bodenbeläge":"oak", "Platten & Naturstein":"slate", "Vorhänge":"sage", "Ratgeber":"mut"};
+    var INT = {H:["Handwerksbetriebe", 2], G:["Gemischt", 1], I:["Ratgeber-Seiten", 1], S:["Shops & Händler", 0]};
+    var REL = ["tief", "tief", "tief", "mittel", "mittel", "hoch", "hoch", "hoch"];
+    function nf(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); }
+    function vol(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
+    function score(id, area){
+      var v = vol(id), t = v >= 1000 ? 3 : v >= 300 ? 2 : v >= 100 ? 1 : 0;
+      var it = P[id][4]; return t + KW[area] + (INT[it] ? INT[it][1] : 1);
+    }
+    function relCls(s){ return s >= 5 ? 3 : s >= 3 ? 2 : 1; }
+    var src = V.A.main.slice(0, 4).concat([RG]);
+    var AREAS = src.map(function(m){
+      var seen = {}, groups = [];
+      m.cols.forEach(function(c){
+        var ids = c[1].filter(function(id){ if (seen[id] || !vol(id)) return false; seen[id] = 1; return true; });
+        if (ids.length) groups.push([c[0], ids]);
+      });
+      var ids = [].concat.apply([], groups.map(function(g){ return g[1]; }));
+      var total = vol(m.hub) + ids.reduce(function(s, id){ return s + vol(id); }, 0);
+      return {label: m.label, hub: m.hub, groups: groups, ids: ids, total: total};
+    });
+    var ROWS = [];
+    AREAS.forEach(function(a){
+      (vol(a.hub) ? [a.hub] : []).concat(a.ids).forEach(function(id){ var s = score(id, a.label); ROWS.push({id: id, area: a.label, v: vol(id), s: s, r: relCls(s)}); });
+    });
+    ROWS.sort(function(x, y){ return y.s - x.s || y.v - x.v; });
+    var RBYID = {}; ROWS.forEach(function(r){ RBYID[r.area + "|" + r.id] = r; });
+
+    function relHtml(r){ var t = REL[r.s] || "hoch"; return '<span class="kc-rel" title="' + r.s + ' von 7 Punkten">' + [1,2,3].map(function(i){ return '<i' + (i <= r.r ? ' class="on"' : '') + '></i>'; }).join("") + ' ' + t + '</span>'; }
+    function intTxt(id){ var it = P[id][4]; return INT[it] ? INT[it][0] : "nicht geprüft"; }
+    function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
+
+    /* 1 Bereiche */
+    var maxA = Math.max.apply(null, AREAS.map(function(a){ return a.total; }));
+    var sumA = AREAS.reduce(function(s, a){ return s + a.total; }, 0);
+    var ab = $("kcAreas");
+    if (ab) ab.innerHTML = AREAS.slice().sort(function(x, y){ return y.total - x.total; }).map(function(a){
+      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (vol(a.hub) ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
+        '<div class="track"><div class="fill ' + COL[a.label] + '" style="width:' + Math.max(1.5, a.total / maxA * 100).toFixed(1) + '%"></div></div>' +
+        '<div class="v">' + nf(a.total) + '<small>' + Math.round(a.total / sumA * 100) + ' % der Suchen</small></div></div>';
+    }).join("");
+
+    /* 2 Cluster-Karte */
+    var cur = 0, sel = null;
+    function info(id, area){
+      var box = $("kcInfo"); if (!box) return;
+      var a = AREAS[cur];
+      if (!id){
+        box.innerHTML = '<h4>' + esc(a.label) + '</h4><div class="big">' + nf(a.total) + '</div><p class="note">Suchen pro Monat, ' + a.groups.length + ' Themengruppen, ' + a.ids.length + ' Unterseiten. Kreisgrösse = Suchvolumen, Farbe = Relevanz. Auf einen Kreis klicken für die Suchbegriffe.</p>';
+        return;
+      }
+      var r = RBYID[area + "|" + id];
+      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nf(vol(id)) + '</div><p class="note">Suchen pro Monat · Google zeigt heute vor allem: ' + esc(intTxt(id)) + '</p>' + (r ? '<div>' + relHtml(r) + '</div>' : '') + kwHtml(id) + (P[id][5] ? '<p class="note">Sortiment mit Richli prüfen</p>' : '');
+    }
+    function mapSvg(){
+      /* Radiales Cluster: Seiten auf dem Aussenring, nach Gruppen geordnet; Gruppen auf dem Innenring */
+      var a = AREAS[cur], W = 1400, H = 860, cx = 700, cy = 430, n = a.groups.length;
+      var total = a.ids.length, two = total > 20, slot = 2 * Math.PI / (total + n);
+      var maxV = Math.max.apply(null, a.ids.map(vol).concat([1]));
+      function rad(v){ return 6 + 24 * Math.sqrt(v / maxV); }
+      function f(x){ return x.toFixed(1); }
+      var lines = "", nodes = "", labels = "", off = 0;
+      a.groups.forEach(function(g){
+        var m = g[1].length, mid = -Math.PI / 2 + (off + m / 2) * slot;
+        var gx = cx + Math.cos(mid) * 230, gy = cy + Math.sin(mid) * 150;
+        lines += '<line class="lk g" x1="' + cx + '" y1="' + cy + '" x2="' + f(gx) + '" y2="' + f(gy) + '"/>';
+        g[1].forEach(function(id, k){
+          var th = -Math.PI / 2 + (off + k + 0.5) * slot, outer = !two || k % 2 === 0, s = outer ? 1 : 0.8;
+          var c = Math.cos(th), sn = Math.sin(th), v = vol(id), r = RBYID[a.label + "|" + id], rd = rad(v);
+          var px = cx + c * 400 * s, py = cy + sn * 300 * s;
+          lines += '<path class="lk" d="M' + f(gx) + ' ' + f(gy) + 'Q' + f(cx + c * 310 * s) + ' ' + f(cy + sn * 232 * s) + ' ' + f(px) + ' ' + f(py) + '"/>';
+          var lab = '';
+          if (v >= maxV * 0.15 || (r && r.r === 3)){
+            var dc = outer ? c : -c, ds = outer ? sn : -sn;
+            var anc = dc > 0.25 ? "start" : dc < -0.25 ? "end" : "middle";
+            var lx = px + dc * (rd + 7), ly = py + ds * (rd + 7) + (anc === "middle" ? (ds > 0 ? 15 : -3) : 6);
+            var t = P[id][0].length > 26 ? P[id][0].slice(0, 25) + "…" : P[id][0];
+            lab = '<text style="text-anchor:' + anc + '" x="' + f(lx) + '" y="' + f(ly) + '">' + esc(t) + '</text>';
+          }
+          nodes += '<g class="nd r' + (r ? r.r : 1) + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen"><circle cx="' + f(px) + '" cy="' + f(py) + '" r="' + f(rd) + '"/>' + lab + '<title>' + esc(P[id][0]) + ': ' + nf(v) + '</title></g>';
+        });
+        labels += '<g class="grp"><circle cx="' + f(gx) + '" cy="' + f(gy) + '" r="7"/><text class="gt" x="' + f(gx) + '" y="' + f(gy - 14) + '">' + esc(g[0]) + '</text></g>';
+        off += m + 1;
+      });
+      var hub = '<g class="hub nd" tabindex="0" role="button" data-id="" aria-label="' + esc(a.label) + ' Übersicht"><circle cx="' + cx + '" cy="' + cy + '" r="74"/><text x="' + cx + '" y="' + (cy - 4) + '">' + esc(a.label.length > 14 ? a.label.split(" ")[0] : a.label) + '</text><text class="hv" x="' + cx + '" y="' + (cy + 20) + '">' + nf(a.total) + '</text></g>';
+      return '<svg class="kc-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Cluster-Karte ' + esc(a.label) + '">' + lines + labels + nodes + hub + '</svg>';
+    }
+    function renderMap(){
+      var m = $("kcMap"); if (!m) return;
+      m.innerHTML = mapSvg();
+      info(sel, AREAS[cur].label);
+    }
+    var seg = $("kcSeg");
+    if (seg){
+      seg.innerHTML = AREAS.map(function(a, i){ return '<button type="button" data-i="' + i + '" aria-pressed="' + (i === cur) + '">' + esc(a.label) + '</button>'; }).join("");
+      seg.addEventListener("click", function(e){
+        var b = e.target.closest("button[data-i]"); if (!b) return;
+        cur = +b.getAttribute("data-i"); sel = null;
+        seg.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+        renderMap();
+      });
+    }
+    var mapBox = $("kcMap");
+    function pick(e){
+      var g = e.target.closest && e.target.closest(".nd"); if (!g) return;
+      sel = g.getAttribute("data-id") || null;
+      mapBox.querySelectorAll(".nd").forEach(function(o){ if (o.hasAttribute("aria-pressed")) o.setAttribute("aria-pressed", o === g ? "true" : "false"); });
+      info(sel, AREAS[cur].label);
+    }
+    if (mapBox){
+      mapBox.addEventListener("click", pick);
+      mapBox.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); pick(e); } });
+    }
+    renderMap();
+
+    /* 3 Tabelle */
+    var flt = "Alle", tseg = $("kcFilter"), allRows = false;
+    var maxR = Math.max.apply(null, ROWS.map(function(r){ return r.v; }));
+    function renderTbl(){
+      var rows = ROWS.filter(function(r){ return flt === "Alle" || r.area === flt; });
+      var more = $("kcMore"), cut = !allRows && rows.length > 20;
+      if (more){ more.hidden = !cut; more.textContent = "Alle " + rows.length + " Themen anzeigen"; }
+      var tb = $("kcBody"); if (tb) tb.innerHTML = (cut ? rows.slice(0, 20) : rows).map(function(r){
+        return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b>' + (r.id === "ratgeber" ? '' : '<span class="kc-ar ' + COL[r.area] + '">' + esc(r.area) + '</span>') + (P[r.id][5] ? '<span class="tag">prüfen</span>' : '') + '</td>' +
+          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span></td>' +
+          '<td class="kc-it">' + esc(intTxt(r.id)) + '</td><td class="kc-k">' + esc(P[r.id][2]) + '</td><td>' + relHtml(r) + '</td></tr>';
+      }).join("");
+      var c = $("kcCount"); if (c) c.textContent = rows.length + " Themen";
+    }
+    if (tseg){
+      tseg.innerHTML = ["Alle"].concat(AREAS.map(function(a){ return a.label; })).map(function(l){ return '<button type="button" data-f="' + esc(l) + '" aria-pressed="' + (l === flt) + '">' + esc(l) + '</button>'; }).join("");
+      tseg.addEventListener("click", function(e){
+        var b = e.target.closest("button[data-f]"); if (!b) return;
+        flt = b.getAttribute("data-f"); allRows = false;
+        tseg.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+        renderTbl();
+      });
+    }
+    var mb = $("kcMore"); if (mb) mb.addEventListener("click", function(){ allRows = true; renderTbl(); });
+    renderTbl();
+
+    /* Kennzahlen */
+    var k = $("kcTop");
+    if (k){
+      var hi = ROWS.filter(function(r){ return r.r === 3; });
+      k.innerHTML = '<div class="kpi"><div class="v">' + nf(sumA) + '</div><div class="l">Suchen pro Monat über alle Menüthemen</div></div>' +
+        '<div class="kpi"><div class="v">' + ROWS.length + '</div><div class="l">Themen mit Suchvolumen</div></div>' +
+        '<div class="kpi"><div class="v">' + hi.length + '</div><div class="l">Themen mit hoher Relevanz</div><div class="d">' + hi.slice(0, 4).map(function(r){ return esc(P[r.id][0]); }).join(", ") + '</div></div>';
+    }
+  })();
 
   /* Deep-Links: #mm-C-0 (Parkett) ... öffnen das Mega-Menü beim passenden Punkt */
   var dl = /^mm-C-(\d+)$/.exec((location.hash || '').slice(1));
