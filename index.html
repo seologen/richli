@@ -742,9 +742,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .kc-svg .grp circle{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
 .kc-svg .nd{cursor:pointer;outline:none}
 .kc-svg .nd circle{stroke:var(--sheet);stroke-width:2}
-.kc-svg .nd circle.sd{fill:var(--red);stroke:var(--sheet);stroke-width:1.5}
-.kc-kw span.svc{background:var(--red);color:#fff}
-.kc-legend i.sd{width:8px;height:8px;background:var(--red)}
 .kc-svg .nd[aria-pressed="true"] circle,.kc-svg .nd:focus-visible circle{stroke:var(--ink);stroke-width:4}
 .kc-svg .hub circle{fill:var(--ink);stroke:none}
 .kc-svg .hub text{fill:var(--sheet);stroke:none;font-size:20px;font-weight:700}
@@ -957,7 +954,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   <div class="sheet">
     <h3>Cluster-Karte</h3>
     <div class="kc-tabs" role="group" aria-label="Bereich" id="kcSeg"></div>
-    <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span><span><i class="sd"></i>Kleine Kugel = Suchbegriff mit Anbieter-Absicht (Verlegen, Montage, Beratung, nach Mass, Ort), auch bei wenigen Suchen</span></div>
+    <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span><span>Jede Seite der Website-Struktur hat einen Kreis, «–» = kein messbares Suchvolumen</span></div>
     <div class="kc-map"><div id="kcMap"></div><div class="kc-info" id="kcInfo" aria-live="polite"></div></div>
     <h4 class="kc-sub">Themen nach Suchvolumen <span class="count" id="kcCount"></span></h4>
     <div class="tbl"><table class="kc-tbl">
@@ -1816,15 +1813,13 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var GEW = {"Parkett":"65 % mit Böden", "Bodenbeläge":"65 % mit Parkett", "Platten & Naturstein":"30 %", "Vorhänge":"5 %", "Ratgeber":"unterstützt alle Bereiche"};
     var COL = {"Parkett":"oak", "Bodenbeläge":"oak", "Platten & Naturstein":"slate", "Vorhänge":"sage", "Ratgeber":"mut"};
     function nf(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); }
+    function nv(n){ return n ? nf(n) : "–"; }
     function vol(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
-    /* Begriffe mit Anbieter-Absicht: Montage, Beratung, nach Mass, Orte usw. */
-    var SVC = /montier|montage|beratung|nähen|kürzen|lassen|nach mass|verlegen|verlegung|ausmess|innendekor|atelier|geschäft|offerte|kosten|preis|leger|in der nähe|reparatur|schleifen|renovier|sanier|luzern|zug|nidwalden|obwalden|stans|baar|cham|emmen|engelberg|sursee|kriens|horw/i;
-    function svc(id){ return P[id] && P[id][2] ? P[id][2].split(" · ").filter(function(k){ return SVC.test(k); }) : []; }
     var src = V.A.main.slice(0, 4).concat([RG]);
     var AREAS = src.map(function(m){
       var seen = {}, groups = [];
       m.cols.forEach(function(c){
-        var ids = c[1].filter(function(id){ if (seen[id] || !vol(id)) return false; seen[id] = 1; return true; });
+        var ids = c[1].filter(function(id){ if (seen[id] || !P[id]) return false; seen[id] = 1; return true; });
         if (ids.length) groups.push([c[0], ids]);
       });
       var ids = [].concat.apply([], groups.map(function(g){ return g[1]; }));
@@ -1833,18 +1828,18 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     });
     var ROWS = [];
     AREAS.forEach(function(a){
-      (vol(a.hub) ? [a.hub] : []).concat(a.ids).forEach(function(id){ ROWS.push({id: id, area: a.label, v: vol(id)}); });
+      (P[a.hub] ? [a.hub] : []).concat(a.ids).forEach(function(id){ ROWS.push({id: id, area: a.label, v: vol(id)}); });
     });
     ROWS.sort(function(x, y){ return y.v - x.v; });
 
-    function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span' + (!/^rg\d/.test(id) && SVC.test(k) ? ' class="svc"' : '') + '>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
+    function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
 
     /* 1 Bereiche */
     var maxA = Math.max.apply(null, AREAS.map(function(a){ return a.total; }));
     var sumA = AREAS.reduce(function(s, a){ return s + a.total; }, 0);
     var ab = $("kcAreas");
     if (ab) ab.innerHTML = AREAS.slice().sort(function(x, y){ return y.total - x.total; }).map(function(a){
-      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (vol(a.hub) ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
+      return '<div class="kc-area"><div><b>' + esc(a.label) + '</b><small>' + (a.ids.length + (P[a.hub] ? 1 : 0)) + ' Seiten · Gewichtung Richli: ' + esc(GEW[a.label]) + '</small></div>' +
         '<div class="track"><div class="fill ' + COL[a.label] + '" style="width:' + Math.max(1.5, a.total / maxA * 100).toFixed(1) + '%"></div></div>' +
         '<div class="v">' + nf(a.total) + '<small>' + Math.round(a.total / sumA * 100) + ' % der Suchen</small></div></div>';
     }).join("");
@@ -1855,7 +1850,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       var box = $("kcInfo"); if (!box) return;
       box.hidden = !id;
       if (!id){ box.innerHTML = ''; return; }
-      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nf(vol(id)) + '</div><p class="note">Suchen pro Monat</p>' + kwHtml(id);
+      box.innerHTML = '<h4>' + esc(P[id][0]) + '</h4><div class="big">' + nv(vol(id)) + '</div><p class="note">Suchen pro Monat</p>' + kwHtml(id);
     }
     function mapSvg(){
       /* Mindmap: Bereich in der Mitte, Themengruppen links und rechts, Seiten als lesbare Liste aussen */
@@ -1879,9 +1874,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
           g[1].forEach(function(id){
             var v = vol(id), rd = rad(v);
             var t = P[id][0].length > 36 ? P[id][0].slice(0, 35) + "…" : P[id][0];
-            var sv = a.label === "Ratgeber" ? [] : svc(id);
-            nodes += '<g class="nd ' + COL[a.label] + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen' + (sv.length ? ', ' + sv.length + ' Anbieter-Begriffe' : '') + '" data-svc="' + sv.length + '" data-dir="' + dir + '"><circle cx="' + px + '" cy="' + f(y) + '" r="' + f(rd) + '"/>' +
-              '<text style="text-anchor:' + (si ? "start" : "end") + '" x="' + (px + dir * 22) + '" y="' + f(y + 6) + '">' + esc(t) + ' <tspan class="vv">' + nf(v) + '</tspan></text><title>' + esc(P[id][0]) + ': ' + nf(v) + '</title></g>';
+            nodes += '<g class="nd ' + COL[a.label] + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen"><circle cx="' + px + '" cy="' + f(y) + '" r="' + f(rd) + '"/>' +
+              '<text style="text-anchor:' + (si ? "start" : "end") + '" x="' + (px + dir * 22) + '" y="' + f(y + 6) + '">' + esc(t) + ' <tspan class="vv">' + nv(v) + '</tspan></text><title>' + esc(P[id][0]) + ': ' + nf(v) + '</title></g>';
             y += ROW;
           });
           var gy = (y0 + y - ROW) / 2;
@@ -1900,18 +1894,6 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     function renderMap(){
       var m = $("kcMap"); if (!m) return;
       m.innerHTML = mapSvg();
-      /* kleine Kugeln hinter der Zahl, eine pro Anbieter-Begriff */
-      m.querySelectorAll('.nd[data-svc]').forEach(function(g){
-        var n = +g.getAttribute('data-svc'), t = g.querySelector('text'); if (!n || !t || !t.getBBox) return;
-        var bb; try { bb = t.getBBox(); } catch (e) { return; }
-        if (!bb.width) return;
-        var right = g.getAttribute('data-dir') === '1', cy = bb.y + bb.height / 2, out = '';
-        for (var j = 0; j < Math.min(n, 8); j++){
-          var x = right ? bb.x + bb.width + 14 + j * 15 : bb.x - 14 - j * 15;
-          out += '<circle class="sd" cx="' + x.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="5"/>';
-        }
-        g.insertAdjacentHTML('beforeend', out);
-      });
       info(sel);
     }
     var seg = $("kcSeg");
@@ -1946,7 +1928,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
       if (more){ more.hidden = !cut; more.textContent = "Alle " + rows.length + " Themen anzeigen"; }
       var tb = $("kcBody"); if (tb) tb.innerHTML = (cut ? rows.slice(0, 20) : rows).map(function(r){
         return '<tr><td><b class="kc-t">' + esc(P[r.id][0]) + '</b></td>' +
-          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nf(r.v) + '</span></td>' +
+          '<td class="kc-vol"><div class="track"><div class="fill ' + COL[r.area] + '" style="width:' + Math.max(1.5, Math.sqrt(r.v / maxR) * 100).toFixed(1) + '%"></div></div><span>' + nv(r.v) + '</span></td>' +
           '<td class="kc-k">' + esc(P[r.id][2]) + '</td></tr>';
       }).join("");
       var c = $("kcCount"); if (c) c.textContent = rows.length + " Themen";
