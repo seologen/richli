@@ -1472,12 +1472,12 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     kork:["Kork","/bodenbelaege/kork/","Korkboden 600 · Korkboden verlegen 50 · Korkparkett 40",690,null],
     kautschuk:["Kautschuk","/bodenbelaege/kautschuk/","Kautschuk Bodenbelag 80 · Pirelli Boden 40 · Kautschukboden 30 · Kautschuk Boden 20",170,null],
     schmutz:["Schmutzschleusen","/bodenbelaege/schmutzschleusen/","Schmutzschleuse 600 · Schmutzschleuse Teppich 600 · Schmutzschleusen 80 · Schmutzschleuse Eingangsbereich 70 · Schmutzschleusen Teppich 40 · Schmutzschleuse Eingang 30 · Schmutzschleusenteppich 30 · Schmutzschleuse nach Mass 20",1470,"G"],
-    platten:["Platten & Naturstein","/platten/","Plättli 200 · Plattengeschäft 20 · Fliesengeschäft 10 · Fliesenhandel 10 · Plättli kaufen 10 · Plattenausstellung Luzern 10",260,"H"],
+    platten:["Platten & Naturstein","/platten/","Plättli 200 · Plattengeschäft 20 · Fliesengeschäft 10 · Fliesenhandel 10 · Plattenausstellung Luzern 10",250,"H"],
     keramik:["Keramikplatten","/platten/keramik/","Bodenplatten 650 · Keramikplatten 400 · Bodenplatten Keramik 100 · Keramik Platten 100 · Keramik Bodenplatten 70 · Keramische Platten 60 · Bodenplatten Keramik innen 40",1420,"S"],
     plattenleger:["Plattenleger","/platten/plattenleger/","Plattenleger 550 · Plattenleger in der Nähe 100 · Plattenleger Luzern 30 · Plattenleger Engelberg 30 · Plattenleger Obwalden 20 · Plattenleger Baar 10 · Plattenleger Cham 10 · Platten Luzern 10 · Plattenleger Kosten 10",770,"H"],
     natur:["Naturstein","/platten/naturstein/","Naturstein 700 · Natursteinplatten 600 · Naturstein Luzern 20 · Natursteine Luzern 10 · Granit Luzern 10",1340,"S"],
     holzoptik:["Platten in Holzoptik","/platten/holzoptik/","Bodenplatten Holzoptik 100 · Platten Holzoptik 50 · Plattenboden Holzoptik 40 · Platten in Holzoptik 30 · Holzimitat Platten 20",240,"S"],
-    sortiment:["Platten-Sortiment","/platten/sortiment/","",null,null],
+    sortiment:["Platten-Sortiment","/platten/sortiment/","Plättli kaufen 10",10,"S"],
     terrasse:["Terrassenplatten","/platten/terrasse/","Natursteinplatten Garten 100",100,"S"],
     bad:["Badsanierung","/platten/badsanierung/","Badsanierung 300 · Badumbau 300 · Bad renovieren 200 · Badrenovation 100 · Bad Renovation 90 · Badsanierung Kosten 70 · Badumbau Kosten 30 · Badsanierung Luzern 10",1100,"G"],
     badplatten:["Badezimmer-Platten","/platten/badezimmer/","Badezimmer Platten 150 · Badezimmer Boden 40 · Dusche Platten 30 · Keramikplatten für Badezimmer 30 · Nasszellen Platten 10",260,"S"],
@@ -1578,7 +1578,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     rg22:["Wann Silikonfugen erneuern?","/ratgeber/silikonfugen/","Silikonfugen erneuern 300 · Fugen erneuern 200",500,"I"],
     rg23:["Terrassenplatten richtig verlegen","/ratgeber/terrassenplatten-verlegen/","Terrassenplatten verlegen 100",100,"I"],
     rg16:["Teppich selber verlegen oder verlegen lassen?","/ratgeber/teppich-verlegen/","Teppich verlegen",100,"I"],
-    rg17:["Vorhänge richtig waschen","/ratgeber/vorhaenge-waschen/","Vorhänge waschen",null,"I"],
+    rg17:["Vorhänge richtig waschen","/ratgeber/vorhaenge-waschen/","Vorhänge waschen 600 · Vorhang waschen 100",700,"I"],
     matten:["Schmutzfangmatten","/bodenbelaege/matten/","Sauberlaufzone 40 · Logomatte 20 · Logomatten 20 · Sauberlaufzonen 20 · Schmutzfangmatte nach Mass 10 · Schmutzfangmatte Gewerbe 10 · Eingangsmatte Gewerbe 10 · Mattenrahmen 10",140,"S"],
     b2b:["Für Geschäftskunden","/geschaeftskunden/","",null,null],
     unterhalt:["Unterhalt & Mieterwechsel","/geschaeftskunden/unterhalt-mieterwechsel/","",null,null],
@@ -1914,7 +1914,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
         var b = e.target.closest("button[data-i]"); if (!b) return;
         cur = +b.getAttribute("data-i"); sel = null;
         seg.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-        allRows = false; renderMap(); renderTbl();
+        renderMap(); renderTbl();
       });
     }
     var mapBox = $("kcMap");
@@ -1931,7 +1931,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     renderMap();
 
     /* 3 Tabelle */
-    var allRows = false;
+    var allRows = true;
     var maxR = Math.max.apply(null, ROWS.map(function(r){ return r.v; }));
     function renderTbl(){
       var rows = ROWS.filter(function(r){ return r.area === AREAS[cur].label; });
