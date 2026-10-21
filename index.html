@@ -742,6 +742,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
 .kc-svg .grp circle{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
 .kc-svg .nd{cursor:pointer;outline:none}
 .kc-svg .nd circle{stroke:var(--sheet);stroke-width:2}
+.kc-svg .nd circle.sd{fill:var(--red);stroke:var(--sheet);stroke-width:1.5}
+.kc-kw span.svc{background:var(--red);color:#fff}
+.kc-legend i.sd{width:8px;height:8px;background:var(--red)}
 .kc-svg .nd[aria-pressed="true"] circle,.kc-svg .nd:focus-visible circle{stroke:var(--ink);stroke-width:4}
 .kc-svg .hub circle{fill:var(--ink);stroke:none}
 .kc-svg .hub text{fill:var(--sheet);stroke:none;font-size:20px;font-weight:700}
@@ -954,7 +957,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
   <div class="sheet">
     <h3>Cluster-Karte</h3>
     <div class="kc-tabs" role="group" aria-label="Bereich" id="kcSeg"></div>
-    <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span></div>
+    <div class="kc-legend"><span>Kreisgrösse = Suchen pro Monat</span><span><i class="sd"></i>Kleine Kugel = Suchbegriff mit Anbieter-Absicht (Montage, Beratung, nach Mass, Ort), auch bei wenigen Suchen</span></div>
     <div class="kc-map"><div id="kcMap"></div><div class="kc-info" id="kcInfo" aria-live="polite"></div></div>
     <h4 class="kc-sub">Themen nach Suchvolumen <span class="count" id="kcCount"></span></h4>
     <div class="tbl"><table class="kc-tbl">
@@ -1491,8 +1494,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     terrasse:["Terrassenplatten","/platten/terrasse/","Natursteinplatten Garten 100",100,"S"],
     bad:["Badsanierung","/platten/badsanierung/","Badsanierung 300 · Badumbau 300 · Bad renovieren 200 · Badrenovation 100 · Bad Renovation 90 · Badsanierung Kosten 70 · Badumbau Kosten 30 · Badsanierung Luzern 10",1100,"G"],
     badplatten:["Badezimmer-Platten","/platten/badezimmer/","Badezimmer Platten 150 · Badezimmer Boden 40 · Dusche Platten 30 · Keramikplatten für Badezimmer 30 · Nasszellen Platten 10",260,"S"],
-    vorh:["Vorhänge nach Mass","/vorhaenge/","Vorhänge nach Mass 850 · Vorhang nach Mass 350 · Innendekoration 70 · Vorhänge Beratung 40 · Vorhangatelier 30 · Vorhänge Luzern 20 · Vorhang Atelier 20 · Innendekoration Luzern 20 · Vorhang Beratung 20 · Vorhanggeschäft 10 · Vorhänge Zug 10 · Vorhangberatung 10 · Vorhang Luzern 10 · Vorhänge Emmenbrücke 10",1470,"S"],
-    schienen:["Vorhangschienen","/vorhaenge/vorhangschienen/","Vorhangschiene 1850 · Vorhangsysteme 100 · Deckenschiene 20",1970,"S"],
+    vorh:["Vorhänge nach Mass","/vorhaenge/","Vorhänge nach Mass 850 · Vorhang nach Mass 350 · Innendekorateur 300 · Innendekoration 70 · Vorhänge Beratung 40 · Vorhangatelier 30 · Vorhänge Luzern 20 · Vorhang Atelier 20 · Innendekoration Luzern 20 · Vorhang Beratung 20 · Vorhanggeschäft 10 · Vorhänge Zug 10 · Vorhangberatung 10 · Vorhang Luzern 10 · Vorhänge Emmenbrücke 10 · Innendekorateur Luzern 10 · Vorhänge ausmessen 10",1790,"S"],
+    schienen:["Vorhangschienen","/vorhaenge/vorhangschienen/","Vorhangschiene 1850 · Vorhangsysteme 100 · Vorhangschiene montieren lassen 50 · Vorhangschiene montieren 50 · Deckenschiene 20 · Vorhangschiene nach Mass 10",2080,"S"],
     vbuero:["Vorhänge Büro & Objekt","/vorhaenge/buero-objekt/","Büro Vorhänge 40 · Vorhänge Büro 30 · Büro Vorhang 30 · Vorhang für Büro 10",110,null],
     service:["Service","/service/","",null,null],
     dienst:["Dienstleistungen","/dienstleistungen/","",null,null],
@@ -1548,9 +1551,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     vschlaf:["Vorhänge Schlafzimmer","/vorhaenge/schlafzimmer/","Vorhänge Schlafzimmer 100",100,"S"],
     vkueche:["Vorhänge Küche","/vorhaenge/kueche/","Küchenvorhänge 150 · Vorhänge Küche 90 · Küchenvorhang 90 · Vorhang Küche 80",410,"S"],
     voutdoor:["Outdoor-Vorhänge","/vorhaenge/outdoor/","Outdoor Vorhänge 50",50,"S"],
-    vdunkel:["Verdunkelungsvorhänge","/vorhaenge/verdunkelung/","Verdunkelungsvorhänge 100",100,"S"],
-    vflaeche:["Flächenvorhänge & Sichtschutz","/vorhaenge/flaechenvorhaenge/","Flächenvorhang 600 · Schiebevorhänge 250 · Flächenvorhänge 200 · Schiebevorhang 150",1200,"S"],
-    vnaehen:["Nähen & Kürzen","/vorhaenge/naehen-kuerzen/","Vorhänge nähen lassen 100 · Vorhänge kürzen lassen 60 · Vorhänge Montage 10",170,"G"],
+    vdunkel:["Verdunkelungsvorhänge","/vorhaenge/verdunkelung/","Verdunkelungsvorhänge 100 · Verdunkelungsvorhänge nach Mass 20",120,"S"],
+    vflaeche:["Flächenvorhänge & Sichtschutz","/vorhaenge/flaechenvorhaenge/","Flächenvorhang 600 · Schiebevorhänge 250 · Flächenvorhänge 200 · Schiebevorhang 150 · Flächenvorhang nach Mass 10",1210,"S"],
+    vnaehen:["Nähen, Kürzen & Montage","/vorhaenge/naehen-kuerzen/","Vorhänge nähen lassen 100 · Vorhänge kürzen lassen 60 · Vorhänge Montage 10 · Vorhänge montieren lassen 10 · Vorhänge aufhängen lassen 10 · Vorhang Montage 10",200,"G"],
     ahorn:["Ahornparkett","/parkett/ahorn/","Ahornparkett 80",80,"G"],
     riemen:["Riemenparkett","/parkett/riemenparkett/","Riemenparkett 50",50,"G"],
     nadelfilz:["Nadelfilz","/bodenbelaege/nadelfilz/","Nadelfilz 100",100,"G"],
@@ -1563,16 +1566,16 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     filz:["Filz- & Möbelgleiter","/parkett/moebelgleiter/","",null,"S"],
     profile:["Übergangsprofile","/parkett/profile/","Übergangsprofil 80",80,"S"],
     tritt:["Trittschalldämmung","/parkett/trittschalldaemmung/","Trittschalldämmung 600",600,"S"],
-    vstange:["Vorhangstangen","/vorhaenge/vorhangstangen/","Vorhangstangen 250",250,"S"],
+    vstange:["Vorhangstangen","/vorhaenge/vorhangstangen/","Vorhangstangen 250 · Vorhangstange nach Mass 10",260,"S"],
     vblick:["Blickdichte & transparente Vorhänge","/vorhaenge/blickdicht-transparent/","Blickdichte Vorhänge · transparente Vorhänge",410,"G"],
-    vakustik:["Akustik- & Schallschutzvorhänge","/vorhaenge/akustik/","Schallschutzvorhang 60",60,"H"],
+    vakustik:["Akustik- & Schallschutzvorhänge","/vorhaenge/akustik/","Akustikvorhang 250 · Schallschutzvorhang 60",310,"H"],
     vtagnacht:["Tag- & Nachtvorhänge","/vorhaenge/tag-nacht/","Nachtvorhänge 400 · Tagvorhänge 40 · Tag und Nacht Vorhänge 10",450,"G"],
-    vrollo:["Rollos","/vorhaenge/rollos/","Rollos 1150 · Rollo 1000 · Rollo Fenster 200 · Rollo nach Mass 30 · Rollos nach Mass 30",2410,"S"],
+    vrollo:["Rollos","/vorhaenge/rollos/","Rollos 1150 · Rollo 1000 · Rollo Fenster 200 · Rollo nach Mass 30 · Rollos nach Mass 30 · Rollo montieren lassen 10",2420,"S"],
     vraff:["Raffrollos","/vorhaenge/raffrollos/","Raffrollo 450 · Raffrollos 100 · Raffrollo nach Mass 10",560,"S"],
-    vpliss:["Plissees","/vorhaenge/plissees/","Plissee 2850 · Plissees 350 · Plissee nach Mass 200 · Wabenplissee 150 · Plissee Dachfenster 60 · Plissee Vorhang 50 · Verdunkelungsplissee 30 · Plissee Montage 30 · Faltstore 20",3740,"S"],
-    vlam:["Vertikallamellen","/vorhaenge/vertikallamellen/","Lamellenvorhang 600 · Lamellenvorhänge 100 · Vertikallamellen 80 · Vertikal Lamellen 10",790,"S"],
+    vpliss:["Plissees","/vorhaenge/plissees/","Plissee 2850 · Plissees 350 · Plissee nach Mass 200 · Wabenplissee 150 · Plissee Dachfenster 60 · Plissee Vorhang 50 · Verdunkelungsplissee 30 · Plissee Montage 30 · Faltstore 20 · Plissee montieren lassen 10 · Plissee Beratung 10",3760,"S"],
+    vlam:["Vertikallamellen","/vorhaenge/vertikallamellen/","Lamellenvorhang 600 · Lamellenvorhänge 100 · Vertikallamellen 80 · Vertikal Lamellen 10 · Lamellenvorhang nach Mass 10",800,"S"],
     vstoffe:["Vorhangstoffe","/vorhaenge/vorhangstoffe/","Leinenvorhänge 200 · Vorhangstoffe 100 · Leinenvorhang 70 · Dekostoffe 40 · Samtvorhang 30 · Samtvorhänge 20 · Dekorvorhänge 10 · Dekovorhänge 10 · Seitenvorhänge 10",490,"G"],
-    vthermo:["Thermovorhänge","/vorhaenge/thermovorhang/","Thermovorhang 150",150,"G"],
+    vthermo:["Thermovorhänge","/vorhaenge/thermovorhang/","Thermovorhang 150 · Thermovorhang nach Mass 10",160,"G"],
     tfliesen:["Teppichfliesen","/bodenbelaege/teppichfliesen/","Teppichfliesen 150",150,"S"],
     tmass:["Teppich nach Mass","/bodenbelaege/teppich-nach-mass/","Teppich nach Mass 100",100,"H"],
     linverlegen:["Linoleum verlegen","/bodenbelaege/linoleum-verlegen/","Linoleum verlegen lassen 10",10,null],
@@ -1821,6 +1824,9 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     var COL = {"Parkett":"oak", "Bodenbeläge":"oak", "Platten & Naturstein":"slate", "Vorhänge":"sage", "Ratgeber":"mut"};
     function nf(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); }
     function vol(id){ var p = P[id]; return p && p[3] ? p[3] : 0; }
+    /* Begriffe mit Anbieter-Absicht: Montage, Beratung, nach Mass, Orte usw. */
+    var SVC = /montier|montage|beratung|nähen|kürzen|lassen|nach mass|ausmess|innendekor|atelier|geschäft|offerte|kosten|preis|leger|in der nähe|reparatur|schleifen|renovier|sanier|luzern|zug|nidwalden|obwalden|stans|baar|cham|emmen|engelberg|sursee|kriens|horw/i;
+    function svc(id){ return P[id] && P[id][2] ? P[id][2].split(" · ").filter(function(k){ return SVC.test(k); }) : []; }
     var src = V.A.main.slice(0, 4).concat([RG]);
     var AREAS = src.map(function(m){
       var seen = {}, groups = [];
@@ -1838,7 +1844,7 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     });
     ROWS.sort(function(x, y){ return y.v - x.v; });
 
-    function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
+    function kwHtml(id){ return P[id][2] ? '<div class="kc-kw">' + P[id][2].split(" · ").map(function(k){ return '<span' + (SVC.test(k) ? ' class="svc"' : '') + '>' + esc(k) + '</span>'; }).join("") + '</div>' : ''; }
 
     /* 1 Bereiche */
     var maxA = Math.max.apply(null, AREAS.map(function(a){ return a.total; }));
@@ -1880,7 +1886,8 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
           g[1].forEach(function(id){
             var v = vol(id), rd = rad(v);
             var t = P[id][0].length > 36 ? P[id][0].slice(0, 35) + "…" : P[id][0];
-            nodes += '<g class="nd ' + COL[a.label] + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen"><circle cx="' + px + '" cy="' + f(y) + '" r="' + f(rd) + '"/>' +
+            var sv = svc(id);
+            nodes += '<g class="nd ' + COL[a.label] + '" tabindex="0" role="button" aria-pressed="' + (sel === id) + '" data-id="' + id + '" aria-label="' + esc(P[id][0]) + ', ' + nf(v) + ' Suchen' + (sv.length ? ', ' + sv.length + ' Anbieter-Begriffe' : '') + '" data-svc="' + sv.length + '" data-dir="' + dir + '"><circle cx="' + px + '" cy="' + f(y) + '" r="' + f(rd) + '"/>' +
               '<text style="text-anchor:' + (si ? "start" : "end") + '" x="' + (px + dir * 22) + '" y="' + f(y + 6) + '">' + esc(t) + ' <tspan class="vv">' + nf(v) + '</tspan></text><title>' + esc(P[id][0]) + ': ' + nf(v) + '</title></g>';
             y += ROW;
           });
@@ -1900,6 +1907,18 @@ ol.q li::marker{color:var(--red-ink);font-weight:700}
     function renderMap(){
       var m = $("kcMap"); if (!m) return;
       m.innerHTML = mapSvg();
+      /* kleine Kugeln hinter der Zahl, eine pro Anbieter-Begriff */
+      m.querySelectorAll('.nd[data-svc]').forEach(function(g){
+        var n = +g.getAttribute('data-svc'), t = g.querySelector('text'); if (!n || !t || !t.getBBox) return;
+        var bb; try { bb = t.getBBox(); } catch (e) { return; }
+        if (!bb.width) return;
+        var right = g.getAttribute('data-dir') === '1', cy = bb.y + bb.height / 2, out = '';
+        for (var j = 0; j < Math.min(n, 8); j++){
+          var x = right ? bb.x + bb.width + 14 + j * 15 : bb.x - 14 - j * 15;
+          out += '<circle class="sd" cx="' + x.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="5"/>';
+        }
+        g.insertAdjacentHTML('beforeend', out);
+      });
       info(sel);
     }
     var seg = $("kcSeg");
